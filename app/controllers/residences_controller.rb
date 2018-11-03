@@ -10,7 +10,8 @@ class ResidencesController < ApplicationController
   end 
 
   def show
-  	@residence = Residence.find(params[:nombre]) #Asigna el monstruo con id a la vairable @monstruo
+  	@residence = Residence.find(params[:id]) #Asigna la residencia a la variable residencia
+  	
   	
   end
 
@@ -19,6 +20,6 @@ class ResidencesController < ApplicationController
   
   def destroy
   	 @residence=Residence.destroy(params[:nombre])  #elimino un monstruo 
-	 redirect_to resicences_path   #redirecciono a la pagina de monstruos
+	 redirect_to residences_path   #redirecciono a la pagina de monstruos
   end
 end

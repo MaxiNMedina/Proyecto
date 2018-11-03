@@ -1,0 +1,24 @@
+<div class="container">
+	<h1> Crea una nueva residencia </h1>
+
+	<%= form_for @resicence do |f| %>
+		
+		<div class="row">
+			<div class="col-md-4">
+				<%= f.label :monstruo_id, 'Monstruo' %>
+  				<%= collection_select(:tweet, :monstruo_id, Monstruo.all, :id, :nombre, {}, { class: 'form-control'}) %>
+  			</div>
+  		</div>
+
+
+		<div class="row">
+			<div class="col-md-6">
+				<%= f.label :estado %>
+  				<%= f.text_area :estado, class: 'form-control', label: 'Estado', placeholder: 'Ingrese el estado' %>
+  			</div>
+  		</div>
+
+  		<%= f.submit "Crear tweet", class: 'btn btn-primary' %>
+  	</div>
+<% end %>
+</div>

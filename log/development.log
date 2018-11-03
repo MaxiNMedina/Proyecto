@@ -19974,3 +19974,423 @@ Completed 200 OK in 80ms (Views: 75.6ms | ActiveRecord: 0.1ms)
   ↳ /Users/maximedina/.rbenv/versions/2.5.1/bin/rake:23
   [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ /Users/maximedina/.rbenv/versions/2.5.1/bin/rake:23
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/maximedina/.rbenv/versions/2.5.1/bin/rake:23
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/maximedina/.rbenv/versions/2.5.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ /Users/maximedina/.rbenv/versions/2.5.1/bin/rake:23
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ /Users/maximedina/.rbenv/versions/2.5.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/maximedina/.rbenv/versions/2.5.1/bin/rake:23
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mResidence Create (1.5ms)[0m  [1m[32mINSERT INTO "residences" ("nombre", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["nombre", "Casa"], ["created_at", "2018-11-03 13:30:57.677291"], ["updated_at", "2018-11-03 13:30:57.677291"]]
+  [1m[35m (1.6ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/" for 127.0.0.1 at 2018-11-03 10:31:10 -0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/maximedina/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by MainController#index as HTML
+  Rendering main/index.html.erb within layouts/application
+  Rendered main/index.html.erb within layouts/application (2.3ms)
+  Rendered layouts/_header.html.erb (2.1ms)
+Completed 200 OK in 418ms (Views: 409.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/residences" for 127.0.0.1 at 2018-11-03 10:31:12 -0300
+Processing by ResidencesController#index as HTML
+  Rendering residences/index.html.erb within layouts/application
+  [1m[36mResidence Load (0.2ms)[0m  [1m[34mSELECT "residences".* FROM "residences" ORDER BY "residences"."nombre" ASC[0m
+  ↳ app/views/residences/index.html.erb:11
+  Rendered residences/index.html.erb within layouts/application (247.1ms)
+Completed 500 Internal Server Error in 257ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `residencia' for #<#<Class:0x00007f8ca6d41090>:0x00007f8ca7bdec88>
+Did you mean?  residence
+               residences):
+    12: 		<tr>
+    13: 			<td> <%= link_to residence.nombre, residence %> </td>
+    14: 			<!--
+    15: 			<td> <%= residencia.descripcion %> </td>
+    16: 			<td> <%= (monstruo.critter_star) ? 'Si' : 'No' %> </td>
+    17: 			<td>
+    18: 				<%= link_to "Editar", edit_monstruo_path(monstruo), class: 'btn btn-info btn-sm' %>
+  
+app/views/residences/index.html.erb:15:in `block in _app_views_residences_index_html_erb___591429067310394366_70121035534880'
+app/views/residences/index.html.erb:11:in `_app_views_residences_index_html_erb___591429067310394366_70121035534880'
+Started GET "/residences" for 127.0.0.1 at 2018-11-03 10:31:39 -0300
+Processing by ResidencesController#index as HTML
+Started GET "/" for 127.0.0.1 at 2018-11-03 10:31:39 -0300
+  Rendering residences/index.html.erb within layouts/application
+  [1m[36mResidence Load (0.1ms)[0m  [1m[34mSELECT "residences".* FROM "residences" ORDER BY "residences"."nombre" ASC[0m
+Processing by MainController#index as HTML
+  ↳ app/views/residences/index.html.erb:11
+  Rendering main/index.html.erb within layouts/application
+  Rendered main/index.html.erb within layouts/application (0.7ms)
+  Rendered residences/index.html.erb within layouts/application (299.4ms)
+Completed 500 Internal Server Error in 309ms (ActiveRecord: 0.1ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `residencia' for #<#<Class:0x00007f8ca6d41090>:0x00007f8ca71a7620>
+Did you mean?  residence
+               residences):
+    11: 	<% residences.each do |residence| %>
+    12: 		<tr>
+    13: 			<td> <%= link_to residence.nombre, residence %> </td>
+    14: 			<!--<td> <%= residencia.descripcion %> </td>
+    15: 			<td> <%= (monstruo.critter_star) ? 'Si' : 'No' %> </td>
+    16: 			<td>
+    17: 				<%= link_to "Editar", edit_monstruo_path(monstruo), class: 'btn btn-info btn-sm' %>
+  
+app/views/residences/index.html.erb:14:in `block in _app_views_residences_index_html_erb___591429067310394366_70121037836300'
+app/views/residences/index.html.erb:11:in `_app_views_residences_index_html_erb___591429067310394366_70121037836300'
+  Rendered layouts/_header.html.erb (2.0ms)
+Completed 200 OK in 860ms (Views: 856.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-11-03 10:31:43 -0300
+Processing by MainController#index as HTML
+  Rendering main/index.html.erb within layouts/application
+  Rendered main/index.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_header.html.erb (1.7ms)
+Completed 200 OK in 52ms (Views: 49.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-11-03 10:31:44 -0300
+Processing by MainController#index as HTML
+  Rendering main/index.html.erb within layouts/application
+  Rendered main/index.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_header.html.erb (1.6ms)
+Completed 200 OK in 61ms (Views: 58.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/residences" for 127.0.0.1 at 2018-11-03 10:31:45 -0300
+Processing by ResidencesController#index as HTML
+  Rendering residences/index.html.erb within layouts/application
+  [1m[36mResidence Load (0.2ms)[0m  [1m[34mSELECT "residences".* FROM "residences" ORDER BY "residences"."nombre" ASC[0m
+  ↳ app/views/residences/index.html.erb:11
+  Rendered residences/index.html.erb within layouts/application (262.1ms)
+Completed 500 Internal Server Error in 274ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `residencia' for #<#<Class:0x00007f8ca6d41090>:0x00007f8ca7af1e60>
+Did you mean?  residence
+               residences):
+Started GET "/residences" for 127.0.0.1 at 2018-11-03 10:31:45 -0300
+    11: 	<% residences.each do |residence| %>
+    12: 		<tr>
+    13: 			<td> <%= link_to residence.nombre, residence %> </td>
+    14: 			<!--<td> <%= residencia.descripcion %> </td>
+    15: 			<td> <%= (monstruo.critter_star) ? 'Si' : 'No' %> </td>
+    16: 			<td>
+    17: 				<%= link_to "Editar", edit_monstruo_path(monstruo), class: 'btn btn-info btn-sm' %>
+  
+app/views/residences/index.html.erb:14:in `block in _app_views_residences_index_html_erb___591429067310394366_70121042711540'
+app/views/residences/index.html.erb:11:in `_app_views_residences_index_html_erb___591429067310394366_70121042711540'
+Processing by ResidencesController#index as HTML
+  Rendering residences/index.html.erb within layouts/application
+  [1m[36mResidence Load (0.1ms)[0m  [1m[34mSELECT "residences".* FROM "residences" ORDER BY "residences"."nombre" ASC[0m
+  ↳ app/views/residences/index.html.erb:11
+  Rendered residences/index.html.erb within layouts/application (282.2ms)
+Completed 500 Internal Server Error in 290ms (ActiveRecord: 0.1ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `residencia' for #<#<Class:0x00007f8ca6d41090>:0x00007f8cab941008>
+Did you mean?  residence
+               residences):
+    11: 	<% residences.each do |residence| %>
+    12: 		<tr>
+    13: 			<td> <%= link_to residence.nombre, residence %> </td>
+    14: 			<!--<td> <%= residencia.descripcion %> </td>
+    15: 			<td> <%= (monstruo.critter_star) ? 'Si' : 'No' %> </td>
+    16: 			<td>
+    17: 				<%= link_to "Editar", edit_monstruo_path(monstruo), class: 'btn btn-info btn-sm' %>
+  
+app/views/residences/index.html.erb:14:in `block in _app_views_residences_index_html_erb___591429067310394366_70121075381000'
+app/views/residences/index.html.erb:11:in `_app_views_residences_index_html_erb___591429067310394366_70121075381000'
+Started GET "/residences" for 127.0.0.1 at 2018-11-03 10:31:45 -0300
+Processing by ResidencesController#index as HTML
+  Rendering residences/index.html.erb within layouts/application
+  [1m[36mResidence Load (0.1ms)[0m  [1m[34mSELECT "residences".* FROM "residences" ORDER BY "residences"."nombre" ASC[0m
+  ↳ app/views/residences/index.html.erb:11
+  Rendered residences/index.html.erb within layouts/application (388.7ms)
+Completed 500 Internal Server Error in 480ms (ActiveRecord: 0.1ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `residencia' for #<#<Class:0x00007f8ca6d41090>:0x00007f8cab88bcf8>
+Did you mean?  residence
+               residences):
+    11: 	<% residences.each do |residence| %>
+    12: 		<tr>
+    13: 			<td> <%= link_to residence.nombre, residence %> </td>
+    14: 			<!--<td> <%= residencia.descripcion %> </td>
+    15: 			<td> <%= (monstruo.critter_star) ? 'Si' : 'No' %> </td>
+    16: 			<td>
+    17: 				<%= link_to "Editar", edit_monstruo_path(monstruo), class: 'btn btn-info btn-sm' %>
+  
+app/views/residences/index.html.erb:14:in `block in _app_views_residences_index_html_erb___591429067310394366_70121075018340'
+app/views/residences/index.html.erb:11:in `_app_views_residences_index_html_erb___591429067310394366_70121075018340'
+Started GET "/residences" for 127.0.0.1 at 2018-11-03 10:32:01 -0300
+Processing by ResidencesController#index as HTML
+Started GET "/" for 127.0.0.1 at 2018-11-03 10:32:01 -0300
+  Rendering residences/index.html.erb within layouts/application
+  [1m[36mResidence Load (0.2ms)[0m  [1m[34mSELECT "residences".* FROM "residences" ORDER BY "residences"."nombre" ASC[0m
+Processing by MainController#index as HTML
+  ↳ app/views/residences/index.html.erb:11
+  Rendered residences/index.html.erb within layouts/application (4.4ms)
+  Rendering main/index.html.erb within layouts/application
+  Rendered main/index.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_header.html.erb (3.0ms)
+Completed 200 OK in 135ms (Views: 131.9ms | ActiveRecord: 0.2ms)
+
+
+  Rendered layouts/_header.html.erb (2.1ms)
+Completed 200 OK in 130ms (Views: 126.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/residences/1" for 127.0.0.1 at 2018-11-03 10:32:03 -0300
+Processing by ResidencesController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Residence without an ID):
+  
+app/controllers/residences_controller.rb:13:in `show'
+Started GET "/residences/1" for 127.0.0.1 at 2018-11-03 10:33:58 -0300
+Processing by ResidencesController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Residence without an ID):
+  
+app/controllers/residences_controller.rb:13:in `show'
+Started GET "/residences" for 127.0.0.1 at 2018-11-03 10:34:03 -0300
+Processing by ResidencesController#index as HTML
+  Rendering residences/index.html.erb within layouts/application
+  [1m[36mResidence Load (0.1ms)[0m  [1m[34mSELECT "residences".* FROM "residences" ORDER BY "residences"."nombre" ASC[0m
+  ↳ app/views/residences/index.html.erb:11
+  Rendered residences/index.html.erb within layouts/application (1.2ms)
+  Rendered layouts/_header.html.erb (1.8ms)
+Completed 200 OK in 61ms (Views: 58.6ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/residences" for 127.0.0.1 at 2018-11-03 10:34:03 -0300
+Processing by ResidencesController#index as HTML
+  Rendering residences/index.html.erb within layouts/application
+  [1m[36mResidence Load (0.2ms)[0m  [1m[34mSELECT "residences".* FROM "residences" ORDER BY "residences"."nombre" ASC[0m
+  ↳ app/views/residences/index.html.erb:11
+  Rendered residences/index.html.erb within layouts/application (1.9ms)
+  Rendered layouts/_header.html.erb (1.7ms)
+Completed 200 OK in 104ms (Views: 100.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/residences/1" for 127.0.0.1 at 2018-11-03 10:34:04 -0300
+Processing by ResidencesController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 404 Not Found in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Residence without an ID):
+  
+app/controllers/residences_controller.rb:13:in `show'
+Started GET "/residences/1" for 127.0.0.1 at 2018-11-03 10:34:14 -0300
+Processing by ResidencesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mResidence Load (0.2ms)[0m  [1m[34mSELECT  "residences".* FROM "residences" WHERE "residences"."id" = ? ORDER BY "residences"."nombre" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/residences_controller.rb:13
+Completed 500 Internal Server Error in 174ms (ActiveRecord: 1.1ms)
+
+
+  
+NameError (undefined local variable or method `residences_' for #<ResidencesController:0x00007f8ca6fd8920>
+Did you mean?  residences_url
+               @residence):
+  
+app/controllers/residences_controller.rb:14:in `show'
+Started GET "/residences/1" for 127.0.0.1 at 2018-11-03 10:34:30 -0300
+Processing by ResidencesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mResidence Load (0.1ms)[0m  [1m[34mSELECT  "residences".* FROM "residences" WHERE "residences"."id" = ? ORDER BY "residences"."nombre" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/residences_controller.rb:13
+Completed 500 Internal Server Error in 177ms (ActiveRecord: 0.7ms)
+
+
+  
+NameError (undefined local variable or method `residences_show' for #<ResidencesController:0x00007f8cab869cc0>
+Did you mean?  residences_path
+               residences_url):
+  
+app/controllers/residences_controller.rb:14:in `show'
+Started GET "/residences/1" for 127.0.0.1 at 2018-11-03 10:34:35 -0300
+Processing by ResidencesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mResidence Load (0.2ms)[0m  [1m[34mSELECT  "residences".* FROM "residences" WHERE "residences"."id" = ? ORDER BY "residences"."nombre" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/residences_controller.rb:13
+  Rendering residences/show.html.erb within layouts/application
+  Rendered residences/show.html.erb within layouts/application (3.2ms)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `nombre' for nil:NilClass):
+    1: <h1> <%= @residencia.nombre %> </h1>
+    2: <p> <%= @residencia.descripcion %> </p>
+  
+app/views/residences/show.html.erb:1:in `_app_views_residences_show_html_erb__3258814105749715683_70121035696940'
+Started GET "/residences/1" for 127.0.0.1 at 2018-11-03 10:34:48 -0300
+Processing by ResidencesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mResidence Load (0.2ms)[0m  [1m[34mSELECT  "residences".* FROM "residences" WHERE "residences"."id" = ? ORDER BY "residences"."nombre" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/residences_controller.rb:13
+  Rendering residences/show.html.erb within layouts/application
+  Rendered residences/show.html.erb within layouts/application (6.7ms)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `descripcion' for #<Residence:0x00007f8cac644bb0>):
+    1: <h1> <%= @residence.nombre %> </h1>
+    2: <p> <%= @residence.descripcion %> </p>
+  
+app/views/residences/show.html.erb:2:in `_app_views_residences_show_html_erb__3258814105749715683_70121038044260'
+Started GET "/residences/1" for 127.0.0.1 at 2018-11-03 10:35:02 -0300
+Processing by ResidencesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mResidence Load (0.1ms)[0m  [1m[34mSELECT  "residences".* FROM "residences" WHERE "residences"."id" = ? ORDER BY "residences"."nombre" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/residences_controller.rb:13
+  Rendering residences/show.html.erb within layouts/application
+  Rendered residences/show.html.erb within layouts/application (6.9ms)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `descripcion' for #<Residence:0x00007f8cac60eee8>):
+    1: <h1> <%= @residence.nombre %> </h1>
+    2: <!--<p> <%= @residence.descripcion %> </p>-->
+  
+app/views/residences/show.html.erb:2:in `_app_views_residences_show_html_erb__3258814105749715683_70121082088780'
+Started GET "/residences/1" for 127.0.0.1 at 2018-11-03 10:35:04 -0300
+Processing by ResidencesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mResidence Load (0.2ms)[0m  [1m[34mSELECT  "residences".* FROM "residences" WHERE "residences"."id" = ? ORDER BY "residences"."nombre" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/residences_controller.rb:13
+  Rendering residences/show.html.erb within layouts/application
+  Rendered residences/show.html.erb within layouts/application (7.2ms)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `descripcion' for #<Residence:0x00007f8ca709fd90>):
+    1: <h1> <%= @residence.nombre %> </h1>
+    2: <!--<p> <%= @residence.descripcion %> </p>-->
+  
+app/views/residences/show.html.erb:2:in `_app_views_residences_show_html_erb__3258814105749715683_70121061093640'
+Started GET "/residences/1" for 127.0.0.1 at 2018-11-03 10:35:24 -0300
+Processing by ResidencesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mResidence Load (0.1ms)[0m  [1m[34mSELECT  "residences".* FROM "residences" WHERE "residences"."id" = ? ORDER BY "residences"."nombre" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/residences_controller.rb:13
+  Rendering residences/show.html.erb within layouts/application
+  Rendered residences/show.html.erb within layouts/application (0.3ms)
+  Rendered layouts/_header.html.erb (2.0ms)
+Completed 200 OK in 53ms (Views: 49.5ms | ActiveRecord: 0.1ms)
+
+
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mResidence Create (0.7ms)[0m  [1m[32mINSERT INTO "residences" ("nombre", "created_at", "updated_at") VALUES (?, ?, ?)[0m  [["nombre", "Casa de Alex"], ["created_at", "2018-11-03 13:41:30.214168"], ["updated_at", "2018-11-03 13:41:30.214168"]]
+  [1m[35m (1.5ms)[0m  [1m[36mcommit transaction[0m
+Started GET "/residences/1" for 127.0.0.1 at 2018-11-03 10:41:42 -0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/maximedina/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by ResidencesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mResidence Load (0.2ms)[0m  [1m[34mSELECT  "residences".* FROM "residences" WHERE "residences"."id" = ? ORDER BY "residences"."nombre" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/residences_controller.rb:13
+  Rendering residences/show.html.erb within layouts/application
+  Rendered residences/show.html.erb within layouts/application (11.7ms)
+Completed 500 Internal Server Error in 36ms (ActiveRecord: 0.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `descripcion' for #<Residence:0x00007f9ab09f7cc8>):
+    1: <h1> <%= @residence.nombre %> </h1> <!--DESCRIPCION DE UNA RESIDENCIA-->
+    2: <p> <%= @residence.descripcion %> </p>
+  
+app/views/residences/show.html.erb:2:in `_app_views_residences_show_html_erb___3101607296197070060_70151182461300'
+Started GET "/residences/1" for 127.0.0.1 at 2018-11-03 10:42:18 -0300
+Processing by ResidencesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mResidence Load (0.2ms)[0m  [1m[34mSELECT  "residences".* FROM "residences" WHERE "residences"."id" = ? ORDER BY "residences"."nombre" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/residences_controller.rb:13
+  Rendering residences/show.html.erb within layouts/application
+  Rendered residences/show.html.erb within layouts/application (8.2ms)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `descripcion' for #<Residence:0x00007f9ab01e2cb8>):
+    1: <h1> <%= @residence.nombre %> </h1> <!--DESCRIPCION DE UNA RESIDENCIA-->
+    2: <!-- <p> <%= @residence.descripcion %> </p> -->
+  
+app/views/residences/show.html.erb:2:in `_app_views_residences_show_html_erb___3101607296197070060_70151178226480'
+Started GET "/residences/1" for 127.0.0.1 at 2018-11-03 10:42:27 -0300
+Processing by ResidencesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mResidence Load (0.1ms)[0m  [1m[34mSELECT  "residences".* FROM "residences" WHERE "residences"."id" = ? ORDER BY "residences"."nombre" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/residences_controller.rb:13
+  Rendering residences/show.html.erb within layouts/application
+  Rendered residences/show.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_header.html.erb (1.7ms)
+Completed 200 OK in 352ms (Views: 347.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-11-03 10:42:29 -0300
+Processing by MainController#index as HTML
+  Rendering main/index.html.erb within layouts/application
+  Rendered main/index.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_header.html.erb (1.8ms)
+Completed 200 OK in 60ms (Views: 55.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/residences" for 127.0.0.1 at 2018-11-03 10:42:30 -0300
+Processing by ResidencesController#index as HTML
+  Rendering residences/index.html.erb within layouts/application
+  [1m[36mResidence Load (0.2ms)[0m  [1m[34mSELECT "residences".* FROM "residences" ORDER BY "residences"."nombre" ASC[0m
+  ↳ app/views/residences/index.html.erb:11
+  Rendered residences/index.html.erb within layouts/application (1.8ms)
+  Rendered layouts/_header.html.erb (1.6ms)
+Completed 200 OK in 55ms (Views: 50.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/residences/2" for 127.0.0.1 at 2018-11-03 10:42:31 -0300
+Processing by ResidencesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mResidence Load (0.2ms)[0m  [1m[34mSELECT  "residences".* FROM "residences" WHERE "residences"."id" = ? ORDER BY "residences"."nombre" ASC LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/residences_controller.rb:13
+  Rendering residences/show.html.erb within layouts/application
+  Rendered residences/show.html.erb within layouts/application (1.1ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+Completed 200 OK in 64ms (Views: 59.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-11-03 10:42:32 -0300
+Processing by MainController#index as HTML
+  Rendering main/index.html.erb within layouts/application
+  Rendered main/index.html.erb within layouts/application (0.8ms)
+  Rendered layouts/_header.html.erb (1.4ms)
+Completed 200 OK in 77ms (Views: 74.9ms | ActiveRecord: 0.0ms)
+
+
