@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  get 'preguntasfrecuentes/faq'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-    get 'main/index'
-    root 'main#index'
-    
-    get '/faq', to:'preguntasfrecuentes#faq'
+
+  	get 'residences/index'
+    root 'main#index' #redirecciona a la pagina principal
+    get '/faq', to:'preguntasfrecuentes#faq' #ruta para poder acceder a las faq
+
+    resources :residences #para poder acceder a las residencias
 end
