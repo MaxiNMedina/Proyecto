@@ -20394,3 +20394,25 @@ Processing by MainController#index as HTML
 Completed 200 OK in 77ms (Views: 74.9ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/residences" for 127.0.0.1 at 2018-11-04 10:30:47 -0300
+Started GET "/" for 127.0.0.1 at 2018-11-04 10:30:47 -0300
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/maximedina/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  ↳ /Users/maximedina/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by ResidencesController#index as HTML
+Processing by MainController#index as HTML
+  Rendering main/index.html.erb within layouts/application
+  Rendering residences/index.html.erb within layouts/application
+  Rendered main/index.html.erb within layouts/application (2.1ms)
+  Rendered layouts/_header.html.erb (1.6ms)
+Completed 200 OK in 356ms (Views: 354.0ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mResidence Load (0.4ms)[0m  [1m[34mSELECT "residences".* FROM "residences" ORDER BY "residences"."nombre" ASC[0m
+  ↳ app/views/residences/index.html.erb:11
+  Rendered residences/index.html.erb within layouts/application (352.2ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+Completed 200 OK in 440ms (Views: 424.5ms | ActiveRecord: 1.1ms)
+
+
