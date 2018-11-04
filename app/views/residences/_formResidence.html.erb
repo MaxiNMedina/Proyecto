@@ -1,27 +1,27 @@
 <div class="container">
-  <%= form_for @residence do |resF| %>
+  <%= form_for @residence do |f| %>
 
   <div class="row">
-    <%= resF.label :name, 'Residencia' %>
-    <%= resF.text_field :name, class: 'form-control' %>
+    <%= f.label :name, 'Residencia' %>
+    <%= f.text_field :name, required: true, class: 'form-control' %>
   </div>
 
   <div class="row">
-    <%= resF.label :dir %>
-    <%= resF.text_field :dir, class: 'form-control' %>
+    <%= f.label :dir %>
+    <%= f.text_field :dir, class: 'form-control' %>
   </div>
 
   <div class="row">
-    <%= resF.label :desc %>
-    <%= resF.text_area :desc, class: 'form-control' %>
+    <%= f.label :desc %>
+    <%= f.text_area :desc, class: 'form-control' %>
   </div>
 
   <div class="row">
-    <%= resF.label :available %>
-    <%= resF.text_field :available, class: 'form-control' %>
+    <%= f.label :available %>
+    <%= f.text_field :available, class: 'form-control' %>
   </div>
-  <br>
-    <%= resF.submit 'Guardar', class: 'btn btn-primary' %>
+
+    <%= f.submit 'Guardar', class: 'btn btn-primary' %>
 
   <% end %>
 </div>

@@ -9,7 +9,7 @@ class ResidencesController < ApplicationController
 
   def create    #Crea una nueva residencia y la guarda en la base de datos
     @residence = Residence.new( params.require(:residence).permit(:name, :desc, :dir, :available) )
-    if@residence.save
+    if @residence.save
       redirect_to residences_path   #redirecciono a la pagina de residencias
     else
       render :new
@@ -19,10 +19,11 @@ class ResidencesController < ApplicationController
 
   def show
   	@residence = Residence.find(params[:id]) #Asigna la residencia a la variable residencia
+    @auctions = @residence.auctions
   end
 
   def edit
-    @residence = Residence.find(params[:id]) 
+    @residence = Residence.find(params[:id])
   end
 
   def destroy            #elimina una residencia de la base de datos
@@ -31,7 +32,7 @@ class ResidencesController < ApplicationController
   end
 
   def update
-    @residence = Residence.find(params[:id]) 
+    @residence = Residence.find(params[:id])
     @residence.update(residence_params)
     redirect_to residences_path
   end

@@ -1,0 +1,3 @@
+<h1> Subasta nº<%= @auction.id %> </h1> <!--DESCRIPCION DE UNA SUBASTA-->
+<p> Precio actual: <%= @auction.maxbid %> $ </p>
+<p> Para la residencia: <%= link_to @auction.residence.name, @auction.residence %> </p>

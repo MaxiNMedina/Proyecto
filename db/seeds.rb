@@ -5,15 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-<<<<<<< HEAD
 
 puts "Creando Residencias"
-Residence.create(name: "casaTest1", dir: "dirTest1", desc: "descTest1", available: true)
-Residence.create(name: "casaTest2", dir: "dirTest2", desc: "descTest2", available: true)
-Residence.create(name: "casaTest3", dir: "dirTest3", desc: "descTest3", available: false)
-=======
-puts "Creo algunas residencias"
-Residence.find_or_create_by(nombre:"Residencia 1")
-Residence.find_or_create_by(nombre:"Residencia 2")
-Residence.find_or_create_by(nombre:"Residencia 3")
->>>>>>> master
+resAlex = Residence.create(name: "casa de Alex", dir: "La Plata", desc: "10/10", available: true)
+resMaxi = Residence.create(name: "casa de Maxi", dir: "La Plata", desc: "excelente", available: true)
+resVic = Residence.create(name: "casa de Victor", dir: "La Plata", desc: "super", available: false)
+
+puts "Creando Subastas"
+Auction.create(residence_id: resAlex.id, maxbid: 2000)
+Auction.create(residence_id: resAlex.id, maxbid: 500)
+Auction.create(residence_id: resVic.id, maxbid: 10000)
