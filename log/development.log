@@ -30217,3 +30217,7 @@ ActionView::Template::Error (SQLite3::SQLException: no such column: residences.n
     18: 			<td> <%= truncate(residence.desc, length: 15, seperator: ' ') %> </td>
   
 app/views/residences/index.html.erb:15:in `_app_views_residences_index_html_erb__3768652815106524696_70198444601040'
+  [1m[36mResidence Load (0.5ms)[0m  [1m[34mSELECT  "residences".* FROM "residences" ORDER BY "residences"."nombre" ASC LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mResidence Load (1.8ms)[0m  [1m[34mSELECT "residences".* FROM "residences" ORDER BY "residences"."nombre" ASC[0m
+  [1m[36mResidence Load (1.6ms)[0m  [1m[34mSELECT "residences".* FROM "residences" ORDER BY "residences"."nombre" ASC[0m
+  [1m[36mResidence Load (0.5ms)[0m  [1m[34mSELECT "residences".* FROM "residences" ORDER BY "residences"."nombre" ASC[0m
