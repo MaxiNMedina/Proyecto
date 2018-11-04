@@ -30206,6 +30206,100 @@ Processing by ResidencesController#index as HTML
 Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.7ms)
 
 
+<<<<<<< HEAD
+  [1m[36mResidence Load (0.8ms)[0m  [1m[34mSELECT  "residences".* FROM "residences" ORDER BY "residences"."nombre" ASC LIMIT ?[0m  [["LIMIT", 11]]
+  [1m[36mResidence Load (0.6ms)[0m  [1m[34mSELECT "residences".* FROM "residences" ORDER BY "residences"."nombre" ASC[0m
+  [1m[36mAuction Load (1.0ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions"[0m
+  [1m[36mResidence Load (0.5ms)[0m  [1m[34mSELECT  "residences".* FROM "residences" ORDER BY "residences"."nombre" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateAuctions (20181103195443)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateAuctions (20181103195443)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/migrate/20181103195443_create_auctions.rb:3
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "auctions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20181103195443_create_auctions.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20181103195443"]]
+  ↳ bin/rails:9
+  [1m[35m (147.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+>>>>>>> 35e0bfea755524c8baff7bda4490d1e41b0017c7
+Started GET "/" for 127.0.0.1 at 2018-11-04 11:50:59 -0300
+Started GET "/" for 127.0.0.1 at 2018-11-04 11:50:59 -0300
+Started GET "/residences" for 127.0.0.1 at 2018-11-04 11:50:59 -0300
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/maximedina/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/maximedina/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by MainController#index as HTML
+Processing by MainController#index as HTML
+Processing by ResidencesController#index as HTML
+  Rendering main/index.html.erb within layouts/application
+  Rendered main/index.html.erb within layouts/application (2.7ms)
+  Rendering residences/index.html.erb within layouts/application
+  Rendering main/index.html.erb within layouts/application
+  Rendered main/index.html.erb within layouts/application (0.4ms)
+  Rendered layouts/_header.html.erb (2.5ms)
+Completed 200 OK in 729ms (Views: 719.7ms | ActiveRecord: 0.0ms)
+
+
+  Rendered layouts/_header.html.erb (0.9ms)
+Completed 200 OK in 753ms (Views: 740.1ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mResidence Load (0.2ms)[0m  [1m[34mSELECT "residences".* FROM "residences" ORDER BY "residences"."nombre" ASC[0m
+  ↳ app/views/residences/index.html.erb:11
+  Rendered residences/index.html.erb within layouts/application (617.8ms)
+  Rendered layouts/_header.html.erb (1.3ms)
+Completed 200 OK in 827ms (Views: 817.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-11-04 11:51:01 -0300
+Processing by MainController#index as HTML
+  Rendering main/index.html.erb within layouts/application
+  Rendered main/index.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+Completed 200 OK in 56ms (Views: 54.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-11-04 11:57:44 -0300
+Started GET "/" for 127.0.0.1 at 2018-11-04 11:57:44 -0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/maximedina/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+  ↳ /Users/maximedina/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by MainController#index as HTML
+Processing by MainController#index as HTML
+  Rendering main/index.html.erb within layouts/application
+  Rendering main/index.html.erb within layouts/application
+  Rendered main/index.html.erb within layouts/application (1.3ms)
+  Rendered main/index.html.erb within layouts/application (0.3ms)
+  Rendered layouts/_header.html.erb (1.8ms)
+Completed 200 OK in 391ms (Views: 388.7ms | ActiveRecord: 0.0ms)
+
+
+  Rendered layouts/_header.html.erb (1.4ms)
+Completed 200 OK in 401ms (Views: 387.9ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mResidence Load (2.7ms)[0m  [1m[34mSELECT "residences".* FROM "residences" ORDER BY "residences"."nombre" ASC[0m
+=======
   
 ActionView::Template::Error (SQLite3::SQLException: no such column: residences.nombre: SELECT "residences".* FROM "residences" ORDER BY "residences"."nombre" ASC):
     12: 	</tr>
@@ -30221,6 +30315,7 @@ app/views/residences/index.html.erb:15:in `_app_views_residences_index_html_erb_
   [1m[36mResidence Load (1.8ms)[0m  [1m[34mSELECT "residences".* FROM "residences" ORDER BY "residences"."nombre" ASC[0m
   [1m[36mResidence Load (1.6ms)[0m  [1m[34mSELECT "residences".* FROM "residences" ORDER BY "residences"."nombre" ASC[0m
   [1m[36mResidence Load (0.5ms)[0m  [1m[34mSELECT "residences".* FROM "residences" ORDER BY "residences"."nombre" ASC[0m
+<<<<<<< HEAD
 Started GET "/residences" for 127.0.0.1 at 2018-11-04 12:28:07 -0300
   [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ /Users/maximedina/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
@@ -30347,3 +30442,6 @@ ActionView::Template::Error (SQLite3::SQLException: no such column: residences.n
     18: 			<td> <%= truncate(residence.desc, length: 15, seperator: ' ') %> </td>
   
 app/views/residences/index.html.erb:15:in `_app_views_residences_index_html_erb___155164880669092490_70319874751080'
+=======
+>>>>>>> master
+>>>>>>> eb6479fd0194ea87393b11b4d61ff52f88ae16d9
