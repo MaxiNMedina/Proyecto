@@ -11,6 +11,9 @@
 	<% residences.each do |residence| %>
 		<tr>
 			<td> <%= link_to residence.nombre, residence %> </td>
+			<td>
+				<%= link_to "Editar", edit_residence_path(residence), class: 'btn btn-info btn-sm' %>
+			</td>
 			
 		</tr>
 	<% end %>
