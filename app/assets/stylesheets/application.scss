@@ -16,3 +16,14 @@
 body{
 	background-color:#FFFF; /*Color de fondo blanco*/
 }
+
+
+
+footer { 					/* Para dejar el pie de pagina donde debe ir*/
+  position:fixed;
+  left:0px;
+  bottom:80px;
+  height:30px;
+  width:100%;
+}
+

@@ -1,10 +1,19 @@
 <!-- Por el momento solo funciona para cambiar el nombre hasta que se agregen el resto de los atributos-->
-<h1> Modificar la residencia "<%= @residence.nombre %>" </h1>
+<h1> Modificar la residencia "<%= @residence.name %>" </h1>
 <div class="row">
 	<%= form_for(@residence) do |f| %>
-		<%= f.label :nombre %>
-      	<%= f.text_field :nombre, class: 'form-control' %>
+		<%= f.label :Nombre %>
+    	<%= f.text_field :name, class: 'form-control' %> <!-- Cambiar nombre-->
 
-      	<%= f.submit 'Guardar cambios', class: "btn btn-info btn-sm" %>
+    	<%= f.label :Direccion %>
+    	<%= f.text_field :dir, class: 'form-control' %> <!-- Cambiar Direccion-->
+
+    	<%= f.label :Descripcion %>
+    	<%= f.text_field :desc, class: 'form-control' %> <!-- Cambiar Descripcion-->
+
+    	<%= f.label :Disponible %>
+    	<%= f.text_field :available, class: 'form-control' %> <!-- Cambiar Disponibilidad-->
+
+     	<%= f.submit 'Guardar cambios', class: "btn btn-info btn-sm" %>
 	<% end %>
 </div>
