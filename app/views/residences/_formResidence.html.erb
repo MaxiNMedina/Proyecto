@@ -1,0 +1,27 @@
+<div class="container">
+  <%= form_for @residence do |resF| %>
+
+  <div class="row">
+    <%= resF.label :name, 'Residencia' %>
+    <%= resF.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="row">
+    <%= resF.label :dir %>
+    <%= resF.text_field :dir, class: 'form-control' %>
+  </div>
+
+  <div class="row">
+    <%= resF.label :desc %>
+    <%= resF.text_area :desc, class: 'form-control' %>
+  </div>
+
+  <div class="row">
+    <%= resF.label :available %>
+    <%= resF.text_field :available, class: 'form-control' %>
+  </div>
+  <br>
+    <%= resF.submit 'Guardar', class: 'btn btn-primary' %>
+
+  <% end %>
+</div>
