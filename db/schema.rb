@@ -10,12 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_03_195443) do
+ActiveRecord::Schema.define(version: 2018_11_04_183919) do
 
-  create_table "auctions", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+# Could not dump table "auctions" because of following StandardError
+#   Unknown type 'reference' for column 'residence'
 
   create_table "residences", force: :cascade do |t|
     t.string "name"
