@@ -23,10 +23,22 @@ class ResidencesController < ApplicationController
   end
 
   def edit
+    @residence = Residence.find(params[:id]) 
   end
 
   def destroy            #elimina una residencia de la base de datos
     @residenceDestroy = residence.find(params[:id]).destroy
     flash[:notice] = "Borrado!"
+  end
+
+  def update
+    @residence = Residence.find(params[:id]) 
+    @residence.update(residence_params)
+    redirect_to residences_path
+  end
+  #Usado para mandar parametros de la residencia. Lo uso en la modificacion de residencia para actualizar los datos.
+  #Se puede usar para otros metdos, como por ej. create.
+  def residence_params
+    params.require(:residence).permit(:nombre)
   end
 end

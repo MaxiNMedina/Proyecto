@@ -18,3 +18,69 @@
   [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
   [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
   [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "auctions"[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE TABLE "auctions" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "residences"[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE TABLE "residences" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "dir" varchar, "desc" text, "available" boolean, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20181103195443)[0m
+  [1m[35m (1.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20181103194444);
+
+[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "test"], ["created_at", "2018-11-04 15:38:48.403946"], ["updated_at", "2018-11-04 15:38:48.403946"]]
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.3ms)[0m  [1m[31mDELETE FROM "residences"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "auctions"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "residences" ("name", "dir", "desc", "available", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 1, '2018-11-04 15:38:48.530027', '2018-11-04 15:38:48.530027', 980190962)[0m
+  [1m[36mFixture Insert (0.0ms)[0m  [1m[32mINSERT INTO "residences" ("name", "dir", "desc", "available", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 1, '2018-11-04 15:38:48.530027', '2018-11-04 15:38:48.530027', 298486374)[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "residences"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "auctions"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "residences" ("name", "dir", "desc", "available", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 1, '2018-11-04 15:38:48.757517', '2018-11-04 15:38:48.757517', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "residences" ("name", "dir", "desc", "available", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 1, '2018-11-04 15:38:48.757517', '2018-11-04 15:38:48.757517', 298486374)[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "residences"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "auctions"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "residences" ("name", "dir", "desc", "available", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 1, '2018-11-04 15:38:48.762372', '2018-11-04 15:38:48.762372', 980190962)[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "residences" ("name", "dir", "desc", "available", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 1, '2018-11-04 15:38:48.762372', '2018-11-04 15:38:48.762372', 298486374)[0m
+  [1m[35m (0.4ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "residences"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "auctions"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "residences" ("name", "dir", "desc", "available", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 1, '2018-11-04 15:38:48.766587', '2018-11-04 15:38:48.766587', 980190962)[0m
+  [1m[36mFixture Insert (0.0ms)[0m  [1m[32mINSERT INTO "residences" ("name", "dir", "desc", "available", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 1, '2018-11-04 15:38:48.766587', '2018-11-04 15:38:48.766587', 298486374)[0m
+  [1m[35m (0.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixture Delete (0.2ms)[0m  [1m[31mDELETE FROM "residences"[0m
+  [1m[36mFixture Delete (0.1ms)[0m  [1m[31mDELETE FROM "auctions"[0m
+  [1m[36mFixture Insert (0.1ms)[0m  [1m[32mINSERT INTO "residences" ("name", "dir", "desc", "available", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 1, '2018-11-04 15:38:48.771752', '2018-11-04 15:38:48.771752', 980190962)[0m
+  [1m[36mFixture Insert (0.0ms)[0m  [1m[32mINSERT INTO "residences" ("name", "dir", "desc", "available", "created_at", "updated_at", "id") VALUES ('MyString', 'MyString', 'MyString', 1, '2018-11-04 15:38:48.771752', '2018-11-04 15:38:48.771752', 298486374)[0m
+  [1m[35m (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
