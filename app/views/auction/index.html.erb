@@ -1,0 +1,24 @@
+<h1> Listado de Subastas </h1>  <!-- TABLA DE SUBASTAS-->
+
+<%= link_to "Crear Subasta", new_auction_path ,class: 'btn btn-info'%>
+
+<table class="table">
+
+	<tr>
+		<th> Nombre </th>
+	</tr>
+
+	<% auction = Auction.all %>
+	<% auction.each do |auction| %>
+		<tr>
+			<td> <%= link_to residence.name, residence %> </td>
+			<td><%= link_to "Finalizar", auction_path(auction), method: :delete, data: { confirm: 'Finalizar esta subasta?'} %></td>
+		</tr>
+	<% end %>
+
+	<% if residences.size == 0 %>
+		<tr> <td colspan="3"> No hay subastas </td> </tr>
+	<% end %>
+
+</table>
+
