@@ -1,0 +1,29 @@
+<h1> Listado de Subastas </h1>  <!-- TABLA DE SUBASTAS-->
+
+<%= link_to "Crear Subasta", new_auction_path ,class: 'btn btn-info'%>
+
+<table class="table">
+
+	<tr>
+		<th> Id </th>
+		<th> Puja maxima </th>
+		<th> Residencia </th>
+		<th> Disponible </th>
+	</tr>
+
+	<% auctions = auctions.all %>
+	<% auctions.each do |auction| %>
+		<tr>
+			<td> <%= link_to auction.id, auction %> </td>
+			<td> <%= auction.maxbid %> </td>
+			<td><%= link_to auction.residence_id, auction.residence %></td>
+			<td><%= link_to "Edit", edit_auction_path(auction) %></td>
+			<td><%= link_to "Borrar", auction_path(auction), method: :delete, data: {confirm: 'Borrar esta subasta?'}%></td>
+		</tr>
+	<% end %>
+
+	<% if auctions.size == 0 %>
+		<tr> <td colspan="3"> No hay subastas </td> </tr>
+	<% end %>
+
+</table>
