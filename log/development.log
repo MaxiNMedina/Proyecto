@@ -37169,3 +37169,116 @@ Processing by MainController#index as HTML
 Completed 200 OK in 54ms (Views: 51.2ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/" for 127.0.0.1 at 2018-11-04 19:03:25 -0300
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/maximedina/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by MainController#index as HTML
+  Rendering main/index.html.erb within layouts/application
+  Rendered main/index.html.erb within layouts/application (1.4ms)
+  Rendered layouts/_header.html.erb (1.7ms)
+  Rendered layouts/_footer.html.erb (1.5ms)
+Completed 200 OK in 403ms (Views: 393.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-11-04 19:03:29 -0300
+Processing by MainController#index as HTML
+  Rendering main/index.html.erb within layouts/application
+  Rendered main/index.html.erb within layouts/application (0.7ms)
+  Rendered layouts/_header.html.erb (2.1ms)
+  Rendered layouts/_footer.html.erb (7.7ms)
+Completed 200 OK in 86ms (Views: 84.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/residences" for 127.0.0.1 at 2018-11-04 19:03:31 -0300
+Processing by ResidencesController#index as HTML
+  Rendering residences/index.html.erb within layouts/application
+  [1m[36mResidence Load (0.2ms)[0m  [1m[34mSELECT "residences".* FROM "residences" ORDER BY "residences"."name" ASC[0m
+  ↳ app/views/residences/index.html.erb:15
+  Rendered residences/index.html.erb within layouts/application (9.0ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (1.6ms)
+Completed 200 OK in 79ms (Views: 71.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/residences/4/edit" for 127.0.0.1 at 2018-11-04 19:03:34 -0300
+Processing by ResidencesController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mResidence Load (0.4ms)[0m  [1m[34mSELECT  "residences".* FROM "residences" WHERE "residences"."id" = ? ORDER BY "residences"."name" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/residences_controller.rb:25
+  Rendering residences/edit.html.erb within layouts/application
+  Rendered residences/edit.html.erb within layouts/application (13.9ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+  Rendered layouts/_footer.html.erb (1.6ms)
+Completed 200 OK in 78ms (Views: 70.4ms | ActiveRecord: 0.4ms)
+
+
+Started PATCH "/residences/4" for 127.0.0.1 at 2018-11-04 19:03:35 -0300
+Processing by ResidencesController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"PaqrCuqzkTnyyTmF+fJBjKbLM0zqaXWAT7Cvb4O4NmLUHByr2f0UnY6G/JdGkFwfO1UG752dP0ZW26L/eT5PVg==", "residence"=>{"name"=>"Alex's House", "dir"=>"La Plata", "desc"=>"Beautiful", "available"=>"false"}, "commit"=>"Guardar cambios", "id"=>"4"}
+  [1m[36mResidence Load (0.2ms)[0m  [1m[34mSELECT  "residences".* FROM "residences" WHERE "residences"."id" = ? ORDER BY "residences"."name" ASC LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/residences_controller.rb:34
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/residences_controller.rb:35
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/residences_controller.rb:35
+Redirected to http://localhost:3000/residences
+Completed 302 Found in 4ms (ActiveRecord: 0.3ms)
+
+
+Started GET "/residences" for 127.0.0.1 at 2018-11-04 19:03:35 -0300
+Processing by ResidencesController#index as HTML
+  Rendering residences/index.html.erb within layouts/application
+  [1m[36mResidence Load (0.1ms)[0m  [1m[34mSELECT "residences".* FROM "residences" ORDER BY "residences"."name" ASC[0m
+  ↳ app/views/residences/index.html.erb:15
+  Rendered residences/index.html.erb within layouts/application (1.9ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+  Rendered layouts/_footer.html.erb (1.2ms)
+Completed 200 OK in 62ms (Views: 60.3ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/residences/new" for 127.0.0.1 at 2018-11-04 19:03:37 -0300
+Processing by ResidencesController#new as HTML
+  Rendering residences/new.html.erb within layouts/application
+  Rendered residences/_formResidence.html.erb (2.6ms)
+  Rendered residences/new.html.erb within layouts/application (4.9ms)
+  Rendered layouts/_header.html.erb (1.7ms)
+  Rendered layouts/_footer.html.erb (0.9ms)
+Completed 200 OK in 67ms (Views: 64.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-11-04 19:03:38 -0300
+Processing by MainController#index as HTML
+  Rendering main/index.html.erb within layouts/application
+  Rendered main/index.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered layouts/_footer.html.erb (1.2ms)
+Completed 200 OK in 55ms (Views: 52.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-11-04 19:03:39 -0300
+Processing by MainController#index as HTML
+  Rendering main/index.html.erb within layouts/application
+  Rendered main/index.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 52ms (Views: 50.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-11-04 19:03:40 -0300
+Processing by MainController#index as HTML
+  Rendering main/index.html.erb within layouts/application
+  Rendered main/index.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_header.html.erb (1.4ms)
+  Rendered layouts/_footer.html.erb (1.1ms)
+Completed 200 OK in 66ms (Views: 62.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-11-04 19:03:41 -0300
+Processing by MainController#index as HTML
+  Rendering main/index.html.erb within layouts/application
+  Rendered main/index.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_header.html.erb (1.3ms)
+  Rendered layouts/_footer.html.erb (1.2ms)
+Completed 200 OK in 66ms (Views: 63.1ms | ActiveRecord: 0.0ms)
+
+
