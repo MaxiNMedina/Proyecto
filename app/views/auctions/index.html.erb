@@ -5,20 +5,22 @@
 <table class="table">
 
 	<tr>
-		<th> Nombre </th>
+		<th> Id </th>
+    <th> Puja maxima </th>
+    <th> Finalizar </th>
 	</tr>
 
-	<% auction = Auction.all %>
-	<% auction.each do |auction| %>
+	<% auctions = Auction.all %>
+	<% auctions.each do |auction| %>
 		<tr>
-			<td> <%= link_to residence.name, residence %> </td>
+			<td> <%= link_to auction.id, auction %> </td>
+      <td> <%= auction.maxbid %> </td>
 			<td><%= link_to "Finalizar", auction_path(auction), method: :delete, data: { confirm: 'Finalizar esta subasta?'} %></td>
 		</tr>
 	<% end %>
 
-	<% if residences.size == 0 %>
+	<% if auctions.size == 0 %>
 		<tr> <td colspan="3"> No hay subastas </td> </tr>
 	<% end %>
 
 </table>
-
