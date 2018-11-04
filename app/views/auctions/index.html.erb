@@ -14,8 +14,8 @@
 	<% auctions.each do |auction| %>
 		<tr>
 			<td> <%= link_to auction.id, auction %> </td>
-      <td> <%= auction.maxbid %> </td>
-			<td><%= link_to "Finalizar", auction_path(auction), method: :delete, data: { confirm: 'Finalizar esta subasta?'} %></td>
+      		<td> <%= auction.maxbid %> </td>
+			<td><%= link_to "Finalizar", auction, method: :delete, class: 'btn btn-danger btn-sm' %></td>
 		</tr>
 	<% end %>
 

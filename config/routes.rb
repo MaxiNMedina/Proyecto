@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   get 'auctions/update'
 	root 'main#index' #redirecciona a la pagina principal
   	get 'residences/index'
+    get 'residences/destroy'
+    get 'residences/edit'
 		get 'auctions/index'
     get '/faq', to:'preguntasfrecuentes#faq' #ruta para poder acceder a las faq
 
