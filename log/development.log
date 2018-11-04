@@ -30445,3 +30445,25 @@ app/views/residences/index.html.erb:15:in `_app_views_residences_index_html_erb_
 =======
 >>>>>>> master
 >>>>>>> eb6479fd0194ea87393b11b4d61ff52f88ae16d9
+Started GET "/residences" for 127.0.0.1 at 2018-11-04 12:30:37 -0300
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/maximedina/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by ResidencesController#index as HTML
+  Rendering residences/index.html.erb within layouts/application
+  [1m[36mResidence Load (0.7ms)[0m  [1m[34mSELECT "residences".* FROM "residences" ORDER BY "residences"."nombre" ASC[0m
+  ↳ app/views/residences/index.html.erb:15
+  Rendered residences/index.html.erb within layouts/application (14.1ms)
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionView::Template::Error (SQLite3::SQLException: no such column: residences.nombre: SELECT "residences".* FROM "residences" ORDER BY "residences"."nombre" ASC):
+    12: 	</tr>
+    13: 
+    14: 	<% residences = Residence.all %>
+    15: 	<% residences.each do |residence| %>
+    16: 		<tr>
+    17: 			<td> <%= link_to residence.nombre, residence %> </td>
+    18: 			<td> <%= truncate(residence.desc, length: 15, seperator: ' ') %> </td>
+  
+app/views/residences/index.html.erb:15:in `_app_views_residences_index_html_erb___1758300944282842295_70254947301960'
