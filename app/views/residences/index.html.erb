@@ -14,7 +14,7 @@
 	<% residences = Residence.all %>
 	<% residences.each do |residence| %>
 		<tr>
-			<td> <%= link_to residence.nombre, residence %> </td>
+			<td> <%= link_to residence.name, residence %> </td>
 			<td> <%= truncate(residence.desc, length: 15, seperator: ' ') %> </td>
 			<td> <%= residence.dir %> </td>
 			<td> <%= residence.available %> </td>

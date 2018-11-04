@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 2018_11_03_195443) do
   create_table "residences", force: :cascade do |t|
     t.string "name"
     t.string "dir"
-    t.string "desc"
-    t.string "available"
+    t.text "desc"
+    t.boolean "available"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

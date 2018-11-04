@@ -1,4 +1,4 @@
 class Residence < ApplicationRecord	
-	default_scope -> { order :nombre }
+	default_scope -> { order :name }
 	has_many :auctions
 end
