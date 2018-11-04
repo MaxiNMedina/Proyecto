@@ -1,20 +1,25 @@
 <h1> Listado de Residencias </h1>  <!-- TABLA DE RESIDENCIAS-->
 
+<%= link_to "Crear Residencia", new_residence_path ,class: 'btn btn-info'%>
+
 <table class="table">
 
 	<tr>
 		<th> Nombre </th>
 		<th> Descripción </th>
+		<th> Localidad </th>
+		<th> Disponible </th>
 	</tr>
 
 	<% residences = Residence.all %>
 	<% residences.each do |residence| %>
 		<tr>
 			<td> <%= link_to residence.nombre, residence %> </td>
-			<td>
-				<%= link_to "Editar", edit_residence_path(residence), class: 'btn btn-info btn-sm' %>
-			</td>
-			
+			<td> <%= truncate(residence.desc, length: 15, seperator: ' ') %> </td>
+			<td> <%= residence.dir %> </td>
+			<td> <%= residence.available %> </td>
+			<td><%= link_to "Editar", edit_residence_path(residence), class: 'btn btn-info btn-sm' %></td>
+			<td><%= link_to "Borrar", residence_path(residence), method: :delete, data: { confirm: 'Borrar esta residencia?'} %></td>
 		</tr>
 	<% end %>
 
@@ -23,3 +28,4 @@
 	<% end %>
 
 </table>
+
