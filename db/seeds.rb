@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+puts "Creando Residencias"
+Residence.create(name: "casaTest1", dir: "dirTest1", desc: "descTest1", available: true)
+Residence.create(name: "casaTest2", dir: "dirTest2", desc: "descTest2", available: true)
+Residence.create(name: "casaTest3", dir: "dirTest3", desc: "descTest3", available: false)
