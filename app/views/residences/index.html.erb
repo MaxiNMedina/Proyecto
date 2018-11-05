@@ -19,9 +19,10 @@
 			<td> <%= residence.dir %> </td>
 			<td> <%= residence.available %> </td>
 			<td><%= link_to "Edit", edit_residence_path(residence), class: 'btn btn-dark btn-sm'%></td>
-			<td><%= link_to "Borrar", residence, method: :delete,  class: 'btn btn-danger btn-sm'%></td>
+			<td><%= link_to "Borrar", residence, method: :delete,  class: 'btn btn-danger btn-sm', data: { confirm: 'Realmente desea borrar la residencia?'}%></td>
 		</tr>
 	<% end %>
+	<td> <%= link_to "Volver", root_path, class: 'btn btn-secondary' %> </td>
 
 	<% if residences.size == 0 %>
 		<tr> <td colspan="3"> No hay residencias </td> </tr>

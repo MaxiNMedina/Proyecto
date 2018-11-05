@@ -14,6 +14,7 @@
     	<%= f.label :Disponible %>
     	<%= f.text_field :available, class: 'form-control' %> <!-- Cambiar Disponibilidad-->
 
-     	<%= f.submit 'Guardar cambios', class: "btn btn-info btn-sm" %>
+        <%= link_to "Volver", residences_path, class: 'btn btn-secondary' %>
+     	<%= f.submit 'Guardar cambios', class: "btn btn-primary" %>
 	<% end %>
 </div>
