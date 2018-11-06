@@ -46188,3 +46188,66 @@ Completed 200 OK in 94ms (Views: 90.1ms | ActiveRecord: 0.0ms)
   ↳ /Users/maximedina/.rbenv/versions/2.5.1/bin/rake:23
   [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
   ↳ /Users/maximedina/.rbenv/versions/2.5.1/bin/rake:23
+Started GET "/auctions/new" for 127.0.0.1 at 2018-11-05 22:48:55 -0300
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/maximedina/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by AuctionsController#new as HTML
+  Rendering auctions/new.html.erb within layouts/application
+  [1m[36mResidence Load (0.4ms)[0m  [1m[34mSELECT "residences".* FROM "residences" ORDER BY "residences"."name" ASC[0m
+  ↳ app/views/auctions/_formAuction.html.erb:6
+  Rendered auctions/_formAuction.html.erb (34.7ms)
+  Rendered auctions/new.html.erb within layouts/application (40.5ms)
+  Rendered layouts/_header.html.erb (1.5ms)
+  Rendered layouts/_footer.html.erb (1.3ms)
+Completed 200 OK in 404ms (Views: 384.4ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-11-05 22:48:57 -0300
+Processing by MainController#index as HTML
+  Rendering main/index.html.erb within layouts/application
+  Rendered main/index.html.erb within layouts/application (0.6ms)
+  Rendered layouts/_header.html.erb (1.7ms)
+  Rendered layouts/_footer.html.erb (1.4ms)
+Completed 200 OK in 61ms (Views: 58.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/residences" for 127.0.0.1 at 2018-11-05 22:48:58 -0300
+Processing by ResidencesController#index as HTML
+  Rendering residences/index.html.erb within layouts/application
+  [1m[36mResidence Load (0.2ms)[0m  [1m[34mSELECT "residences".* FROM "residences" ORDER BY "residences"."name" ASC[0m
+  ↳ app/views/residences/index.html.erb:15
+  Rendered residences/index.html.erb within layouts/application (3.2ms)
+  Rendered layouts/_header.html.erb (1.8ms)
+  Rendered layouts/_footer.html.erb (1.6ms)
+Completed 200 OK in 74ms (Views: 69.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-11-05 22:48:59 -0300
+Processing by MainController#index as HTML
+  Rendering main/index.html.erb within layouts/application
+  Rendered main/index.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+  Rendered layouts/_footer.html.erb (1.1ms)
+Completed 200 OK in 81ms (Views: 77.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auctions" for 127.0.0.1 at 2018-11-05 22:48:59 -0300
+Processing by AuctionsController#index as HTML
+  Rendering auctions/index.html.erb within layouts/application
+  [1m[36mAuction Load (0.2ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions"[0m
+  ↳ app/views/auctions/index.html.erb:14
+  Rendered auctions/index.html.erb within layouts/application (2.3ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (1.0ms)
+Completed 200 OK in 64ms (Views: 61.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-11-05 22:49:00 -0300
+Processing by MainController#index as HTML
+  Rendering main/index.html.erb within layouts/application
+  Rendered main/index.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (1.0ms)
+Completed 200 OK in 73ms (Views: 70.4ms | ActiveRecord: 0.0ms)
+
+
