@@ -45964,3 +45964,168 @@ Processing by MainController#index as HTML
 Completed 200 OK in 81ms (Views: 79.0ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/" for 127.0.0.1 at 2018-11-05 21:47:05 -0300
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/maximedina/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.1/lib/active_record/log_subscriber.rb:98
+Processing by MainController#index as HTML
+  Rendering main/index.html.erb within layouts/application
+  Rendered main/index.html.erb within layouts/application (1.4ms)
+  Rendered layouts/_header.html.erb (1.6ms)
+  Rendered layouts/_footer.html.erb (1.4ms)
+Completed 200 OK in 369ms (Views: 360.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-11-05 21:47:06 -0300
+Processing by MainController#index as HTML
+  Rendering main/index.html.erb within layouts/application
+  Rendered main/index.html.erb within layouts/application (0.5ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+  Rendered layouts/_footer.html.erb (1.1ms)
+Completed 200 OK in 75ms (Views: 73.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/residences" for 127.0.0.1 at 2018-11-05 21:47:07 -0300
+Processing by ResidencesController#index as HTML
+  Rendering residences/index.html.erb within layouts/application
+  [1m[36mResidence Load (0.2ms)[0m  [1m[34mSELECT "residences".* FROM "residences" ORDER BY "residences"."name" ASC[0m
+  ↳ app/views/residences/index.html.erb:15
+  Rendered residences/index.html.erb within layouts/application (9.2ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (1.0ms)
+Completed 200 OK in 93ms (Views: 82.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2018-11-05 21:47:09 -0300
+Processing by MainController#index as HTML
+  Rendering main/index.html.erb within layouts/application
+  Rendered main/index.html.erb within layouts/application (0.9ms)
+  Rendered layouts/_header.html.erb (1.5ms)
+  Rendered layouts/_footer.html.erb (1.4ms)
+Completed 200 OK in 92ms (Views: 87.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/auctions" for 127.0.0.1 at 2018-11-05 21:47:09 -0300
+Processing by AuctionsController#index as HTML
+  Rendering auctions/index.html.erb within layouts/application
+  [1m[36mAuction Load (0.2ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions"[0m
+  ↳ app/views/auctions/index.html.erb:14
+  Rendered auctions/index.html.erb within layouts/application (8.9ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.9ms)
+Completed 200 OK in 89ms (Views: 79.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/auctions/new" for 127.0.0.1 at 2018-11-05 21:47:10 -0300
+Processing by AuctionsController#new as HTML
+  Rendering auctions/new.html.erb within layouts/application
+  [1m[36mResidence Load (0.2ms)[0m  [1m[34mSELECT "residences".* FROM "residences" ORDER BY "residences"."name" ASC[0m
+  ↳ app/views/auctions/_formAuction.html.erb:6
+  Rendered auctions/_formAuction.html.erb (17.2ms)
+  Rendered auctions/new.html.erb within layouts/application (19.8ms)
+  Rendered layouts/_header.html.erb (1.0ms)
+  Rendered layouts/_footer.html.erb (0.8ms)
+Completed 200 OK in 78ms (Views: 75.0ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/auctions" for 127.0.0.1 at 2018-11-05 21:47:14 -0300
+Processing by AuctionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LxsIiD8JxKddjxf8fXoIdJlBlWdo2e0ICa5IEtG7kjVwABCaoIZlyrD1eRtOX00msFIq/N8NKWsdR1VHLD2n2g==", "auction"=>{"residence_id"=>"1", "maxbid"=>"399"}, "commit"=>"Guardar"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/auctions_controller.rb:23
+  [1m[36mResidence Load (0.2ms)[0m  [1m[34mSELECT  "residences".* FROM "residences" WHERE "residences"."id" = ? ORDER BY "residences"."name" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/auctions_controller.rb:23
+  [1m[36mAuction Create (0.6ms)[0m  [1m[32mINSERT INTO "auctions" ("created_at", "updated_at", "residence_id", "maxbid") VALUES (?, ?, ?, ?)[0m  [["created_at", "2018-11-06 00:47:14.565985"], ["updated_at", "2018-11-06 00:47:14.565985"], ["residence_id", 1], ["maxbid", 399]]
+  ↳ app/controllers/auctions_controller.rb:23
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/auctions_controller.rb:23
+Redirected to http://localhost:3000/auctions
+Completed 302 Found in 20ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/auctions" for 127.0.0.1 at 2018-11-05 21:47:14 -0300
+Processing by AuctionsController#index as HTML
+  Rendering auctions/index.html.erb within layouts/application
+  [1m[36mAuction Load (0.2ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions"[0m
+  ↳ app/views/auctions/index.html.erb:14
+  Rendered auctions/index.html.erb within layouts/application (2.5ms)
+  Rendered layouts/_header.html.erb (1.2ms)
+  Rendered layouts/_footer.html.erb (1.2ms)
+Completed 200 OK in 59ms (Views: 55.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/auctions/new" for 127.0.0.1 at 2018-11-05 21:47:16 -0300
+Processing by AuctionsController#new as HTML
+  Rendering auctions/new.html.erb within layouts/application
+  [1m[36mResidence Load (0.2ms)[0m  [1m[34mSELECT "residences".* FROM "residences" ORDER BY "residences"."name" ASC[0m
+  ↳ app/views/auctions/_formAuction.html.erb:6
+  Rendered auctions/_formAuction.html.erb (2.5ms)
+  Rendered auctions/new.html.erb within layouts/application (4.5ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (1.1ms)
+Completed 200 OK in 71ms (Views: 67.6ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/auctions" for 127.0.0.1 at 2018-11-05 21:47:20 -0300
+Processing by AuctionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"g4Fwjc3eBI9sCWoifi9CsBSDvkG/tCa0q4ys74JMExHcmmifUlGl4oFzBMVNCgfiPZAB2ghg4te/ZbG6f8om/g==", "auction"=>{"residence_id"=>"1", "maxbid"=>"400"}, "commit"=>"Guardar"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/auctions_controller.rb:23
+  [1m[36mResidence Load (0.1ms)[0m  [1m[34mSELECT  "residences".* FROM "residences" WHERE "residences"."id" = ? ORDER BY "residences"."name" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/auctions_controller.rb:23
+  [1m[36mAuction Create (0.3ms)[0m  [1m[32mINSERT INTO "auctions" ("created_at", "updated_at", "residence_id", "maxbid") VALUES (?, ?, ?, ?)[0m  [["created_at", "2018-11-06 00:47:20.338744"], ["updated_at", "2018-11-06 00:47:20.338744"], ["residence_id", 1], ["maxbid", 400]]
+  ↳ app/controllers/auctions_controller.rb:23
+  [1m[35m (1.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/auctions_controller.rb:23
+Redirected to http://localhost:3000/auctions
+Completed 302 Found in 7ms (ActiveRecord: 2.4ms)
+
+
+Started GET "/auctions" for 127.0.0.1 at 2018-11-05 21:47:20 -0300
+Processing by AuctionsController#index as HTML
+  Rendering auctions/index.html.erb within layouts/application
+  [1m[36mAuction Load (0.2ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions"[0m
+  ↳ app/views/auctions/index.html.erb:14
+  Rendered auctions/index.html.erb within layouts/application (3.0ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (0.9ms)
+Completed 200 OK in 60ms (Views: 56.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/auctions/new" for 127.0.0.1 at 2018-11-05 21:47:31 -0300
+Processing by AuctionsController#new as HTML
+  Rendering auctions/new.html.erb within layouts/application
+  [1m[36mResidence Load (0.2ms)[0m  [1m[34mSELECT "residences".* FROM "residences" ORDER BY "residences"."name" ASC[0m
+  ↳ app/views/auctions/_formAuction.html.erb:6
+  Rendered auctions/_formAuction.html.erb (2.4ms)
+  Rendered auctions/new.html.erb within layouts/application (4.6ms)
+  Rendered layouts/_header.html.erb (2.0ms)
+  Rendered layouts/_footer.html.erb (1.6ms)
+Completed 200 OK in 79ms (Views: 74.3ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/auctions" for 127.0.0.1 at 2018-11-05 21:47:34 -0300
+Processing by AuctionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"5FtbjXyfxEmG+bgub4m8qAPvCQRKn8dNkxRaIKtqPOa7QEOf4xBlJGuD1slcrPn6Kvy2n/1LAy6H/Ud1VuwJCQ==", "auction"=>{"residence_id"=>"1", "maxbid"=>"400"}, "commit"=>"Guardar"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/auctions_controller.rb:23
+  [1m[36mResidence Load (0.2ms)[0m  [1m[34mSELECT  "residences".* FROM "residences" WHERE "residences"."id" = ? ORDER BY "residences"."name" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/auctions_controller.rb:23
+  [1m[36mAuction Create (0.5ms)[0m  [1m[32mINSERT INTO "auctions" ("created_at", "updated_at", "residence_id", "maxbid") VALUES (?, ?, ?, ?)[0m  [["created_at", "2018-11-06 00:47:34.039824"], ["updated_at", "2018-11-06 00:47:34.039824"], ["residence_id", 1], ["maxbid", 400]]
+  ↳ app/controllers/auctions_controller.rb:23
+  [1m[35m (2.5ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/auctions_controller.rb:23
+Redirected to http://localhost:3000/auctions
+Completed 302 Found in 8ms (ActiveRecord: 3.2ms)
+
+
+Started GET "/auctions" for 127.0.0.1 at 2018-11-05 21:47:34 -0300
+Processing by AuctionsController#index as HTML
+  Rendering auctions/index.html.erb within layouts/application
+  [1m[36mAuction Load (0.3ms)[0m  [1m[34mSELECT "auctions".* FROM "auctions"[0m
+  ↳ app/views/auctions/index.html.erb:14
+  Rendered auctions/index.html.erb within layouts/application (2.8ms)
+  Rendered layouts/_header.html.erb (1.1ms)
+  Rendered layouts/_footer.html.erb (1.3ms)
+Completed 200 OK in 58ms (Views: 54.8ms | ActiveRecord: 0.3ms)
+
+
