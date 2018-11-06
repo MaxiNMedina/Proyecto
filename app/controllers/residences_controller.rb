@@ -10,7 +10,7 @@ class ResidencesController < ApplicationController
   def create    #Crea una nueva residencia y la guarda en la base de datos
     @residence = Residence.new( params.require(:residence).permit(:name, :desc, :dir, :available) )
     if @residence.save
-      redirect_to residences_path   #redirecciono a la pagina de residencias
+      redirect_to residences_path, notice: "Se añadio la reserva exitosamente."   #redirecciono a la pagina de residencias
     else
       render :new
     end

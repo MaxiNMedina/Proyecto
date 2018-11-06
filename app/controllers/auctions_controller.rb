@@ -5,22 +5,25 @@ class AuctionsController < ApplicationController
   end
 
   def show
-    @auction = Auction.find(params[:id])
+    @auction = Auction.find(params[:id]) #Asigna la subasta id a la variable subasta
   end
 
+  def destroy            #elimina una residencia de la base de datos
+      @auction = Auction.destroy(params[:id])
+      redirect_to auctions_path
+    end
+
   def new
-    @auction = Auction.new
+    @auction = Auction.new #Creo una nueva subasta
   end
 
   def create
-  end
+    @auction = Auction.new(params.require(:auction).permit(:residence_id, :maxbid))
 
-  def destroy
-    @auction = Auction.destroy(params[:id])
-    redirect_to auctions_path
+      if @auction.save
+           redirect_to auctions_path, notice: "Se creo la subasta exitosamente."  #redirecciono a la pagina de subastas
+        else
+          render :new
+        end
   end
-
-  def update
-  end
-
 end

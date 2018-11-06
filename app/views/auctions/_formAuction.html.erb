@@ -1,0 +1,18 @@
+<div class="container">
+  <%= form_for @auction do |f| %>
+
+  <div class="form_group">
+    <%= f.label :residence_id, 'Eliga la residencia:' %>
+    <%= f.collection_select :residence_id, Residence.all, :id, :name, {}, class: 'form-control' %>
+  </div>
+
+  <div class="row">
+    <%= f.label :"Puja maxima" %>
+    <%= f.number_field :maxbid, required: true, class: 'form-control' %>
+  </div>
+  <%= link_to "Volver", auctions_path, class: 'btn btn-secondary' %>
+  <%= f.submit 'Guardar', class: 'btn btn-primary' %>
+
+  <% end %>
+
+</div>
