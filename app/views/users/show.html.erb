@@ -1,6 +1,10 @@
-<h1> <%= @residence.name %> </h1> <!--DESCRIPCION DE UNA RESIDENCIA-->
-<p> <%= @residence.desc %> </p>
-<h2>Subastas de esta residencia:</h2>
+<h1> Usuario: <%= @user.email %> </h1> <!--DESCRIPCION DE UN USUARIO-->
+
+<p> email: <%= @user.email %> </p>
+<p> password: <%= @user.password %> </p>
+<p> creditos: <%= @user.credits %> </p>
+
+<h2>Subastas de este usuario:</h2>
 <table class="table">
   <tr>
     <th> Id </th>
@@ -14,4 +18,4 @@
   </tr>
   <% end %>
 </table>
-<%= link_to "Volver", residences_path, class: 'btn btn-secondary' %>
+<%= link_to "Volver", users_path, class: 'btn btn-secondary' %>

@@ -1,0 +1,26 @@
+<h1> Listado de Usuarios </h1>  <!-- TABLA DE RESIDENCIAS-->
+
+<table class="table">
+
+	<tr>
+		<th> Email </th>
+		<th> Contrasena </th>
+		<th> Creditos </th>
+	</tr>
+
+	<% users = User.all %>
+	<% users.each do |user| %>
+		<tr>
+			<td> <%= link_to user.email, user %> </td>
+			<td> <%= user.password %> </td>
+			<td> <%= user.credits %> </td>
+      <td><%= link_to "Borrar", user, method: :delete,  class: 'btn btn-danger btn-sm', data: { confirm: 'Realmente desea borrar este usuario?'}%></td>
+		</tr>
+	<% end %>
+	<td> <%= link_to "Volver", root_path, class: 'btn btn-secondary' %> </td>
+
+	<% if users.size == 0 %>
+		<tr> <td colspan="3"> No hay usuarios </td> </tr>
+	<% end %>
+
+</table>

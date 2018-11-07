@@ -1,0 +1,29 @@
+<div class="container">
+
+  <%= form_for @auction do |f| %>
+
+    <%= fields_for :user, @user do |uf| %>
+
+      <div class="row">
+        <%= uf.label :"Email" %>
+        <%= uf.text_field :email, required: true, class: 'form-control' %>
+      </div>
+
+      <div class="row">
+        <%= uf.label :"Password" %>
+        <%= uf.text_field :password, required: true, class: 'form-control' %>
+      </div>
+      <p>Creditos restantes: <%= @user.credits = 2 %></p>
+    <% end %>
+
+  <div class="row">
+    <%= f.label :"Subir la puja" %>
+    <%= f.number_field :maxbid, required: true, class: 'form-control' %>
+  </div>
+
+  <br>
+  <%= link_to "Volver", auctions_path, class: 'btn btn-secondary' %>
+  <%= f.submit 'Hacer puja', class: 'btn btn-primary' %>
+<% end %>
+
+</div>
