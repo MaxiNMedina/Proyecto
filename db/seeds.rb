@@ -15,3 +15,8 @@ puts "Creando Subastas"
 Auction.create(residence_id: resAlex.id, maxbid: 2000)
 Auction.create(residence_id: resAlex.id, maxbid: 500)
 Auction.create(residence_id: resVic.id, maxbid: 10000)
+
+puts "Creando usuarios"
+User.create(email: "alex@mail.com", password: 12345678, credits: 2)
+User.create(email: "maxi@mail.com", password: 12345678, credits: 2)
+User.create(email: "victor@mail.com", password: 12345678, credits: 2)

@@ -8,8 +8,9 @@
   </tr>
 	<% @auctions.each do |auction| %>
   <tr>
-    <td> <%= link_to auction.id, auction %> </td>
+    <td> <%= auction.id %> </td>
     <td> <%= auction.maxbid %> </td>
+    <td> <%= link_to "Ingresar", auction, class: 'btn btn-secondary' %> </td>
   </tr>
   <% end %>
 </table>
