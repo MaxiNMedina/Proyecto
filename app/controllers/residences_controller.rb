@@ -41,4 +41,11 @@ class ResidencesController < ApplicationController
   def residence_params
     params.require(:residence).permit(:name, :desc, :dir, :available)
   end
+
+#  def enterBids
+#     auctions.each do |auction|
+#      auction.enterBid
+#    end
+#  end
+
 end

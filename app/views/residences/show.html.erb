@@ -1,5 +1,10 @@
 <h1> <%= @residence.name %> </h1> <!--DESCRIPCION DE UNA RESIDENCIA-->
-<p> <%= @residence.desc %> </p>
+<p><!--Espacio en blanco para separar los elementos--></p>
+<%= image_tag @residence.image_url, class: "img-fluid" if @residence.image_url? %>
+<p><!--Espacio en blanco para separar los elementos--></p>
+<h2>Descripcion de la residencia</h2>
+<h3><%= @residence.desc %></h3>
+<p><!--Espacio en blanco para separar los elementos--></p>
 <h2>Subastas de esta residencia:</h2>
 <table class="table">
   <tr>
@@ -10,7 +15,7 @@
   <tr>
     <td> <%= auction.id %> </td>
     <td> <%= auction.maxbid %> </td>
-    <td> <%= link_to "Ingresar", auction, class: 'btn btn-secondary' %> </td>
+    <td> <%= link_to "Ingresar", enterBid_path(:id => auction.id), class: 'btn btn-secondary' %> </td>
   </tr>
   <% end %>
 </table>

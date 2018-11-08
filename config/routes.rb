@@ -4,4 +4,6 @@ Rails.application.routes.draw do
     get '/faq', to:'preguntasfrecuentes#faq' #ruta para poder acceder a las faq
 
     resources :residences, :auctions, :users #para poder acceder a las residencias y subastas
+    get '/enterBid', to:'auctions#enterBid'
+
 end

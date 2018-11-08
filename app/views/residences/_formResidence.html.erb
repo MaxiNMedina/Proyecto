@@ -2,24 +2,27 @@
   <%= form_for @residence do |f| %>
 
   <div class="row">
-    <%= f.label :name, 'Residencia' %>
+    <%= f.label :name, 'Nombre de residencia' %>
     <%= f.text_field :name, required: true, class: 'form-control' %>
   </div>
 
   <div class="row">
-    <%= f.label :dir %>
-    <%= f.text_field :dir, class: 'form-control' %>
+    <%= f.label :dir, 'Direccion' %>
+    <%= f.text_field :dir, required: true, class: 'form-control' %>
   </div>
 
   <div class="row">
-    <%= f.label :desc %>
-    <%= f.text_area :desc, class: 'form-control' %>
+    <%= f.label :desc, 'Descripcion' %>
+    <%= f.text_area :desc, required: true, class: 'form-control' %>
   </div>
 
   <div class="row">
-    <%= f.label :available %>
-    <%= f.text_field :available, class: 'form-control' %>
+    <%= f.label :available, 'Disponibilidad' %>
+    <%= f.select :available, [['Disponible', true], ['No disponible', false]], {}, {class: "form-control"} %>
+
   </div>
+
+  <p><!--Espacio en blanco para separar los elementos--></p>
     <%= link_to "Volver", residences_path, class: 'btn btn-secondary' %>
     <%= f.submit 'Guardar', class: 'btn btn-primary' %>
 

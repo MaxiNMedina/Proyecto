@@ -37,4 +37,9 @@ class AuctionsController < ApplicationController
     @auction.save
   end
 
+  def enterBid
+    @auction = Auction.find(params[:id])
+    redirect_to enterBid_path
+  end
+
 end

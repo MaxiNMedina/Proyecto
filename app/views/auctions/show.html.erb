@@ -1,7 +1,7 @@
 <h1> Subasta nº<%= @auction.id %> </h1> <!--DESCRIPCION DE UNA SUBASTA-->
 <p> Precio actual: $<%= @auction.maxbid %>  </p>
 
-<%= link_to "Detalle de #{@auction.residence.name}", { :controller => 'residences', :action =>'show', :id =>@auction.residence_id} %>
+<%= link_to "Detalle de #{@auction.residence.name}", { :controller => 'residences', :action =>'show', :id =>@auction.residence_id}, class: 'btn btn-primary' %>
 </br>
 </br>
 <%= render 'makeBid' %>
