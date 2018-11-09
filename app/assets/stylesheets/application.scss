@@ -13,17 +13,22 @@
  */
 @import "bootstrap"; 
 
-body{
+
+body {
 	background-color:#FFFF; /*Color de fondo blanco*/
+    padding-bottom: 220px;
+    margin-bottom: 114px;
 }
 
+footer .navbar {
+  background: grey;
+}
 
-
-footer { 					/* Para dejar el pie de pagina donde debe ir*/
-  position:fixed;
-  left:0px;
-  bottom:80px;
-  height:30px;
-  width:100%;
+#footer-content {
+  background: grey;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
