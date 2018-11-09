@@ -1,4 +1,4 @@
-<br><br>
+<div class="centered">
 <h1> <%= @residence.name %> </h1> <!--DESCRIPCION DE UNA RESIDENCIA-->
 <br>
 <%= image_tag @residence.image_url, class: "img-fluid" if @residence.image_url? %>
@@ -21,3 +21,4 @@
   <% end %>
 </table>
 <%= link_to "Volver", residences_path, class: 'btn btn-secondary' %>
+</div>

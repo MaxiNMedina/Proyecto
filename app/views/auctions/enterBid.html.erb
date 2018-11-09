@@ -1,3 +1,5 @@
-<h3>Subasta nº <%= @auction.id %> para: <%= @auction.residence.name %></h3>
-<p>PUJA MAXIMA ACTUAL: $<%= @auction.maxbid %></p>
-<%= render 'makeBid' %>
+<div class="centered">
+  <h3>Subasta nº <%= @auction.id %> para: <%= @auction.residence.name %></h3>
+  <p>PUJA MAXIMA ACTUAL: $<%= @auction.maxbid %></p>
+  <%= render 'makeBid' %>
+</div>
