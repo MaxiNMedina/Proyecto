@@ -7,8 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts "Creando Residencias"
-resAlex = Residence.create(name: "casa de Alex", dir: "La Plata", desc: "10/10", available: true)
-resMaxi = Residence.create(name: "casa de Maxi", dir: "La Plata", desc: "excelente", available: true)
+resAlex = Residence.create(name: "casa de Alex", dir: "La Plata", desc: "10/10", available: true, image_url: "residencia_1.jpg")
+resMaxi = Residence.create(name: "casa de Maxi", dir: "La Plata", desc: "excelente", available: true, image_url: "residencia_2.jpg")
 resVic = Residence.create(name: "casa de Victor", dir: "La Plata", desc: "super", available: false)
 
 puts "Creando Subastas"
@@ -17,6 +17,6 @@ Auction.create(residence_id: resAlex.id, maxbid: 500)
 Auction.create(residence_id: resVic.id, maxbid: 10000)
 
 puts "Creando usuarios"
-User.create(email: "alex@mail.com", password: 12345678, credits: 2)
-User.create(email: "maxi@mail.com", password: 12345678, credits: 2)
-User.create(email: "victor@mail.com", password: 12345678, credits: 2)
+User.create(email: "alex@mail.com", password: 12345678, credits: 2, isAdmin: true)
+User.create(email: "maxi@mail.com", password: 12345678, credits: 2, isAdmin: true)
+User.create(email: "victor@mail.com", password: 12345678, credits: 2, isAdmin: true)
