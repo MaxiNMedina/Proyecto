@@ -1,4 +1,4 @@
-class AgregarDatosAUsuario < ActiveRecord::Migration[5.2]
+class AddVariablesToUsers < ActiveRecord::Migration[5.2]
   def change
   	add_column :users, :isAdmin, :boolean
   end
