@@ -29,17 +29,23 @@ class AuctionsController < ApplicationController
   end
 
   def update
-    @user = User.new(params.require(:user).permit(:email, :password))
+    @user = User.new(params.require(:user).permit(:email, :password, :credits))
     #@user.credits -= 1
     @user.save
 
     @auction = Auction.new(params.require(:auction).permit(:residence_id, :maxbid))
+    @auction.maxbid += params[:addtobid]
     @auction.save
   end
 
   def enterBid
-    @auction = Auction.find(params[:id])
-    redirect_to enterBid_path
+    @user = User.new(credits: 2)
+    if @user.credits >= 0
+      @auction = Auction.find(params[:id])
+      @addtobid = 0;
+    else
+      redirect_to auctions_path
+    end
   end
 
 end
