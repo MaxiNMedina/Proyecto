@@ -1,28 +1,32 @@
+<div class="centered">
 <h1> Listado de Subastas </h1>  <!-- TABLA DE SUBASTAS-->
-
+<br>
 <%= link_to "Crear Subasta", new_auction_path ,class: 'btn btn-info'%>
-
+<br>
+<br>
 <table class="table">
 
 	<tr>
 		<th> Id </th>
     <th> Puja maxima </th>
     <th> Para la residencia </th>
-    <th> Finalizar </th>
+    <th></th>
+    <th></th>
 	</tr>
 
 	<% auctions = Auction.all %>
 	<% auctions.each do |auction| %>
 		<tr>
-			<td> <%= link_to auction.id, auction %> </td>
-      		<td> <%= auction.maxbid %> </td>
-      		<td> <%= auction.residence.name %> </td>
+			<td> <%= auction.id %> </td>
+      <td> <%= auction.maxbid %> </td>
+      <td> <%= auction.residence.name %> </td>
+			<td><%= link_to "Ver", auction, class: 'btn btn-info'%></td>
 			<td><%= link_to "Finalizar", auction, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Realmente desea finalizar la subasta?'} %></td>
 		</tr>
 	<% end %>
-	<td> <%= link_to "Volver", root_path, class: 'btn btn-secondary' %> </td>
 	<% if auctions.size == 0 %>
 		<tr> <td colspan="3"> No hay subastas </td> </tr>
 	<% end %>
-
 </table>
+<p> <%= link_to "Volver", root_path, class: 'btn btn-secondary' %> </p>
+</div>

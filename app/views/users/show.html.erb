@@ -1,21 +1,23 @@
-<h1> Usuario: <%= @user.email %> </h1> <!--DESCRIPCION DE UN USUARIO-->
+<div class="centered">
+  <h1> Usuario: <%= @user.email %> </h1> <!--DESCRIPCION DE UN USUARIO-->
 
-<p> email: <%= @user.email %> </p>
-<p> password: <%= @user.password %> </p>
-<p> creditos: <%= @user.credits %> </p>
+  <p> email: <%= @user.email %> </p>
+  <p> password: <%= @user.password %> </p>
+  <p> creditos: <%= @user.credits %> </p>
 
-<h2>Subastas de este usuario:</h2>
-<table class="table">
-  <tr>
-    <th> Id </th>
-    <th> Precio </th>
-  </tr>
-	<% @auctions.each do |auction| %>
-  <tr>
-    <td> <%= auction.id %> </td>
-    <td> <%= auction.maxbid %> </td>
-    <td> <%= link_to "Ingresar", auction, class: 'btn btn-secondary' %> </td>
-  </tr>
-  <% end %>
-</table>
-<%= link_to "Volver", users_path, class: 'btn btn-secondary' %>
+  <h2>Subastas de este usuario:</h2>
+  <table class="table">
+    <tr>
+      <th> Id </th>
+      <th> Precio </th>
+    </tr>
+  	<% @auctions.each do |auction| %>
+    <tr>
+      <td> <%= auction.id %> </td>
+      <td> <%= auction.maxbid %> </td>
+      <td> <%= link_to "Ingresar", auction, class: 'btn btn-secondary' %> </td>
+    </tr>
+    <% end %>
+  </table>
+  <%= link_to "Volver", users_path, class: 'btn btn-secondary' %>
+</div>

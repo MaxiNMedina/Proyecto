@@ -11,15 +11,14 @@
 
       <div class="row">
         <%= uf.label :"Password" %>
-        <%= uf.text_field :password, required: true, class: 'form-control' %>
+        <%= uf.password_field :password, required: true, class: 'form-control' %>
       </div>
       <p>Creditos restantes: <%= @user.credits %></p>
     <% end %>
 
   <div class="row">
-    <%= f.hidden_field :maxbid %>
     <%= "Subir la puja" %>
-    <%= number_field @addtobid, required: true, class: 'form-control' %>
+    <%= number_field_tag :addtobid, {required: true }, {min: 0, class: 'form-control'} %>
 
   </div>
 

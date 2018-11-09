@@ -1,15 +1,17 @@
-<h1> Subasta nº<%= @auction.id %> </h1> <!--DESCRIPCION DE UNA SUBASTA-->
-<p> Precio actual: $<%= @auction.maxbid %>  </p>
-<p> Fecha Inicio: <%= @auction.dateStart %>  </p>
-<p> Fecha Fin: <%= @auction.dateEnd %>  </p>
+<div class="centered">
+  <h1> Subasta nº<%= @auction.id %> </h1> <!--DESCRIPCION DE UNA SUBASTA-->
+  <p> Precio actual: $<%= @auction.maxbid %>  </p>
+  <p> Fecha Inicio: <%= @auction.dateStart %>  </p>
+  <p> Fecha Fin: <%= @auction.dateEnd %>  </p>
 
 
-<%= link_to "Detalle de #{@auction.residence.name}", { :controller => 'residences', :action =>'show', :id =>@auction.residence_id}, class: 'btn btn-primary' %>
-</br>
-</br>
-<%= link_to "Volver", auctions_path, class: 'btn btn-secondary' %>
-<%= link_to "Ingresar", enterBid_path(:id => @auction.id), class: 'btn btn-secondary' %>
+  <%= link_to "Detalle de #{@auction.residence.name}", { :controller => 'residences', :action =>'show', :id =>@auction.residence_id}, class: 'btn btn-primary' %>
+  </br>
+  </br>
+  <%= link_to "Volver", auctions_path, class: 'btn btn-secondary' %>
+  <%= link_to "Ingresar", enterBid_path(:id => @auction.id), class: 'btn btn-secondary' %>
 
 
 
-</p>
+  </p>
+</div>

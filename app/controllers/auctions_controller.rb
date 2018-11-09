@@ -33,8 +33,13 @@ class AuctionsController < ApplicationController
     #@user.credits -= 1
     @user.save
 
-    @auction = Auction.new(params.require(:auction).permit(:residence_id, :maxbid))
-    @auction.maxbid += params[:addtobid]
+    @auction = Auction.find(params[:id])
+    #@auction.user.email = params[:user][:email]
+    if @auction.maxbid.nil?
+      @auction.maxbid = params[:addtobid].to_f
+    else
+      @auction.maxbid += params[:addtobid].to_f
+    end
     @auction.save
   end
 
