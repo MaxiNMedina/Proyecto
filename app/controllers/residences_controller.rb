@@ -8,9 +8,9 @@ class ResidencesController < ApplicationController
   end
 
   def create    #Crea una nueva residencia y la guarda en la base de datos
-    @residence = Residence.new( params.require(:residence).permit(:name, :desc, :dir, :available) )
+    @residence = Residence.new( params.require(:residence).permit(:name, :desc, :dir, :available, :image_url) )
     if @residence.save
-      redirect_to residences_path, notice: "Se añadio la reserva exitosamente."   #redirecciono a la pagina de residencias
+      redirect_to residences_path, notice: "Se añadio la residencia exitosamente."   #redirecciono a la pagina de residencias
     else
       render :new
     end
@@ -39,7 +39,7 @@ class ResidencesController < ApplicationController
   #Usado para mandar parametros de la residencia. Lo uso en la modificacion de residencia para actualizar los datos.
   #Se puede usar para otros metdos, como por ej. create.
   def residence_params
-    params.require(:residence).permit(:name, :desc, :dir, :available)
+    params.require(:residence).permit(:name, :desc, :dir, :available, :image_url)
   end
 
 #  def enterBids

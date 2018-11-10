@@ -22,7 +22,12 @@
 
   </div>
 
-  <p><!--Espacio en blanco para separar los elementos--></p>
+  <div class="row">
+    <%= f.label :image_url, 'Ingrese el nombre de la foto de la residencia:' %>
+    <%= f.text_area :image_url, required: true, class: 'form-control' %>
+  </div>
+
+  <br>
     <%= link_to "Volver", residences_path, class: 'btn btn-secondary' %>
     <%= f.submit 'Guardar', class: 'btn btn-primary' %>
 

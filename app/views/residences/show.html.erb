@@ -1,7 +1,12 @@
 <div class="centered">
 <h1> <%= @residence.name %> </h1> <!--DESCRIPCION DE UNA RESIDENCIA-->
 <br>
-<%= image_tag @residence.image_url, class: "img-fluid" if @residence.image_url? %>
+<% if @residence.image_url? %> <!--Revisa si la residencia tiene una foto. Si no, mostrara una imagen de no disponible-->
+  <%= image_tag @residence.image_url %>
+<% else %>
+  <%= image_tag 'no_disponible.jpg' %>
+<% end %>
+
 <br><br>
 <h2>Descripcion de la residencia</h2>
 <h3><%= @residence.desc %></h3>
