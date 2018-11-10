@@ -1,10 +1,11 @@
+<div class="centered">
 <h1> <%= @residence.name %> </h1> <!--DESCRIPCION DE UNA RESIDENCIA-->
-<p><!--Espacio en blanco para separar los elementos--></p>
+<br>
 <%= image_tag @residence.image_url, class: "img-fluid" if @residence.image_url? %>
-<p><!--Espacio en blanco para separar los elementos--></p>
+<br><br>
 <h2>Descripcion de la residencia</h2>
 <h3><%= @residence.desc %></h3>
-<p><!--Espacio en blanco para separar los elementos--></p>
+<br><br>
 <h2>Subastas de esta residencia:</h2>
 <table class="table">
   <tr>
@@ -20,3 +21,4 @@
   <% end %>
 </table>
 <%= link_to "Volver", residences_path, class: 'btn btn-secondary' %>
+</div>

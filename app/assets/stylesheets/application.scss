@@ -11,19 +11,73 @@
  * It is generally better to create a new file per style scope.
  *
  */
-@import "bootstrap"; 
+@import "bootstrap";
 
-body{
+
+body {
 	background-color:#FFFF; /*Color de fondo blanco*/
+  padding-bottom: 220px;
+  margin-bottom: 114px;
 }
 
-
-
-footer { 					/* Para dejar el pie de pagina donde debe ir*/
-  position:fixed;
-  left:0px;
-  bottom:80px;
-  height:30px;
-  width:100%;
+footer .navbar {
+  background-image: linear-gradient(to bottom right, #222F, #000F);
 }
 
+header{
+	position: absolute;
+	top: 8px;
+	left: 16px;
+}
+
+.centered {
+	padding-top: 120px;
+}
+
+.header-logo {
+	color: #FFF;
+  text-shadow: 0 0 3px #000;
+}
+
+.backimage {
+     width: 50%;
+     height: 200px;
+     margin-left: 25%;
+     border-radius: 50%;
+     background-image: asset_url('wallpaper1.jpg');
+     background-size: cover;
+     background-repeat: no-repeat;
+     background-position: center;
+}
+
+.btn-primary-outline {
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: none;
+		color: white;
+}
+
+.btn-primary-outline:hover {
+		color: #AAA;
+}
+
+#hsh-nav{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #FFF0;
+
+	position: absolute;
+	top: 8px;
+	right: 16px;
+}
+
+#hsh-nav li {
+	float: left;
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 16px;
+	text-decoration: none;
+}
