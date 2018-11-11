@@ -1,8 +1,8 @@
 <div class="centered">
   <h1> Subasta nº<%= @auction.id %> </h1> <!--DESCRIPCION DE UNA SUBASTA-->
   <p> Precio actual: $<%= @auction.maxbid %>  </p>
-  <p> Fecha Inicio: <%= @auction.dateStart %>  </p>
-  <p> Fecha Fin: <%= @auction.dateEnd %>  </p>
+  <p> Fecha de inicio de la subasta: <%= @auction.dateStart %>  </p>
+  <p> Fecha de fin de la subasta: <%= @auction.dateEnd %>  </p>
 
 
   <%= link_to "Detalle de #{@auction.residence.name}", { :controller => 'residences', :action =>'show', :id =>@auction.residence_id}, class: 'btn btn-primary' %>
