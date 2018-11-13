@@ -1,21 +1,4 @@
-<!-- Por el momento solo funciona para cambiar el nombre hasta que se agregen el resto de los atributos-->
 <div class="centered">
-<h1> Modificar la residencia "<%= @residence.name %>" </h1>
-<div class="row">
-	<%= form_for(@residence) do |f| %>
-		<%= f.label :Nombre %>
-    	<%= f.text_field :name, class: 'form-control' %> <!-- Cambiar nombre-->
-
-    	<%= f.label :Direccion %>
-    	<%= f.text_field :dir, class: 'form-control' %> <!-- Cambiar Direccion-->
-
-    	<%= f.label :Descripcion %>
-    	<%= f.text_field :desc, class: 'form-control' %> <!-- Cambiar Descripcion-->
-
-    	<%= f.label :Disponible %>
-    	<%= f.text_field :available, class: 'form-control' %> <!-- Cambiar Disponibilidad-->
-
-        <%= link_to "Volver", residences_path, class: 'btn btn-secondary' %>
-     	<%= f.submit 'Guardar cambios', class: "btn btn-primary" %>
-	<% end %>
+    <h1> Modificar la residencia "<%= @residence.name %>" </h1>
+    <%= render 'formResidence' %>
 </div>
