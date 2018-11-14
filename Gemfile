@@ -7,8 +7,7 @@ ruby '2.5.1'
 gem 'rails', '~> 5.2.1'
 #PostgreSQL 
 gem 'pg'
-#Sqlite3 BORRARLA ANTES DE HACER PUSH A HEROKU
-gem 'sqlite3'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
