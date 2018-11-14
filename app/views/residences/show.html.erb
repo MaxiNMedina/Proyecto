@@ -1,29 +1,29 @@
 <div class="centered">
-<h1> <%= @residence.name %> </h1> <!--DESCRIPCION DE UNA RESIDENCIA-->
-<br>
-<% if @residence.image_url? %> <!--Revisa si la residencia tiene una foto. Si no, mostrara una imagen de no disponible-->
-  <%= image_tag @residence.image_url %>
-<% else %>
-  <%= image_tag 'no_disponible.jpg' %>
-<% end %>
-
-<br><br>
-<h2>Descripcion de la residencia</h2>
-<h3><%= @residence.desc %></h3>
-<br><br>
-<h2>Subastas de esta residencia:</h2>
-<table class="table">
-  <tr>
-    <th> Id </th>
-    <th> Precio </th>
-  </tr>
-	<% @auctions.each do |auction| %>
-  <tr>
-    <td> <%= auction.id %> </td>
-    <td> <%= auction.maxbid %> </td>
-    <td> <%= link_to "Ingresar", enterBid_path(:id => auction.id), class: 'btn btn-secondary' %> </td>
-  </tr>
+  <h1> <%= @residence.name %> </h1> <!--DESCRIPCION DE UNA RESIDENCIA-->
+  <br>
+  <% if @residence.image_url? %> <!--Revisa si la residencia tiene una foto. Si no, mostrara una imagen de no disponible-->
+    <%= image_tag @residence.image_url %>
+  <% else %>
+    <%= image_tag 'no_disponible.jpg' %>
   <% end %>
-</table>
-<%= link_to "Volver", residences_path, class: 'btn btn-secondary' %>
+
+  <br><br>
+  <h2>Descripcion de la residencia</h2>
+  <h3><%= @residence.desc %></h3>
+  <br><br>
+  <h2>Subastas de esta residencia:</h2>
+  <table class="table">
+    <tr>
+      <th> Id </th>
+      <th> Precio </th>
+    </tr>
+  	<% @auctions.each do |auction| %>
+    <tr>
+      <td> <%= auction.id %> </td>
+      <td> <%= auction.maxbid %> </td>
+      <td> <%= link_to "Ingresar", enterBid_path(:id => auction.id), class: 'btn btn-secondary' %> </td>
+    </tr>
+    <% end %>
+  </table>
+  <%= link_to "Volver", residences_path, class: 'btn btn-secondary' %>
 </div>
