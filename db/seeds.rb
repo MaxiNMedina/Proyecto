@@ -18,6 +18,6 @@ Auction.create(residence_id: resAlex.id, maxbid: 500, dateStart: Date.new(2019,1
 Auction.create(residence_id: resVic.id, maxbid: 10000, dateStart: Date.new(2019,2,10), dateEnd: Date.new(2019,2,13))
 
 puts "Creando usuarios"
-User.create(email: "alex@mail.com", password: 12345678, credits: 2, isAdmin: true)
-User.create(email: "maxi@mail.com", password: 12345678, credits: 2, isAdmin: true)
-User.create(email: "victor@mail.com", password: 12345678, credits: 2, isAdmin: true)
+User.create(name: 'alex', email: "alex@mail.com", password: 12345678, credits: 2, isAdmin: true)
+User.create(name: 'maxi', email: "maxi@mail.com", password: 12345678, credits: 2, isAdmin: true)
+User.create(name: 'vic', email: "victor@mail.com", password: 12345678, credits: 2, isAdmin: true)

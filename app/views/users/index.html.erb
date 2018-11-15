@@ -4,6 +4,7 @@
 	<table class="table">
 
 		<tr>
+			<th> Nombre </th>
 			<th> Email </th>
 			<th> Contrasena </th>
 			<th> Creditos </th>
@@ -12,10 +13,12 @@
 		<% users = User.all %>
 		<% users.each do |user| %>
 			<tr>
-				<td> <%= link_to user.email, user %> </td>
+				<td> <%= link_to user.name, user %> </td>
+				<td> <%= user.email %> </td>
 				<td> <%= user.password %> </td>
 				<td> <%= user.credits %> </td>
-	      <td><%= link_to "Borrar", user, method: :delete,  class: 'btn btn-danger btn-sm', data: { confirm: 'Realmente desea borrar este usuario?'}%></td>
+				<td><%= link_to "Edit", edit_user_path(user), class: 'btn btn-dark btn-sm'%></td>
+	      		<td><%= link_to "Borrar", user, method: :delete,  class: 'btn btn-danger btn-sm', data: { confirm: 'Realmente desea borrar este usuario?'}%></td>
 			</tr>
 		<% end %>
 
