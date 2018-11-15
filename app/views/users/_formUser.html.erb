@@ -1,0 +1,25 @@
+<div class="container">
+  <%= form_for @user do |f| %>
+
+  <div class="row">
+    <%= f.label :name, 'Nombre de Usuario' %>
+    <%= f.text_field :name, required: true, class: 'form-control' %>
+  </div>
+
+  <div class="row">
+    <%= f.label :email, 'Email' %>
+    <%= f.text_field :email, required: true, class: 'form-control' %>
+  </div>
+
+  <div class="row">
+    <%= f.label :password, 'Contraseña' %>
+    <%= f.text_area :password, required: true, class: 'form-control' %>
+  </div>
+
+  <br>
+    <%= link_to "Volver", users_path, class: 'btn btn-secondary' %>
+    <%= f.submit 'Guardar', class: 'btn btn-primary' %>
+
+  <% end %>
+
+</div>

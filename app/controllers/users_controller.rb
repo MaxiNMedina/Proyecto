@@ -7,12 +7,12 @@ class UsersController < ApplicationController
     @user = User.all
   end
 
-  def new
-  	@user = User.new(credits: 2)
+  def new 
+  	@user = User.new(credits: 2) #NO FUNCIONA
   end
 
   def create
-    @user = User.new( params.require(:user).permit(:email, :password) )
+    @user = User.new( params.require(:user).permit(:name, :email, :password) )
     if @user.save
       redirect_to users_path, notice: "Se añadio un usuario exitosamente."
     else
@@ -34,4 +34,14 @@ class UsersController < ApplicationController
     @user=User.find(params[:id])
   end
 
+  def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    redirect_to users_path
+  end
+  #Usado para mandar parametros del usuario. Lo uso en la modificacion del usuario para actualizar los datos.
+  #Se puede usar para otros metdos, como por ej. create.
+  def user_params
+    params.require(:user).permit(:name, :email, :password)
+  end
 end
