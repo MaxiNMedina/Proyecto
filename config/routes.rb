@@ -6,4 +6,5 @@ Rails.application.routes.draw do
     resources :residences, :auctions, :users #para poder acceder a las residencias y subastas
     get '/enterBid', to:'auctions#enterBid'
 
+
 end
