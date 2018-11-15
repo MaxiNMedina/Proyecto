@@ -14,12 +14,10 @@
   <h2>Subastas de esta residencia:</h2>
   <table class="table">
     <tr>
-      <th> Id </th>
-      <th> Precio </th>
+      <th> Precio Actual</th>
     </tr>
   	<% @auctions.each do |auction| %>
     <tr>
-      <td> <%= auction.id %> </td>
       <td> <%= auction.maxbid %> </td>
       <td> <%= link_to "Ingresar", enterBid_path(:id => auction.id), class: 'btn btn-secondary' %> </td>
     </tr>

@@ -6,7 +6,7 @@
 		<tr>
 			<th> Nombre </th>
 			<th> Email </th>
-			<th> Contrasena </th>
+			<th> Contraseña </th>
 			<th> Creditos </th>
 		</tr>
 
@@ -26,6 +26,9 @@
 			<tr> <td colspan="3"> No hay usuarios </td> </tr>
 		<% end %>
 
+		<td><%= link_to "Crear Nuevo Administrador", new_user_registration_path, class: 'btn btn-dark btn-sm'%></td> <!--FALTA IMPLEMENTAR-->
 	</table>
+
+		
 		<p> <%= link_to "Volver", root_path, class: 'btn btn-secondary' %> </p>
 </div>
