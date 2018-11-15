@@ -10,9 +10,11 @@
 
       
       <ul id="hsh-nav">
-        <li><%= link_to "Ver Residencias", residences_path, class: 'btn btn-primary-outline'%></li>
-        <li><%= link_to "Ver Subastas", auctions_path, class: 'btn btn-primary-outline'%></li>
+        <% if current_user.present? %> <!--Solo muestro estos botones a los usuarios registrados -->
+          <li><%= link_to "Ver Residencias", residences_path, class: 'btn btn-primary-outline'%></li>
+          <li><%= link_to "Ver Subastas", auctions_path, class: 'btn btn-primary-outline'%></li>
         <li><%= link_to "Ver Usuarios", users_path, class: 'btn btn-primary-outline'%></li>
+        <% end %>
 
         <% if user_signed_in? %>
             <li><%= link_to current_user.email, current_user, class: 'btn btn-primary-outline'%></li>
