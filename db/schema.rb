@@ -12,9 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2018_11_15_172326) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "auctions", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -54,7 +51,4 @@ ActiveRecord::Schema.define(version: 2018_11_15_172326) do
     t.string "name"
   end
 
-  add_foreign_key "auctions", "residences"
-  add_foreign_key "auctions_users", "auctions"
-  add_foreign_key "auctions_users", "users"
 end
