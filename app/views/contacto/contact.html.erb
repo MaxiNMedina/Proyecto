@@ -1,0 +1,33 @@
+<html class="centered">
+  <form>
+    <div class="form-row">
+      <label for="exampleInputEmail1">Ingrese nombre y apellido</label> 
+    </div>
+    <div class="form-row">
+      <div class="col">
+        <input type="text" class="form-control" placeholder="Nombre" required>
+      </div>
+      <div class="col">
+        <input type="text" class="form-control" placeholder="Apellido" required>
+      </div>
+  </div>
+    <br>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"placeholder="Ingrese su email" required>
+    </div>
+    <br>
+    <div class="form-group">
+      <label for="formGroupExampleInput2">Asunto</label>
+      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Asunto" required>
+    </div>
+    <div class="form-row">
+      <label for="exampleInputEmail1">Consulta</label> 
+    </div>
+    <div class="input-group">
+      <textarea class="form-control" aria-label="With textarea" required></textarea>
+    </div>
+    <br>
+    <%= button_to 'Enviar', { action: "contact_success" }, class: 'btn btn-primary'  %>
+  </form>
+</html>

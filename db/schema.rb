@@ -12,9 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2018_11_15_211031) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "auctions", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -60,7 +57,4 @@ ActiveRecord::Schema.define(version: 2018_11_15_211031) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "auctions", "residences"
-  add_foreign_key "auctions_users", "auctions"
-  add_foreign_key "auctions_users", "users"
 end
