@@ -1,3 +1,4 @@
+require 'date'
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -12,9 +13,9 @@ resMaxi = Residence.create(name: "casa de Maxi", dir: "La Plata", desc: "excelen
 resVic = Residence.create(name: "casa de Victor", dir: "La Plata", desc: "super", available: false)
 
 puts "Creando Subastas"
-Auction.create(residence_id: resAlex.id, maxbid: 2000, dateStart: Date.new(2018, 11, 27), dateEnd: Date.new(2018, 11, 30))
-Auction.create(residence_id: resAlex.id, maxbid: 500, dateStart: Date.new(2019, 10, 28), dateEnd: Date.new(2019, 10, 31))
-Auction.create(residence_id: resVic.id, maxbid: 10000, dateStart: Date.new(2019, 2, 10), dateEnd: Date.new(2019, 2, 13))
+Auction.create(residence_id: resAlex.id, maxbid: 2000, dateStart: Date.new(2018,11,27), dateEnd: Date.new(2018,11,30))
+Auction.create(residence_id: resAlex.id, maxbid: 500, dateStart: Date.new(2019,10,28), dateEnd: Date.new(2019,10,31))
+Auction.create(residence_id: resVic.id, maxbid: 10000, dateStart: Date.new(2019,2,10), dateEnd: Date.new(2019,2,13))
 
 puts "Creando usuarios"
 User.create(email: "alex@mail.com", password: 12345678, credits: 2, isAdmin: true)
