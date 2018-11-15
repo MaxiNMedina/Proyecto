@@ -13,7 +13,7 @@
 		<% users = User.all %>
 		<% users.each do |user| %>
 			<tr>
-				<td> <%= link_to user.name, user %> </td>
+				<td> <%= link_to user.userName, user %> </td>
 				<td> <%= user.email %> </td>
 				<td> <%= user.password %> </td>
 				<td> <%= user.credits %> </td>

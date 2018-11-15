@@ -8,15 +8,22 @@
 
     <body class="backimage">
 
-      <header><!-- Encabezado con logo --></header>
+      
       <ul id="hsh-nav">
         <li><%= link_to "Ver Residencias", residences_path, class: 'btn btn-primary-outline'%></li>
         <li><%= link_to "Ver Subastas", auctions_path, class: 'btn btn-primary-outline'%></li>
         <li><%= link_to "Ver Usuarios", users_path, class: 'btn btn-primary-outline'%></li>
-        <li><%= link_to "Registrarse", new_user_path, class: 'btn btn-primary-outline'%></li>
-        <li><%= link_to "Iniciar Sesion", class: 'btn btn-primary-outline'%></li>
+
+        <% if user_signed_in? %>
+            <li><%= link_to current_user.email, current_user, class: 'btn btn-primary-outline'%></li>
+            <li><%= link_to 'Salir', destroy_user_session_path, method: :delete, class: 'btn btn-primary-outline'%></li>
+        <% else%>
+          <li><%= link_to "Iniciar Sesion", new_user_session_path, class: 'btn btn-primary-outline'%></li>
+          <li><%= link_to "Registrarse", new_user_registration_path, class: 'btn btn-primary-outline'%></li>
+        <% end %>
+
       </ul>
-      <footer><!-- Pie de pagina con preguntas frecuentes --></footer>
+      
 
     </body>
 
