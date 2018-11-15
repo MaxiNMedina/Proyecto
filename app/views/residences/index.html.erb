@@ -9,7 +9,6 @@
 			<th> Nombre </th>
 			<th> Descripción </th>
 			<th> Localidad </th>
-			<th> Disponible </th>
 			<th>  </th>
 			<th>  </th>
 			<th>  </th>
@@ -17,15 +16,16 @@
 
 		<% residences = Residence.all %>
 		<% residences.each do |residence| %>
-			<tr>
-				<td> <%= residence.name%> </td>
-				<td> <%= truncate(residence.desc, length: 15, seperator: ' ') %> </td>
-				<td> <%= residence.dir %> </td>
-				<td> <%= residence.available %> </td>
-				<td><%= link_to "Ver", residence, class: 'btn btn-info btn-sm'%></td>
-				<td><%= link_to "Edit", edit_residence_path(residence), class: 'btn btn-dark btn-sm'%></td>
-				<td><%= link_to "Borrar", residence, method: :delete,  class: 'btn btn-danger btn-sm', data: { confirm: 'Realmente desea borrar la residencia?'}%></td>
-			</tr>
+			<% if residence.available? %> <!-- Solo muestro las residencias disponibles-->
+				<tr>
+					<td> <%= residence.name%> </td>
+					<td> <%= truncate(residence.desc, length: 15, seperator: ' ') %> </td>
+					<td> <%= residence.dir %> </td>
+					<td><%= link_to "Ver", residence, class: 'btn btn-info btn-sm'%></td>
+					<td><%= link_to "Edit", edit_residence_path(residence), class: 'btn btn-dark btn-sm'%></td>
+					<td><%= link_to "Borrar", residence, method: :delete,  class: 'btn btn-danger btn-sm', data: { confirm: 'Realmente desea borrar la residencia?'}%></td>
+				</tr>
+			<% end %>
 		<% end %>
 		<% if residences.size == 0 %>
 			<tr> <td colspan="3"> No hay residencias </td> </tr>

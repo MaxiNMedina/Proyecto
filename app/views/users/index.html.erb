@@ -6,14 +6,14 @@
 		<tr>
 			<th> Nombre </th>
 			<th> Email </th>
-			<th> Contrasena </th>
+			<th> Contraseña </th>
 			<th> Creditos </th>
 		</tr>
 
 		<% users = User.all %>
 		<% users.each do |user| %>
 			<tr>
-				<td> <%= link_to user.name, user %> </td>
+				<td> <%= link_to user.userName, user %> </td>
 				<td> <%= user.email %> </td>
 				<td> <%= user.password %> </td>
 				<td> <%= user.credits %> </td>
@@ -26,6 +26,9 @@
 			<tr> <td colspan="3"> No hay usuarios </td> </tr>
 		<% end %>
 
+		<td><%= link_to "Crear Nuevo Administrador", new_user_registration_path, class: 'btn btn-dark btn-sm'%></td> <!--FALTA IMPLEMENTAR-->
 	</table>
+
+		
 		<p> <%= link_to "Volver", root_path, class: 'btn btn-secondary' %> </p>
 </div>
