@@ -11,6 +11,13 @@
     <%= f.email_field :email, required: true, class: 'form-control' %>
   </div>
 
+  <% if current_user.isAdmin%> <!--Solo muestro a los administradores -->
+    <div class="row">
+      <%= f.label :credits, 'Creditos' %>
+      <%= f.email_field :credits, required: true, class: 'form-control' %>
+    </div>
+  <% end %>
+
   <br>
     <%= link_to "Volver", users_path, class: 'btn btn-secondary' %>
     <%= f.submit 'Guardar', class: 'btn btn-primary' %>

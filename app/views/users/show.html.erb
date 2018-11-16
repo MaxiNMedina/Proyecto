@@ -4,7 +4,7 @@
     <h3> Usuario: <%= @user.email %> </h3> <!--DESCRIPCION DE UN USUARIO-->
     <h6> Nombre de Usuario: <%= @user.userName %> </h6>
     <h6> Creditos Disponibles: <%= @user.credits %> </h6>
-
+    <td><%= link_to "Editar perfil", edit_user_path(current_user), class: 'btn btn-dark btn-sm'%></td>
     <% if !current_user.isPremium? && !current_user.isAdmin?%>
       <tr><%= link_to "Pasar a ser premium", be_premium_user_path, class: 'btn btn-info' %></tr>
     <% end %>
