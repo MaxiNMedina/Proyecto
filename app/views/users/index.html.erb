@@ -11,20 +11,22 @@
 		</tr>
 
 		<% users = User.all %>
-		<% users.each do |user| %>
-			<tr>
-				<td> <%= link_to user.userName, user %> </td>
-				<td> <%= user.email %> </td>
-				<td> <%= user.password %> </td>
-				<td> <%= user.credits %> </td>
-				<td><%= link_to "Edit", edit_user_path(user), class: 'btn btn-dark btn-sm'%></td>
-	      		<td><%= link_to "Borrar", user, method: :delete,  class: 'btn btn-danger btn-sm', data: { confirm: 'Realmente desea borrar este usuario?'}%></td>
-			</tr>
-		<% end %>
+			<% users.each do |user| %>
+				<% if not user.isAdmin%> <!--Solo muestro estos botones a los administradores -->
+					<tr>
+						<td> <%= link_to user.userName, user %> </td>
+						<td> <%= user.email %> </td>
+						<td> <%= user.password %> </td>
+						<td> <%= user.credits %> </td>
+						<td><%= link_to "Edit", edit_user_path(user), class: 'btn btn-dark btn-sm'%></td>
+			      		<td><%= link_to "Borrar", user, method: :delete,  class: 'btn btn-danger btn-sm', data: { confirm: 'Realmente desea borrar este usuario?'}%></td>
+					</tr>
+				<% end %>
+			<% end %>
 
-		<% if users.size == 0 %>
-			<tr> <td colspan="3"> No hay usuarios </td> </tr>
-		<% end %>
+			<% if users.size == 0 %>
+				<tr> <td colspan="3"> No hay usuarios </td> </tr>
+			<% end %>
 
 		<td><%= link_to "Crear Nuevo Administrador", new_user_registration_path, class: 'btn btn-dark btn-sm'%></td> <!--FALTA IMPLEMENTAR-->
 	</table>
