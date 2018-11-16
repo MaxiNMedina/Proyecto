@@ -4,7 +4,10 @@
   <p> nombre: <%= @user.userName %> </p>
   <p> password: <%= @user.password %> </p>
   <p> creditos: <%= @user.credits %> </p>
-
+  <% if @user.isPremium == false %>
+        <tr><%= link_to "Pasar a ser premium", be_premium_user_path, class: 'btn btn-info' %></tr>
+      <% end %>
+  
   <h2>Subastas de este usuario:</h2>
   <table class="table">
     <tr>

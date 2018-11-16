@@ -44,4 +44,8 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:userName, :email, :password, :credits)
   end
+
+  def be_premium
+    @user = User.find(params[:id])
+  end
 end
