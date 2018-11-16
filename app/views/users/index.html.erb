@@ -1,5 +1,5 @@
 <div class="centered">
-	<h1> Listado de Usuarios </h1>  <!-- TABLA DE RESIDENCIAS-->
+	<h1> Listado de Usuarios </h1>  <!-- TABLA DE USUARIOS-->
 	<br>
 	<table class="table">
 
@@ -10,9 +10,10 @@
 			<th> Creditos </th>
 		</tr>
 
-		<% users = User.all %>
+			<% users = User.all %>
 			<% users.each do |user| %>
-				<% if not user.isAdmin%> <!--Solo muestro estos botones a los administradores -->
+				
+				<% if not user.isAdmin%> <!--Solo muestro a los usuarios -->
 					<tr>
 						<td> <%= link_to user.userName, user %> </td>
 						<td> <%= user.email %> </td>
@@ -28,7 +29,6 @@
 				<tr> <td colspan="3"> No hay usuarios </td> </tr>
 			<% end %>
 
-		<td><%= link_to "Crear Nuevo Administrador", new_user_registration_path, class: 'btn btn-dark btn-sm'%></td> <!--FALTA IMPLEMENTAR-->
 	</table>
 
 		

@@ -13,7 +13,9 @@
         <% if current_user.present? && current_user.isAdmin?%> <!--Solo muestro estos botones a los administradores -->
           <li><%= link_to "Ver Residencias", residences_path, class: 'btn btn-primary-outline'%></li>
           <li><%= link_to "Ver Subastas", auctions_path, class: 'btn btn-primary-outline'%></li>
-        <li><%= link_to "Ver Usuarios", users_path, class: 'btn btn-primary-outline'%></li>
+          <li><%= link_to "Ver Usuarios", users_path, class: 'btn btn-primary-outline'%></li>
+          <li><%= link_to "Ver Administradores", class: 'btn btn-primary-outline'%></li> <!--FALTA IMPLEMENTAR ALEX-->
+
         <% end %>
 
         <% if user_signed_in? %>
