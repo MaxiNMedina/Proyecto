@@ -15,7 +15,7 @@
 				
 				<% if not user.isAdmin%> <!--Solo muestro a los usuarios -->
 					<tr>
-						<td> <%= link_to user.userName, user %> </td>
+						<td> <%= link_to user.userName, user, class: 'btn btn-link btn-sm' %> </td>
 						<td> <%= user.email %> </td>
 						<td> <%= user.password %> </td>
 						<td> <%= user.credits %> </td>

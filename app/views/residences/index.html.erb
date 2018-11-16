@@ -18,10 +18,9 @@
 		<% residences.each do |residence| %>
 			<% if residence.available? %> <!-- Solo muestro las residencias disponibles-->
 				<tr>
-					<td> <%= residence.name%> </td>
+					<td> <%= link_to residence.name, residence, class: 'btn btn-link btn-sm'%> </td>
 					<td> <%= truncate(residence.desc, length: 15, seperator: ' ') %> </td>
 					<td> <%= residence.dir %> </td>
-					<td><%= link_to "Ver", residence, class: 'btn btn-info btn-sm'%></td>
 					<td><%= link_to "Edit", edit_residence_path(residence), class: 'btn btn-dark btn-sm'%></td>
 					<td><%= link_to "Borrar", residence, method: :delete,  class: 'btn btn-danger btn-sm', data: { confirm: 'Realmente desea borrar la residencia?'}%></td>
 				</tr>
