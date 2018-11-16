@@ -9,7 +9,7 @@
     <body class="backimage">
 
       
-      <ul id="hsh-nav">
+      <ul id="hsh-nav" class="btn-group">
         <% if current_user.present? && current_user.isAdmin?%> <!--Solo muestro estos botones a los administradores -->
           
           <li><%= link_to "Ver Residencias", residences_path, class: 'btn btn-primary-outline'%></li>
@@ -24,10 +24,10 @@
       <ul id="usr-nav">
         <% if user_signed_in? %>
             <li><%= link_to current_user.email, current_user, class: 'btn btn-primary-outline'%></li>
-            <li><%= link_to 'Cerrar Sesion', destroy_user_session_path, method: :delete, class: 'btn btn-primary-outline'%></li>
+            <li><%= link_to 'Cerrar Sesion', destroy_user_session_path, method: :delete, class: 'btn btn-danger'%></li>
         <% else%>
-          <li><%= link_to "Iniciar Sesion", new_user_session_path, class: 'btn btn-primary-outline'%></li>
-          <li><%= link_to "Registrarse", new_user_registration_path, class: 'btn btn-primary-outline'%></li>
+          <li><%= link_to "Iniciar Sesion", new_user_session_path, class: 'btn btn-light'%></li>
+          <li><%= link_to "Registrarse", new_user_registration_path, class: 'btn btn btn-success'%></li>
         <% end %>
       </ul>
       
