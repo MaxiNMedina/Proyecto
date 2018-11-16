@@ -27,6 +27,11 @@
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
     </div>
 
+    <div class="row">
+      <%= f.label :creditos, 'Creditos' %>
+      <%= f.number_field :credits, :value => 2, readonly: true, class: 'form-control' %> <!-- NO SE PUEDE EDITAR ESTE CAMPO-->
+    </div>
+
     <div style="padding-top:20px">
       <%= f.submit "Registrarse", class: 'btn btn btn-success' %>
     </div>
