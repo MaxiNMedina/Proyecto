@@ -23,6 +23,6 @@ User.create(userName: "maxi",email: "maxi@mail.com", password: "maxi123", credit
 User.create(userName: "vic",email: "victor@mail.com", password: "vic123", credits: 2, isAdmin: true)
 
 puts "Creando Usuarios"
-User.create(userName: "alex", email: "alex@mail.com", password: "alex123", credits: 2, isAdmin: false)
-User.create(userName: "maxi",email: "maxi@mail.com", password: "maxi123", credits: 2, isAdmin: false)
-User.create(userName: "vic",email: "victor@mail.com", password: "vic123", credits: 2, isAdmin: false)
+User.create(userName: "pepe", email: "pepe@mail.com", password: "pepe123", credits: 2, isAdmin: false)
+User.create(userName: "jose",email: "jose@mail.com", password: "jose123", credits: 2, isAdmin: false)
+User.create(userName: "maria",email: "maria@mail.com", password: "maria123", credits: 2, isAdmin: false)
