@@ -8,9 +8,9 @@ require 'date'
 #   Character.create(name: 'Luke', movie: movies.first)
 
 puts "Creando Residencias"
-resAlex = Residence.create(name: "casa de Alex", dir: "La Plata", desc: "10/10", available: true, image_url: "residencia_1.jpg")
-resMaxi = Residence.create(name: "casa de Maxi", dir: "La Plata", desc: "excelente", available: true, image_url: "residencia_2.jpg")
-resVic = Residence.create(name: "casa de Victor", dir: "La Plata", desc: "super", available: false)
+resAlex = Residence.create(name: "casa de Alex", country: "Argentina", province: "Buenos Aires", locality:"La Plata",  dir: "Plaza España N°75", desc: "10/10", available: true, image_url: "residencia_1.jpg")
+resMaxi = Residence.create(name: "casa de Maxi", country: "Argentina", province: "Buenos Aires", locality:"La Plata", dir: "Avenida 44 N°1877", desc: "excelente", available: true, image_url: "residencia_2.jpg")
+resVic = Residence.create(name: "casa de Victor", country: "Argentina", province: "Buenos Aires", locality:"La Plata", dir: "Calle 28 N°120", desc: "super", available: false)
 
 puts "Creando Subastas"
 Auction.create(residence_id: resAlex.id, maxbid: 2000, dateStart: Date.new(2018,11,27), dateEnd: Date.new(2018,11,30))

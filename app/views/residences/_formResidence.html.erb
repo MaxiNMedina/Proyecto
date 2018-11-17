@@ -3,28 +3,42 @@
 
   <div class="row">
     <%= f.label :name, 'Nombre de residencia' %>
-    <%= f.text_field :name, required: true, class: 'form-control' %>
+    <%= f.text_field :name, required: true, placeholder: "Nombre", class: 'form-control' %>
   </div>
-
+  <br>
+  <div class="row">
+    <%= f.label :country, 'Pais' %>
+    <%= f.text_field :country, required: true, placeholder: "Argentina", class: 'form-control' %>
+  </div>
+  <br>
+  <div class="row">
+    <%= f.label :province, 'Provincia' %>
+    <%= f.text_field :province, required: true, placeholder: "Buenos Aires", class: 'form-control' %>
+  </div>
+  <br>
+  <div class="row">
+    <%= f.label :locality, 'Localidad' %>
+    <%= f.text_field :locality, required: true, placeholder: "La Plata", class: 'form-control' %>
+  </div>
+  <br>
   <div class="row">
     <%= f.label :dir, 'Direccion' %>
-    <%= f.text_field :dir, required: true, class: 'form-control' %>
+    <%= f.text_field :dir, required: true, placeholder: "Calle 12 N°34", class: 'form-control' %>
   </div>
-
+  <br>
   <div class="row">
     <%= f.label :desc, 'Descripcion' %>
-    <%= f.text_area :desc, required: true, class: 'form-control' %>
+    <%= f.text_area :desc, required: true, placeholder: "Descripcion de la residencia", class: 'form-control' %>
   </div>
-
+  <br>
   <div class="row">
     <%= f.label :available, 'Disponibilidad' %>
     <%= f.select :available, [['Disponible', true], ['No disponible', false]], {}, {class: "form-control"} %>
-
+  <br>
   </div>
-
   <div class="row">
-    <%= f.label :image_url, 'Ingrese el nombre de la foto de la residencia:' %>
-    <%= f.text_area :image_url, required: true, class: 'form-control' %>
+    <%= f.label :image_url, 'Ingrese  la URL con la foto de la residencia:' %>
+    <%= f.text_area :image_url, required: true, placeholder: "Ingrese una URL", class: 'form-control' %>
   </div>
 
   <br>
