@@ -1,32 +1,45 @@
 <div class="centered">
-  <h1> Usuario: <%= @user.email %> </h1> <!--DESCRIPCION DE UN USUARIO-->
+  <div>
 
   <p> nombre: <%= @user.userName %> </p>
   <p> password: <%= @user.password %> </p>
   <p> creditos: <%= @user.credits %> </p>
   <p> Es usted premium: <%= @user.isPremium %> </p>
-  <% if @user.isPremium == "no" %>
+  <td><%= link_to "Editar perfil", edit_user_path(current_user), class: 'btn btn-dark '%></td>
+
+  <!--Revisa si un usuario es premium o no dependiendo de condiciones-->
+  <% if !current_user.isAdmin? %> <!--Pregnta si es un usuario comun-->
+    <% if current_user.isPremium == "no" %> <!--Si lo es, pregunta si solicito ser premium-->
         <tr><%= link_to "Pasar a ser premium", be_premium_user_path, class: 'btn btn-info' %></tr>
-      <% end %>
-  <% if @user.isPremium == "solicitado" %>
-        <tr><%= link_to "Habilitar usuario a ser premium", enable_premium_user_path, class: 'btn btn-info' %></tr>
     <% end %>
-  <% if @user.isPremium == "si" %>
-        <tr><%= link_to "Desabilitar usuario de condicion premium", disable_premium_user_path, class: 'btn btn-info' %></tr>
-      <% end %>
-  <h2>Subastas de este usuario:</h2>
-  <table class="table">
-    <tr>
-      <th> Nombre de la Residencia </th>
-      <th> Precio </th>
-    </tr>
-  	<% @auctions.each do |auction| %>
-    <tr>
-      <!--<td> <%= auction.nombre_de_la_residencia %> </td>-->
-      <td> <%= auction.maxbid %> </td>
-      <td> <%= link_to "Ingresar", auction, class: 'btn btn-secondary' %> </td>
-    </tr>
+  <% else %> <!--Si no es asi, entonces es un administrador-->
+    <% if @user.isPremium == "solicitado" %> <!--Revisa si el usuario que esta mirando el administrador solicito ser premium-->
+      <tr><%= link_to "Habilitar usuario a ser premium", enable_premium_user_path, class: 'btn btn-info' %></tr>
+    <% else %> 
+      <% if @user.isPremium == "si" %> <!--Si no entro en el anterior if, pregunta si ya es un usuario premium-->
+        <tr><%= link_to "Desabilitar usuario de condicion premium", disable_premium_user_path, class: 'btn btn-danger' %></tr>
+      <% end %> 
     <% end %>
-  </table>
-  <%= link_to "Volver", root_path, class: 'btn btn-secondary' %>
+  <% end %>
+
+  <% if current_user.present? &&  !current_user.isAdmin? %>
+    <div style="padding-top:70px">
+      <h2>Subastas de este usuario:</h2>
+      <table class="table">
+        <tr>
+          <th> Nombre de la Residencia </th>
+          <th> Precio </th>
+        </tr>
+      	<% @auctions.each do |auction| %>
+        <tr>
+          <!--<td> <%= auction.nombre_de_la_residencia %> </td>-->
+          <td> <%= auction.maxbid %> </td>
+          <td> <%= link_to "Ingresar", auction, class: 'btn btn-secondary' %> </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+      <%= link_to "Volver", root_path, class: 'btn btn-secondary' %>
+  <%end%>
+
 </div>

@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new( params.require(:user).permit(:userName, :email, :password, :cretits) )
+    @user = User.new( params.require(:user).permit(:userName, :email, :password, :credits) )
     if @user.save
       redirect_to users_path, notice: "Se añadio un usuario exitosamente."
     else
@@ -60,14 +60,14 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.isPremium = "si"
     @user.save
-    redirect_to current_user
+    redirect_to users_path
   end
 
   def disable_premium
     @user = User.find(params[:id])
     @user.isPremium = "no"
     @user.save
-    redirect_to current_user
+    redirect_to users_path
   end
 
 end
