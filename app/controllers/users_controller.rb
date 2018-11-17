@@ -48,4 +48,26 @@ class UsersController < ApplicationController
   def be_premium
     @user = User.find(params[:id])
   end
+
+  def apply_premium
+    @user = User.find(params[:id])
+    @user.isPremium = "solicitado"
+    @user.save
+    redirect_to current_user, notice: 'Su solicitud ha sido enviada con exito.'
+  end
+
+  def enable_premium
+    @user = User.find(params[:id])
+    @user.isPremium = "si"
+    @user.save
+    redirect_to current_user
+  end
+
+  def disable_premium
+    @user = User.find(params[:id])
+    @user.isPremium = "no"
+    @user.save
+    redirect_to current_user
+  end
+
 end

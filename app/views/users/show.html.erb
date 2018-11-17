@@ -4,10 +4,16 @@
   <p> nombre: <%= @user.userName %> </p>
   <p> password: <%= @user.password %> </p>
   <p> creditos: <%= @user.credits %> </p>
-  <% if @user.isPremium == false %>
+  <p> Es usted premium: <%= @user.isPremium %> </p>
+  <% if @user.isPremium == "no" %>
         <tr><%= link_to "Pasar a ser premium", be_premium_user_path, class: 'btn btn-info' %></tr>
       <% end %>
-  
+  <% if @user.isPremium == "solicitado" %>
+        <tr><%= link_to "Habilitar usuario a ser premium", enable_premium_user_path, class: 'btn btn-info' %></tr>
+    <% end %>
+  <% if @user.isPremium == "si" %>
+        <tr><%= link_to "Desabilitar usuario de condicion premium", disable_premium_user_path, class: 'btn btn-info' %></tr>
+      <% end %>
   <h2>Subastas de este usuario:</h2>
   <table class="table">
     <tr>

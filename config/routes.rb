@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     resources :users do
   		member do
     		get 'be_premium'
+        get 'apply_premium'
+        get 'enable_premium'
+        get 'disable_premium'
  		end
 	end
     get '/enterBid', to:'auctions#enterBid'
