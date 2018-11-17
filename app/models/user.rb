@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_and_belongs_to_many :auctions
+
+  enum isPremium: { si: 0, solicitado: 1, no: 2 }
 end

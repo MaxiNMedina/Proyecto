@@ -1,14 +1,26 @@
 <div class="centered">
   <div>
 
-    <h3> Usuario: <%= @user.email %> </h3> <!--DESCRIPCION DE UN USUARIO-->
-    <h6> Nombre de Usuario: <%= @user.userName %> </h6>
-    <h6> Creditos Disponibles: <%= @user.credits %> </h6>
-    <td><%= link_to "Editar perfil", edit_user_path(current_user), class: 'btn btn-dark '%></td>
-    <% if !current_user.isPremium? && !current_user.isAdmin?%>
-      <tr><%= link_to "Quiero ser Premium", be_premium_user_path, class: 'btn btn-warning' %></tr>
+  <p> nombre: <%= @user.userName %> </p>
+  <p> password: <%= @user.password %> </p>
+  <p> creditos: <%= @user.credits %> </p>
+  <p> Es usted premium: <%= @user.isPremium %> </p>
+  <td><%= link_to "Editar perfil", edit_user_path(current_user), class: 'btn btn-dark '%></td>
+
+  <!--Revisa si un usuario es premium o no dependiendo de condiciones-->
+  <% if !current_user.isAdmin? %> <!--Pregnta si es un usuario comun-->
+    <% if current_user.isPremium == "no" %> <!--Si lo es, pregunta si solicito ser premium-->
+        <tr><%= link_to "Pasar a ser premium", be_premium_user_path, class: 'btn btn-info' %></tr>
     <% end %>
-  </div>
+  <% else %> <!--Si no es asi, entonces es un administrador-->
+    <% if @user.isPremium == "solicitado" %> <!--Revisa si el usuario que esta mirando el administrador solicito ser premium-->
+      <tr><%= link_to "Habilitar usuario a ser premium", enable_premium_user_path, class: 'btn btn-info' %></tr>
+    <% else %> 
+      <% if @user.isPremium == "si" %> <!--Si no entro en el anterior if, pregunta si ya es un usuario premium-->
+        <tr><%= link_to "Desabilitar usuario de condicion premium", disable_premium_user_path, class: 'btn btn-danger' %></tr>
+      <% end %> 
+    <% end %>
+  <% end %>
 
   <% if current_user.present? &&  !current_user.isAdmin? %>
     <div style="padding-top:70px">
