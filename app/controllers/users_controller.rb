@@ -37,7 +37,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-    redirect_to users_path
+    redirect_to user_path
   end
   #Usado para mandar parametros del usuario. Lo uso en la modificacion del usuario para actualizar los datos.
   #Se puede usar para otros metdos, como por ej. create.

@@ -4,10 +4,10 @@
 	<table class="table">
 
 		<tr>
-			<th> Nombre </th>
+			<th> Nombre de Usuario </th>
 			<th> Email </th>
-			<th> Contraseña </th>
 			<th> Creditos </th>
+			<th> Categoria Premium </th>
 		</tr>
 
 			<% users = User.all %>
@@ -15,11 +15,36 @@
 				
 				<% if not user.isAdmin%> <!--Solo muestro a los usuarios -->
 					<tr>
+						<!-- TAL VEZ NO SEA NECESARIO INGRESAR A VER EL PERFIL DEL USUARIO COMO ADMINISTRADOR
 						<td> <%= link_to user.userName, user, class: 'btn btn-link btn-sm' %> </td>
+						--> 
+						<td> <%= user.userName %> </td>
 						<td> <%= user.email %> </td>
-						<td> <%= user.password %> </td>
 						<td> <%= user.credits %> </td>
-						<td><%= link_to "Editar", edit_user_path(user), class: 'btn btn-dark btn-sm'%></td>
+
+						<%if user.isPremium == "si" %>
+							<td>SI</td>
+						<% else %>
+							<%if user.isPremium == "solicitado" %>
+								<td>SOLICITADO</td>
+							<% else %>
+								<td>NO</td>
+							<% end %>
+						<% end %>
+
+						 <!-- Si soy admin vere este boton de hacer premium o no-->
+						<% if current_user.isAdmin? %>
+					      <% if user.isPremium == "solicitado" %> <!--Revisa si el usuario que esta mirando el administrador solicito ser premium-->
+					        <td><%= link_to "Hacer Premium", enable_premium_user_path(user), class: 'btn btn-warning' %></td>
+					      <% else %> 
+					        <% if user.isPremium == "si" %> <!--Si no entro en el anterior if, pregunta si ya es un usuario premium-->
+					          <td><%= link_to "Baja Premium", disable_premium_user_path(user), class: 'btn btn-info' %></td>
+					      	<% else %> 
+					      		<td></td>
+					      	<% end %>
+					      <% end %>
+					    <% end %>
+
 			      		<td><%= link_to "Borrar", user, method: :delete,  class: 'btn btn-danger btn-sm', data: { confirm: 'Realmente desea borrar este usuario?'}%></td>
 					</tr>
 				<% end %>
