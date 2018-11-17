@@ -4,28 +4,30 @@
     <h3> Usuario: <%= @user.email %> </h3> <!--DESCRIPCION DE UN USUARIO-->
     <h6> Nombre de Usuario: <%= @user.userName %> </h6>
     <h6> Creditos Disponibles: <%= @user.credits %> </h6>
-    <td><%= link_to "Editar perfil", edit_user_path(current_user), class: 'btn btn-dark btn-sm'%></td>
+    <td><%= link_to "Editar perfil", edit_user_path(current_user), class: 'btn btn-dark '%></td>
     <% if !current_user.isPremium? && !current_user.isAdmin?%>
-      <tr><%= link_to "Pasar a ser premium", be_premium_user_path, class: 'btn btn-info' %></tr>
+      <tr><%= link_to "Quiero ser Premium", be_premium_user_path, class: 'btn btn-warning' %></tr>
     <% end %>
   </div>
 
-  <div style="padding-top:70px">
-    <h2>Subastas de este usuario:</h2>
-    <table class="table">
-      <tr>
-        <th> Nombre de la Residencia </th>
-        <th> Precio </th>
-      </tr>
-    	<% @auctions.each do |auction| %>
-      <tr>
-        <!--<td> <%= auction.nombre_de_la_residencia %> </td>-->
-        <td> <%= auction.maxbid %> </td>
-        <td> <%= link_to "Ingresar", auction, class: 'btn btn-secondary' %> </td>
-      </tr>
-      <% end %>
-    </table>
-  </div>
-    <%= link_to "Volver", root_path, class: 'btn btn-secondary' %>
+  <% if current_user.present? &&  !current_user.isAdmin? %>
+    <div style="padding-top:70px">
+      <h2>Subastas de este usuario:</h2>
+      <table class="table">
+        <tr>
+          <th> Nombre de la Residencia </th>
+          <th> Precio </th>
+        </tr>
+      	<% @auctions.each do |auction| %>
+        <tr>
+          <!--<td> <%= auction.nombre_de_la_residencia %> </td>-->
+          <td> <%= auction.maxbid %> </td>
+          <td> <%= link_to "Ingresar", auction, class: 'btn btn-secondary' %> </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+      <%= link_to "Volver", root_path, class: 'btn btn-secondary' %>
+  <%end%>
 
 </div>
