@@ -16,7 +16,6 @@
           <li><%= link_to "Ver Subastas", auctions_path, class: 'btn btn-primary-outline'%></li>
           <li><%= link_to "Ver Usuarios", users_path, class: 'btn btn-primary-outline'%></li>
           <li><%= link_to "Ver Administradores", class: 'btn btn-primary-outline'%></li> <!--FALTA IMPLEMENTAR ALEX-->
-
         <% end %>
       </ul>
 
@@ -38,7 +37,9 @@
   <!--JAJAJA-->
   <div style="padding-top: 200px;">
     <% if user_signed_in? && current_user.isAdmin?%>
-      <iframe id="ytplayer" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/Zi_XLOBDo_Y?autoplay=0&origin=http://example.com" frameborder="0" /></iframe>
+
+      <iframe width="640" height="360" src="https://www.youtube.com/embed/videoseries?list=RDEMe12_MlgO8mGFdeeftZ2nOQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
     <%end%>
   </div>
 

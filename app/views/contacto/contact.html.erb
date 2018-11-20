@@ -28,6 +28,9 @@
       <textarea class="form-control" aria-label="With textarea" required></textarea>
     </div>
     <br>
-    <%= button_to 'Enviar', { action: "contact_success" }, class: 'btn btn-primary'  %>
+    <div>
+      <%= link_to "Volver", root_path, class: 'btn btn-secondary' %>
+      <%= button_to 'Enviar', { action: "contact_success" }, class: 'btn btn-primary'  %>
+    </div>
   </form>
 </div>
