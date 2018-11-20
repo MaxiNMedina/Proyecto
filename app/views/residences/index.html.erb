@@ -23,7 +23,7 @@
 					<td> <%= residence.dir %> </td>
 					<td> <%= "#{residence.country}, #{residence.province}, #{residence.locality}" %> </td>
 					<% if current_user.isAdmin? %> <!-- Funciones exclusivas para administradores -->
-						<td><%= link_to "Edit", edit_residence_path(residence), class: 'btn btn-dark btn-sm'%></td>
+						<td><%= link_to "Editar", edit_residence_path(residence), class: 'btn btn-dark btn-sm'%></td>
 						<% if Auction.exists?(residence_id: residence.id) %> <!-- Se fija si en el listado hay residencias que se encuentran en subasta -->
 							<div class="alert alert-warning" role="alert">
   								El boton de borrar del sistema a una residencia es deshabilitado para aquellas residencias que estan en subasta.
