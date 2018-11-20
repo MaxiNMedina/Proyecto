@@ -20,45 +20,108 @@ body {
   	margin-bottom: 114px;
 }
 
-footer .navbar {
-  background-image: linear-gradient(to bottom right, #222F, #000F);
+footer {
+	position: absolute;
+	margin-top: 50%;
+	top: 100%;
+	right: 0%;
+	width: 100%;
 }
-
+footer .navbar {
+	border-top: 1px solid #999;
+	background-color: #EEE;
+}
+.footerlist {
+	width: 70%;
+}
+.footerlist ul{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #FFF0;
+	float: left;
+}
+.footerlist li{
+	list-style-type: none;
+	padding-right: 100px;
+	float: left;
+}
+.footerlist a{
+	display: block;
+	color: black;
+	text-align: center;
+	padding: 16px;
+	text-decoration: none;
+}
+.footerlist a:hover{
+	color: black;
+	text-decoration: none;
+}
+#logo {
+	padding-right: 10px;
+}
+.background {
+     width: 50%;
+     height: 200px;
+     margin-left: 25%;
+     border-radius: 50%;
+     background-image: url('https://w-dog.net/wallpapers/8/19/511932503574273/bayern-munich-germany-mountain-house-morning-fog-tree-grass-nature.jpg');
+     background-size: cover;
+     background-repeat: no-repeat;
+		 background-color: white;
+}
 header .navbar{
 	position: absolute;
 	top: 8px;
 	left: 16px;
 }
-
-.centered {
-	padding-top: 120px;
-}
-
 .header-logo {
 	color: #FFF;
   text-shadow: 0 0 3px #000;
 }
 
-.backimage {
-     width: 50%;
-     height: 200px;
-     margin-left: 25%;
-     border-radius: 50%;
-     background-image: asset_url('wallpaper1.jpg');
-     background-size: cover;
-     background-repeat: no-repeat;
-     background-position: center;
+.error {
+	color: red;
+	background-color: yellow;
+	font-weight: 600;
+	text-align: center;
+	width: 25%;
 }
 
-.btn-primary-outline {
-    background-color: transparent;
-    border-color: transparent;
-    box-shadow: none;
-		color: white;
+.profile {
+	text-indent: 20px;
+	border: 2px none grey;
+	border-radius: 20px;
+	margin: 20px;
+	padding-top: 15px;
+	padding-bottom: 15px;
 }
 
-.btn-primary-outline:hover {
-		color: #AAA;
+.profile-table {
+	border-style: none;
+	margin: 20px;
+	margin-left: 50px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+.profile-table td {
+	width: 500px;
+	height: 50px;
+	border-top: solid 1px;
+	padding-top: 15px;
+	padding-bottom: 50px;
+}
+.profile-field {
+	font-weight: 100;
+	color: grey;
+}
+
+.bold {
+	font-weight: bold;
+}
+.centered {
+	padding-top: 120px;
 }
 
 #usr-nav{
@@ -83,23 +146,46 @@ header .navbar{
 }
 
 
-#hsh-nav{
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	background-color: #FFF0;
-
-	position: absolute;
-	top: 100px;
-	left: 16px;
+.btn-hsh {
+		display: inline-block;
+		padding: 6px 12px;
+		margin-bottom: 0;
+		line-height: 1.42857143;
+		background-color: transparent;
+		box-shadow: none;
+		width: 190px;
+		border-bottom: 1px solid transparent;
+		font-size: 16px;
+		font-weight: bold;
+		color: white;
+		text-shadow: 1px 1px black;
+		text-decoration: none;
+}
+.btn-hsh:hover {
+		color: white;
+		border-radius: 0;
+		border-bottom: 1px solid white;
+		text-decoration: none;
 }
 
-#hsh-nav li {
-	float: left;
+#hsh-nav{
+	list-style-type: none;
+	background-color: #FFF0;
+	position: absolute;
+	width: 250px;
+	top: 30%;
+	right: 70%;
+}
+#hsh-nav ul li {
 	display: block;
 	color: white;
-	text-align: center;
+	text-align: left;
 	padding: 16px;
-	text-decoration: none;
+}
+#home-bottom {
+	right: 0px;
+	width: 100%;
+	height: 800px;
+	border: 1px none #999;
+	padding-top: 800px;
 }

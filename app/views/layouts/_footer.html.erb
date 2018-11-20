@@ -1,9 +1,12 @@
-<footer class="page-footer">  <!-- Footer -->
-	<div class="navbar fixed-bottom"> 
-		<div class="container">
-			<%= link_to 'Ver Preguntas Frecuentes', faq_path, class: 'btn btn-info'%>
-			<%= link_to "Contacto", contact_path, class: 'btn btn-info'%>	
-			<%= image_tag "logo.png", title: "Logo", class: "logo"  %>
-		</div>
+<footer>  <!-- Footer -->
+	<div class="navbar">
+		<nav class="footerlist">
+			<ul>
+				<li><%= link_to "Pagina principal", root_path%></li>
+				<li><%= link_to 'Ver Preguntas Frecuentes', faq_path%></li>
+				<li><%= link_to "Contacto", contact_path%></li>
+			</ul>
+		</nav>
+		<%= image_tag "logo.png", title: "Logo", id:"logo"%>
 	</div>
 </footer>

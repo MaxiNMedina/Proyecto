@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html lang="es">
-  
+
 
     <head>
       <title>Home Switch Home</title>
     </head>
 
-    <body class="backimage">
-
-      
-      <ul id="hsh-nav" class="btn-group">
+    <body class="background">
+      <nav id="hsh-nav">
+      <ul>
         <% if current_user.present? && current_user.isAdmin?%> <!--Solo muestro estos botones a los administradores -->
+<<<<<<< HEAD
           
           <li><%= link_to "Ver Residencias", residences_path, class: 'btn btn-primary-outline'%></li>
           <li><%= link_to "Ver Subastas", auctions_path, class: 'btn btn-primary-outline'%></li>
           <li><%= link_to "Ver Usuarios", users_path, class: 'btn btn-primary-outline'%></li>
           <li><%= link_to "Ver Administradores", class: 'btn btn-primary-outline'%></li> <!--FALTA IMPLEMENTAR ALEX-->
+=======
+          <li><%= link_to "Ver Residencias", residences_path, class: 'btn-hsh'%></li>
+          <li><%= link_to "Ver Subastas", auctions_path, class: 'btn-hsh'%></li>
+          <li><%= link_to "Ver Usuarios", users_path, class: 'btn-hsh'%></li>
+          <li><%= link_to "Ver Administradores", admins_path, class: 'btn-hsh'%></li>
+>>>>>>> c11b89e6dc9641e1169e456dfca18c03d7fdda6f
         <% end %>
       </ul>
-
+      </nav>
 
       <ul id="usr-nav">
         <% if user_signed_in? %>
@@ -29,10 +35,15 @@
           <li><%= link_to "Registrarse", new_user_registration_path, class: 'btn btn btn-success'%></li>
         <% end %>
       </ul>
-      
 
+      <div id="home-bottom">
+        <% if user_signed_in? && current_user.isAdmin?%>
+          <iframe id="ytplayer" type="text/html" width="640" height="360" src="http://www.youtube.com/embed/Zi_XLOBDo_Y?autoplay=0&origin=http://example.com" frameborder="0" /></iframe>
+        <%end%>
+      </div>
     </body>
 
+<<<<<<< HEAD
   </div>
   <!--JAJAJA-->
   <div style="padding-top: 200px;">
@@ -43,4 +54,6 @@
     <%end%>
   </div>
 
+=======
+>>>>>>> c11b89e6dc9641e1169e456dfca18c03d7fdda6f
 </html>

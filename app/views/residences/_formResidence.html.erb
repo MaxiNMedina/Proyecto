@@ -34,16 +34,21 @@
   <div class="row">
     <%= f.label :available, 'Disponibilidad' %>
     <%= f.select :available, [['Disponible', true], ['No disponible', false]], {}, {class: "form-control"} %>
-  <br>
   </div>
-  <div class="row">
-    <%= f.label :image_url, 'Ingrese  la URL con la foto de la residencia:' %>
-    <%= f.text_area :image_url, required: true, placeholder: "Ingrese una URL", class: 'form-control' %>
+  <br>
+  <div class="">
+    <%= f.label :image_url, 'Ingrese la URL con la foto de la residencia:' %>
+    <%= f.text_field :image_url, required: true, placeholder: "Ingrese una URL", class: 'form-control' %>
   </div>
 
   <br>
+  <p class="error"> <%= @error %></p>
+  <br>
+
+  <div>
     <%= link_to "Volver", residences_path, class: 'btn btn-secondary' %>
     <%= f.submit 'Guardar', class: 'btn btn-primary' %>
+  </div>
 
   <% end %>
 
