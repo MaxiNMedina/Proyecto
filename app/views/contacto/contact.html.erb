@@ -28,6 +28,13 @@
       <textarea class="form-control" aria-label="With textarea" required></textarea>
     </div>
     <br>
-    <%= button_to 'Enviar', { action: "contact_success" }, class: 'btn btn-primary'  %>
+    <div class="form-row">
+      <div class="col">
+        <%= button_to 'Enviar', { action: "contact_success" }, class: 'btn btn-primary'  %>
+      </div>
+      <div class="col">
+        <%= link_to "Volver", :back, class: 'btn btn-secondary' %>
+      </div>
+    </div>
   </form>
 </div>
