@@ -1,0 +1,22 @@
+<div>
+<%= form_for @admin, :url => { :action => "createAdmin" }, :html => { :method => "createAdmin" } do |f|  %>
+
+<%= f.label :email, 'Email' %>
+<%= f.text_field :email, required: true, placeholder: "admin@mail.com", class: 'form-control'  %>
+
+<%= f.label :password, 'Contrasena' %>
+<%= f.password_field :password, required: true, class: 'form-control'  %>
+
+<%= f.label :userName %>
+<%= f.text_field :userName, required: true, class: 'form-control' %>
+
+<%= f.hidden_field :credits, value: 9 %>
+<%= f.hidden_field :isAdmin, value: true %>
+
+<br>
+  <p class="error"> <%= @error %></p>
+
+<%= link_to "Volver", :back, class: 'btn btn-secondary' %>
+<%= f.submit 'Guardar', class: 'btn btn-primary' %>
+<% end %>
+</div>

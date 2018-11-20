@@ -1,11 +1,13 @@
 <div class="centered">
   <h1> <%= @residence.name %> </h1> <!--DESCRIPCION DE UNA RESIDENCIA-->
   <br>
-  <% if @residence.image_url? %> <!--Revisa si la residencia tiene una foto. Si no, mostrara una imagen de no disponible-->
+  <div>
+  <% if @residence.image_url? &&  Utils.image_exists?(@residence.image_url) %> <!--Revisa si la residencia tiene una foto. Si no, mostrara una imagen de no disponible-->
     <%= image_tag @residence.image_url %>
   <% else %>
     <%= image_tag 'no_disponible.jpg' %>
   <% end %>
+  </div>
 
   <br><br>
   <h3>Pais: <%= @residence.country %></h3>

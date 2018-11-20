@@ -9,7 +9,7 @@
 			<th> Nombre </th>
 			<th> Descripción </th>
 			<th> Direccion </th>
-			<th> Pais </th>
+			<th> Localidad </th>
 			<th>  </th>
 			<th>  </th>
 		</tr>
@@ -21,7 +21,7 @@
 					<td> <%= link_to residence.name, residence, class: 'btn btn-link btn-sm'%> </td>
 					<td> <%= truncate(residence.desc, length: 15, seperator: ' ') %> </td>
 					<td> <%= residence.dir %> </td>
-					<td> <%= residence.country %> </td>
+					<td> <%= "#{residence.country}, #{residence.province}, #{residence.locality}" %> </td>
 					<% if current_user.isAdmin? %> <!-- Funciones exclusivas para administradores -->
 						<td><%= link_to "Edit", edit_residence_path(residence), class: 'btn btn-dark btn-sm'%></td>
 						<% if Auction.exists?(residence_id: residence.id) %> <!-- Se fija si en el listado hay residencias que se encuentran en subasta -->

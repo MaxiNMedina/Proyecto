@@ -1,8 +1,31 @@
 <div class="centered">
   <div>
-
+  <h1>Perfil</h1>
   <% if @user.isAdmin? %> <!--SI SOY USUARIO VEO ESTO-->
-    <p> Nombre de Administrador: <%= @user.userName %> </p>
+<div class="profile">
+  <table class="profile-table">
+    <tr>
+      <td class="bold"> Nombre de Perfil</td>
+      <td class="profile-field"><%= @user.userName %></td>
+    </tr>
+    <tr>
+      <td class="bold"> Email </td>
+      <td class="profile-field"><%= @user.email %></td>
+    </tr>
+    <tr>
+      <td class="bold"> Creado el </td>
+      <td class="profile-field"><%= @user.created_at %></td>
+    </tr>
+    <tr>
+      <td class="bold"> Editado el </td>
+      <td class="profile-field"><%= @user.updated_at %></td>
+    </tr>
+    <tr>
+      <td class="bold"> Administrador </td>
+      <td class="profile-field"><%= @user.isAdmin %></td>
+    </tr>
+  </table>
+</div>
   <%else%>
     <p> Nombre de Usuario: <%= @user.userName %> </p>
     <p> Creditos: <%= @user.credits %> </p>
@@ -16,10 +39,10 @@
     <% else %> <!--Si no es asi, entonces es un administrador-->
       <% if @user.isPremium == "solicitado" %> <!--Revisa si el usuario que esta mirando el administrador solicito ser premium-->
         <tr><%= link_to "Habilitar usuario a ser premium", enable_premium_user_path, class: 'btn btn-info' %></tr>
-      <% else %> 
+      <% else %>
         <% if @user.isPremium == "si" %> <!--Si no entro en el anterior if, pregunta si ya es un usuario premium-->
           <tr><%= link_to "Desabilitar usuario de condicion premium", disable_premium_user_path, class: 'btn btn-danger' %></tr>
-        <% end %> 
+        <% end %>
       <% end %>
     <% end %>
 
@@ -42,6 +65,9 @@
       </table>
     </div>
     <%end%>
+  <% end %>
+  <% if current_user.present? &&  current_user.isAdmin? %>
+<td><%= link_to "Lista de admins", admins_path, class: 'btn btn-warning' %></td>
   <% end %>
   <td><%= link_to "Volver", root_path, class: 'btn btn-secondary' %></td>
   <td><%= link_to "Editar perfil", edit_user_path(@user), class: 'btn btn-dark '%></td>

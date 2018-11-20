@@ -14,6 +14,14 @@ Rails.application.routes.draw do
         get 'disable_premium'
  		end
 	end
+    #ADMINISTRADORES
+    get '/admins', to:'users#indexAdmins'
+    get '/admins/new', to:'users#newAdmin'
+    post '/admins', to:'users#createAdmin'
+    get '/admins/:id/destroy', to:'users#destroyAdmin'
+    delete '/admins/:id/destroy', to:'users#destroyAdmin', as: 'destroyAdmin'
+
+    #
     get '/enterBid', to:'auctions#enterBid'
     get '/contact', to:'contacto#contact'
     get '/contact_success', to:'contacto#contact_success'

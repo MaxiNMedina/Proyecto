@@ -2,21 +2,40 @@ class UsersController < ApplicationController
   #@user = User.find params[:user_id]
   #@auction = @user.auctions.find params[:id]
   #@auction << current_user
+  protect_from_forgery #para que ande createAdmin
 
   def index
     @user = User.all
   end
 
-  def new 
+  def indexAdmins
+    @admin = User.admins
+  end
+
+  def new
   	@user = User.new
   end
 
+  def newAdmin
+    @admin = User.new
+  end
+
   def create
-    @user = User.new( params.require(:user).permit(:userName, :email, :password, :credits) )
+    @user = User.new( params.require(:user).permit(:userName, :email, :password, :credits, :isAdmin) )
     if @user.save
-      redirect_to users_path, notice: "Se añadio un usuario exitosamente."
+        redirect_to users_path, notice: "Se añadio un usuario exitosamente."
     else
       render :new
+    end
+  end
+
+  def createAdmin
+    @admin = User.new( params.require(:user).permit(:userName, :email, :password, :credits, :isAdmin) )
+    if @admin.save
+      redirect_to admins_path, notice: "Se añadio un admin exitosamente."
+    else
+      @error = "Contrasena muy debil"
+      render :newAdmin
     end
   end
 
@@ -28,6 +47,11 @@ class UsersController < ApplicationController
   def destroy
     @user = User.destroy(params[:id])
     redirect_to users_path
+  end
+
+  def destroyAdmin
+    @admin = User.destroy(params[:id])
+    redirect_to admins_path
   end
 
   def edit

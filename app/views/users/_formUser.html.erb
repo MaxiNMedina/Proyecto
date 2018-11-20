@@ -15,13 +15,14 @@
     <div class="row">
       <%= f.label :credits, 'Creditos' %>
       <%= f.text_field :credits, required: true, class: 'form-control' %>
+      <%= f.hidden_field :isAdmin, value: false %>
     </div>
   <% end %>
 
   <br>
 
     <%if current_user.present? && current_user.isAdmin? %>
-      <%= link_to "Volver", root_path, class: 'btn btn-secondary' %>
+      <%= link_to "Volver", :back, class: 'btn btn-secondary' %>
     <%else%>
       <%= link_to "Volver", user_path, class: 'btn btn-secondary' %>
     <%end%>

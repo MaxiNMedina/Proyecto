@@ -8,13 +8,15 @@ class ResidencesController < ApplicationController
   end
 
   def create    #Crea una nueva residencia y la guarda en la base de datos
-    @residence = Residence.new( params.require(:residence).permit(:name, :desc, :dir, :available, :image_url) )
+    @residence = Residence.new( params.require(:residence).permit(:name, :country, :province, :locality, :dir, :desc, :available, :image_url) )
     if @residence.save
-      redirect_to residences_path, notice: "Se añadio la residencia exitosamente."   #redirecciono a la pagina de residencias
+      redirect_to residences_path  #redirecciono a la pagina de residencias
     else
+      if (@residence.errors.added? :image_url)
+        @error = "Error de validacion de URL. La imagen tiene que ser gif jpg png"
+      end
       render :new
     end
-
   end
 
   def show
