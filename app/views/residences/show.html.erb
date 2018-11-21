@@ -2,7 +2,8 @@
   <h1> <%= @residence.name %> </h1> <!--DESCRIPCION DE UNA RESIDENCIA-->
   <br>
   <div>
-  <% if @residence.image_url? &&  Utils.image_exists?(@residence.image_url) %> <!--Revisa si la residencia tiene una foto. Si no, mostrara una imagen de no disponible-->
+  <!--Revisa si la residencia tiene una foto. Si no, mostrara una imagen de no disponible-->
+  <% if @residence.image_url? %> <!-- && Utils.image_exists?(@residence.image_url) LO BORRE PORQUE NO FUNCIONA-->
     <%= image_tag @residence.image_url %>
   <% else %>
     <%= image_tag 'no_disponible.jpg' %>
