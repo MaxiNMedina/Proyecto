@@ -32,6 +32,9 @@
       <%= f.number_field :credits, :value => 2, readonly: true, class: 'form-control' %> <!-- NO SE PUEDE EDITAR ESTE CAMPO-->
     </div>
 
+    <%= f.hidden_field :isAdmin, value: false %> <!-- PARA QUE ME LOS INICIALIZE DEBO INCLUIRLOS EN APPLICATION_CONTROLLER.RB-->
+    <%= f.hidden_field :isPremium, value: 'no' %>
+
     <div style="padding-top:20px">
       <%= f.submit "Registrarse", class: 'btn btn btn-success' %>
     </div>
