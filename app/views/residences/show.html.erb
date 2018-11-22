@@ -1,6 +1,7 @@
 <div class="centered">
   <h1> <%= @residence.name %> </h1> <!--DESCRIPCION DE UNA RESIDENCIA-->
   <br>
+  <h6><%= image_tag 'ubication.png', height: '30', width: '20' %> <%= @residence.dir %>, <%= @residence.locality %>, <%= @residence.province %>, <%= @residence.country %></h6>
   <div>
   <!--Revisa si la residencia tiene una foto. Si no, mostrara una imagen de no disponible-->
   <% if @residence.image_url? %> <!-- && Utils.image_exists?(@residence.image_url) LO BORRE PORQUE NO FUNCIONA-->
@@ -11,12 +12,8 @@
   </div>
 
   <br><br>
-  <h3>Pais: <%= @residence.country %></h3>
-  <h3>Provincia: <%= @residence.province %></h3>
-  <h3>Localidad: <%= @residence.locality %></h3>
-  <h3>Direccion: <%= @residence.dir %></h3>
-  <h2>Descripcion de la residencia</h2>
-  <h3><%= @residence.desc %></h3>
+  <h5>Descripcion</h5>
+  <p><%= @residence.desc %></p>
   <br><br>
   <h2>Subastas de esta residencia:</h2>
   <table class="table">
