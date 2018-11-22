@@ -5,9 +5,9 @@
   <div>
   <!--Revisa si la residencia tiene una foto. Si no, mostrara una imagen de no disponible-->
   <% if @residence.image_url? %> <!-- && Utils.image_exists?(@residence.image_url) LO BORRE PORQUE NO FUNCIONA-->
-    <%= image_tag @residence.image_url %>
+    <%= image_tag @residence.image_url , class: 'img-fluid' %>
   <% else %>
-    <%= image_tag 'no_disponible.jpg' %>
+    <%= image_tag 'no_disponible.jpg', class: 'img-fluid' %>
   <% end %>
   </div>
 

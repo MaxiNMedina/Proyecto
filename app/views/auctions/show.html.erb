@@ -1,12 +1,31 @@
 <div class="centered">
-  <h1> Subasta nº<%= @auction.id %> </h1> <!--DESCRIPCION DE UNA SUBASTA-->
-  <p> Precio actual: $<%= @auction.maxbid %>  </p>
-  <p> Fecha de inicio de la subasta: <%= @auction.dateStart.strftime("%d/%m/%Y") %>  </p>
-  <p> Fecha de fin de la subasta: <%= @auction.dateEnd.strftime("%d/%m/%Y") %>  </p>
-
-
-  <%= link_to "Detalle de #{@auction.residence.name}", { :controller => 'residences', :action =>'show', :id =>@auction.residence_id}, class: 'btn btn-primary' %>
+  <h1> Subasta Nº <%= @auction.id %> </h1> <!--DESCRIPCION DE UNA SUBASTA-->
+  <br>
+  <div class="container">
+  	<div class="row">
+  		<div class="col-sm">
+  			<h6> Precio actual: $<%= @auction.maxbid %>  </h6>
+  		</div>
+  		<div class="col-sm">
+  			<h6> Fecha de inicio de la subasta: <%= @auction.dateStart.strftime("%d/%m/%Y") %>  </h6>
+  		</div>
+  		<div class="col-sm">
+  			<h6> Fecha de fin de la subasta: <%= @auction.dateEnd.strftime("%d/%m/%Y") %>  </h6> 
+  		</div>  
+  	</div>
+  </div>
   </br>
+  <div class="container">
+  	<div class="row">
+    	<div class="col-sm">
+     		<%= image_tag @auction.residence.image_url , height: '300', width: '480' %>
+    	</div>
+    	<div class="col-sm">
+    		<p> <%= @auction.residence.name %></p>
+    		<p> <%= @auction.residence.dir %>, <%= @auction.residence.locality %>, <%= @auction.residence.province %>, <%= @auction.residence.country %> </p>
+    	</div>
+    </div>
+</div>
   </br>
   <%= link_to "Volver", auctions_path, class: 'btn btn-secondary' %>
   <%= link_to "Ingresar", enterBid_path(:id => @auction.id), class: 'btn btn-secondary' %>
