@@ -19,7 +19,8 @@ class AuctionsController < ApplicationController
   end
 
   def create
-    @auction = Auction.new(params.require(:auction).permit(:residence_id, :maxbid, :dateStart))
+    @auction = Auction.new(params.require(:auction).permit(:residence_id, :maxbid, :dateStart, :user_id))
+    @auction.user = current_user
     @auction.dateEnd =  @auction.dateStart + 3
     if @auction.save
       redirect_to auctions_path, notice: "Se creo la subasta exitosamente."  #redirecciono a la pagina de subastas
