@@ -14,25 +14,26 @@
 @import "bootstrap";
 
 
+// body {
+// 	background-color:#FFFF; /*Color de fondo blanco*/
+//  	padding-bottom: 220px;
+//   	margin-bottom: 114px;
+// }
+
 body {
-	background-color:#FFFF; /*Color de fondo blanco*/
- 	padding-bottom: 220px;
-  	margin-bottom: 114px;
+  background: url('https://w-dog.net/wallpapers/8/19/511932503574273/bayern-munich-germany-mountain-house-morning-fog-tree-grass-nature.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
 }
 
 footer {
-	position: absolute;
-	margin-top: 50%;
-	top: 100%;
-	right: 0%;
-	width: 100%;
+	margin-top: 30%;
 }
 footer .navbar {
 	border-top: 1px solid #999;
 	background-color: #EEE;
-}
-.footerlist {
-	width: 70%;
 }
 .footerlist ul{
 	list-style-type: none;
@@ -59,28 +60,17 @@ footer .navbar {
 	text-decoration: none;
 }
 #logo {
-	padding-right: 10px;
+	right: 500px;
 }
-.background {
-     width: 50%;
-     height: 200px;
-     margin-left: 25%;
-     border-radius: 50%;
-     background-image: url('https://w-dog.net/wallpapers/8/19/511932503574273/bayern-munich-germany-mountain-house-morning-fog-tree-grass-nature.jpg');
-     background-size: cover;
-     background-repeat: no-repeat;
-	 background-color: white;
-
-}
-header .navbar{
-	position: absolute;
-	top: 8px;
-	left: 16px;
-}
-.header-logo {
-	color: #FFF;
-  text-shadow: 0 0 3px #000;
-}
+// .background {
+//      width: 50%;
+//      height: 200px;
+//      margin-left: 25%;
+//      border-radius: 50%;
+//      background-size: cover;
+//      background-repeat: no-repeat;
+// 		 background-color: white;
+// }
 
 .error {
 	color: red;
@@ -121,8 +111,12 @@ header .navbar{
 .bold {
 	font-weight: bold;
 }
-.centered {
-	padding-top: 120px;
+.hsh-window {
+	border: 1px solid grey;
+  background-color: white;
+	border-radius: 20px;
+	margin: 150px 0px 0px 0px;
+	padding: 15px 15px 15px 120px
 }
 
 #usr-nav{
@@ -169,6 +163,9 @@ header .navbar{
 		text-decoration: none;
 }
 
+#hsh-body{
+	margin: 200px 0px 0px 150px;
+}
 #hsh-nav{
 	list-style-type: none;
 	background-color: #FFF0;
@@ -190,3 +187,5 @@ header .navbar{
 	border: 1px none #999;
 	padding-top: 800px;
 }
+
+///

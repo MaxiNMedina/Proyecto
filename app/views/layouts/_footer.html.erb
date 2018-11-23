@@ -1,12 +1,13 @@
-<footer>  <!-- Footer -->
-	<div class="navbar">
-		<nav class="footerlist">
+<footer class="container">  <!-- Footer -->
+	<div class="navbar navbar-expand-lg navbar-dark fixed-bottom">
+		<nav class="footerlist col-8">
 			<ul>
 				<li><%= link_to "Pagina principal", root_path%></li>
 				<li><%= link_to 'Ver Preguntas Frecuentes', faq_path%></li>
 				<li><%= link_to "Contacto", contact_path%></li>
 			</ul>
 		</nav>
-		<%= image_tag "logo.png", title: "Logo", id:"logo"%>
+		<div class="col"></div>
+		<div class="col"><%= image_tag "logo.png", title: "Logo", id:"logo"%></div>
 	</div>
 </footer>
