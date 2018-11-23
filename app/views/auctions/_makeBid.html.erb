@@ -2,19 +2,6 @@
 
   <%= form_for @auction do |f| %>
 
-    <%= fields_for :user, @user do |uf| %>
-
-      <div class="row">
-        <%= uf.label :"Email" %>
-        <%= uf.text_field :email, required: true, class: 'form-control' %>
-      </div>
-
-      <div class="row">
-        <%= uf.label :"Password" %>
-        <%= uf.password_field :password, required: true, class: 'form-control' %>
-      </div>
-    <% end %>
-
   <div class="row">
     <%= "Subir la puja" %>
     <%= number_field_tag :addtobid, {required: true }, {min: 0, class: 'form-control'} %>

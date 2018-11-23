@@ -2,7 +2,7 @@ class Utils
   require 'net/http'
   require 'uri'
 
-  def image_exists?(url)
+  def self.image_exists?(url)
     url = URI.parse(url)
     http = Net::HTTP.start(url.host, url.port)
 

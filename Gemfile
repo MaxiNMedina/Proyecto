@@ -67,3 +67,5 @@ gem 'bootstrap', '~> 4.1.3'
 gem 'jquery-ui-rails'
 gem 'jquery-rails'
 gem 'devise', git: 'git://github.com/plataformatec/devise.git' 
+# debugger con binding.pry
+gem "pry-byebug"
