@@ -1,7 +1,9 @@
 <div class="hsh-window">
 <h1> Listado de Subastas </h1>  <!-- TABLA DE SUBASTAS-->
 <br>
-<%= link_to "Crear Subasta", new_auction_path ,class: 'btn btn-info'%>
+<% if current_user.present? && current_user.isAdmin?%>
+	<%= link_to "Crear Subasta", new_auction_path ,class: 'btn btn-info'%>
+<%end%>
 <br>
 <br>
 <table class="table">

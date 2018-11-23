@@ -1,7 +1,9 @@
 <div class="hsh-window">
 	<h1> Listado de Residencias </h1>  <!-- TABLA DE RESIDENCIAS-->
 	<br>
-	<%= link_to "Crear Residencia", new_residence_path ,class: 'btn btn-info'%>
+	<% if current_user.present? && current_user.isAdmin?%>
+		<%= link_to "Crear Residencia", new_residence_path ,class: 'btn btn-info'%>
+	<%end%>
 	<br><br>
 	<table class="table">
 
