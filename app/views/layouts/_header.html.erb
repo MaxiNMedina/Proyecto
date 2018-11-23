@@ -37,7 +37,7 @@
             <li><%= link_to 'Cerrar Sesion', destroy_user_session_path, method: :delete, class: 'btn btn-danger'%></li>
         <% else%>
           <li><%= link_to "Iniciar Sesion", new_user_session_path, class: 'btn btn-light'%></li>
-          <li><%= link_to "Registrarse", new_user_registration_path, class: 'btn btn btn-success'%></li>
+          <li><%= link_to "Registrarse", new_user_registration_path, class: 'btn btn-success'%></li>
         <% end %>
         </ul>
 

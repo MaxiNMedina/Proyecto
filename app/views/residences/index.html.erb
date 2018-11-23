@@ -24,7 +24,7 @@
 					<td> <%= truncate(residence.desc, length: 15, seperator: ' ') %> </td>
 					<td> <%= residence.dir %> </td>
 					<td> <%= "#{residence.country}, #{residence.province}, #{residence.locality}" %> </td>
-					<% if current_user.isAdmin? %> <!-- Funciones exclusivas para administradores -->
+					<% if user_signed_in? && current_user.isAdmin? %> <!-- Funciones exclusivas para administradores -->
 						<td><%= link_to "Editar", edit_residence_path(residence), class: 'btn btn-dark btn-sm'%></td>
 						<% if Auction.exists?(residence_id: residence.id) %> <!-- Se fija si en el listado hay residencias que se encuentran en subasta -->
 							<td><%= link_to "En subasta", residence, method: :delete,  class: 'btn btn-danger btn-sm disabled', data: { confirm: 'Realmente desea borrar la residencia?'}%></td>
