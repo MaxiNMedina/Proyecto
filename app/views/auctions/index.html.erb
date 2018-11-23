@@ -7,11 +7,11 @@
 <table class="table">
 
 	<tr>
-		<th> Id </th>
-    <th> Puja maxima </th>
-    <th> Para la residencia </th>
-    <th></th>
-    <th></th>
+		<th> N° de subasta </th>
+    	<th> Puja maxima </th>
+    	<th> Para la residencia </th>
+    	<th></th>
+    	<th></th>
 	</tr>
 	<% auctions = Auction.all %>
 	<% auctions.each do |auction| %>
@@ -19,8 +19,8 @@
 			<td> <%= auction.id %> </td>
       		<td> <%= auction.maxbid %> </td>
       		<td> <%= auction.residence.name %> </td>
-			<td><%= link_to "Ver", auction, class: 'btn btn-info btn-sm'%></td>
-			<td><%= link_to "Finalizar", auction, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Realmente desea finalizar la subasta?'} %></td>
+			<td><%= link_to "Ver detalles", auction, class: 'btn btn-info btn-sm'%></td>
+			<!-- <td><%= link_to "Finalizar", auction, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Realmente desea finalizar la subasta?'} %></td> --> <!-- Oculte el boton de finalizar subastas ya que la subasta debe finalizar sola -->
 		</tr>
 		<% end %>
 	<% if auctions.size == 0 %>

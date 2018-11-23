@@ -1,5 +1,5 @@
 class AuctionsController < ApplicationController
-
+  before_action :authenticate_user!, only: [:enterBid]
   def index
     @auction = Auction.all
   end
@@ -19,7 +19,8 @@ class AuctionsController < ApplicationController
   end
 
   def create
-    @auction = Auction.new(params.require(:auction).permit(:residence_id, :maxbid, :dateStart))
+    @auction = Auction.new(params.require(:auction).permit(:residence_id, :maxbid, :dateStart, :user_id))
+    @auction.user = current_user
     @auction.dateEnd =  @auction.dateStart + 3
     if @auction.save
       redirect_to auctions_path, notice: "Se creo la subasta exitosamente."  #redirecciono a la pagina de subastas
@@ -29,10 +30,6 @@ class AuctionsController < ApplicationController
   end
 
   def update
-    @user = User.new(params.require(:user).permit(:email, :password, :credits))
-    #@user.credits -= 1
-    @user.save
-
     @auction = Auction.find(params[:id])
     #@auction.user.email = params[:user][:email]
     if @auction.maxbid.nil?
@@ -40,6 +37,7 @@ class AuctionsController < ApplicationController
     else
       @auction.maxbid += params[:addtobid].to_f
     end
+    @auction.user = current_user
     @auction.save
   end
 

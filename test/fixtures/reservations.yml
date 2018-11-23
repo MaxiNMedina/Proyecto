@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  residence: one
+  user: one
+  year: 1
+  week: 1
+
+two:
+  residence: two
+  user: two
+  year: 1
+  week: 1

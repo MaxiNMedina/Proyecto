@@ -36,7 +36,7 @@ class ResidencesController < ApplicationController
   def update
     @residence = Residence.find(params[:id])
     @residence.update(residence_params)
-    redirect_to residences_path
+    redirect_to residences_path, notice: "Se actualizo la residencia con exito"
   end
   #Usado para mandar parametros de la residencia. Lo uso en la modificacion de residencia para actualizar los datos.
   #Se puede usar para otros metdos, como por ej. create.

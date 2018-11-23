@@ -24,5 +24,5 @@ Rails.application.routes.draw do
     #
     get '/enterBid', to:'auctions#enterBid'
     get '/contact', to:'contacto#contact'
-    get '/contact_success', to:'contacto#contact_success'
+    post '/contact_success', to:'contacto#contact_success'
 end
