@@ -43,6 +43,22 @@
       </tr>
       <% end %>
     </table>
+    <h2>Disponibilidad</h2>
+    <table class="table">
+        <tr>
+          <th>Año</th>
+          <th>Semana</th>
+        </tr>
+        <% @availabilities.each do |availability| %>
+          <% if availability.is_available%>
+            <tr>
+              <td> <%= availability.year %> </td>
+              <td>  <%= Date.commercial(availability.year, availability.week) %>  </td>
+              <td>  <%= Date.commercial(availability.year, availability.week)+6 %>  </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </table>
     </div>
     <div class="container">
     <%= link_to "Volver al listado de residencias", residences_path, class: 'btn btn-secondary' %>

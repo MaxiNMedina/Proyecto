@@ -7,12 +7,12 @@ class AvailabilityController < ApplicationController
 		@availability.is_available = true
 		@availability.save 
 	end
-	def init
+	def self.init(rid)
 		y=Date.today.cwyear
 		for j in 1..2
 			for i in 1..52
 				@availability = Availability.new
-				@availability.residence_id= residence_id
+				@availability.residence_id= rid
 				@availability.year = y
 				@availability.week = i
 				@availability.is_available = true
