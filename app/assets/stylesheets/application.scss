@@ -30,6 +30,7 @@ html, body {
     left:0;
     right:0;
     background-color: green;
+    z-index: -2;
 }
 body {
   //background: url('https://w-dog.net/wallpapers/8/19/511932503574273/bayern-munich-germany-mountain-house-morning-fog-tree-grass-nature.jpg') no-repeat center center fixed;
@@ -41,8 +42,10 @@ body {
   margin: 0px;
 }
 
+#hsh-header {
+  background-color: #111D;
+}
 footer {
-	margin-top: -40px;
   position: relative;
   width: 100% !important;
   clear: both;
@@ -81,15 +84,6 @@ footer .navbar {
 #logo {
 	right: 500px;
 }
-// .background {
-//      width: 50%;
-//      height: 200px;
-//      margin-left: 25%;
-//      border-radius: 50%;
-//      background-size: cover;
-//      background-repeat: no-repeat;
-// 		 background-color: white;
-// }
 
 .error {
 	color: red;
@@ -177,7 +171,7 @@ footer .navbar {
 }
 
 .hsh-content {
-	margin: 80px 0px 0px 0px;
+	margin: 85px 0px 0px 0px;
 }
 .hsh-window {
   margin: 0px;
@@ -185,7 +179,11 @@ footer .navbar {
   background-color: white;
 }
 #hsh-home {
-  margin-bottom: 30%;
+  //margin-top: 85px;
+}
+#hsh-home-content {
+  padding-bottom: 30%;
+  padding-bottom: 30%;
 }
 
 #usr-nav{
@@ -199,7 +197,6 @@ footer .navbar {
 	top: 8px;
 	right: 16px;
 }
-
 #usr-nav li {
 	float: left;
 	display: block;
