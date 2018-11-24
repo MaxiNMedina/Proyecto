@@ -5,17 +5,20 @@ class AuctionsController < ApplicationController
   end
 
   def show
-    @auction = Auction.find(params[:id]) #Asigna la subasta id a la variable subasta
+    @auction = Auction.find(params[:id])
     @user = User.new
   end
 
-  def destroy            #elimina una residencia de la base de datos
+  def destroy
+      @auction = Auction.find(params[:id])
+      @reservation = Reservation.new(residence: @auction.residence, user: @auction.user, year: "2018", week: "1")
+      @reservation.save
       @auction = Auction.destroy(params[:id])
       redirect_to auctions_path
     end
 
   def new
-    @auction = Auction.new #Creo una nueva subasta
+    @auction = Auction.new
   end
 
   def create
@@ -23,7 +26,7 @@ class AuctionsController < ApplicationController
     @auction.user = current_user
     @auction.dateEnd =  @auction.dateStart + 3
     if @auction.save
-      redirect_to auctions_path, notice: "Se creo la subasta exitosamente."  #redirecciono a la pagina de subastas
+      redirect_to auctions_path, notice: "Se creo la subasta exitosamente."
     else
       render :new
     end
