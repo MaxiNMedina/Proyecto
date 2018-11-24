@@ -1,31 +1,51 @@
 <div class="hsh-window">
-  <h1> <%= @residence.name %> </h1> <!--DESCRIPCION DE UNA RESIDENCIA-->
-  <br>
-  <h6><%= image_tag 'ubication.png', height: '30', width: '20' %> <%= @residence.dir %>, <%= @residence.locality %>, <%= @residence.province %>, <%= @residence.country %></h6>
-  <div>
   <!--Revisa si la residencia tiene una foto. Si no, mostrara una imagen de no disponible-->
-  <% if @residence.image_url?  %> <!--&& Utils.image_exists?(@residence.image_url) --> 
-    <%= image_tag @residence.image_url , class: 'img-fluid' %>
+  <div class="row residence-images">
+  <% if @residence.image_url?  %> <!--&& Utils.image_exists?(@residence.image_url) -->
+    <%= image_tag @residence.image_url , class: 'img-fluid residence-pic' %>
   <% else %>
     <%= image_tag 'no_disponible.jpg', class: 'img-fluid' %>
   <% end %>
   </div>
 
-  <br><br>
-  <h5>Descripcion</h5>
-  <p><%= @residence.desc %></p>
-  <br><br>
-  <h2>Subastas de esta residencia:</h2>
-  <table class="table">
-    <tr>
-      <th> Precio Actual</th>
-    </tr>
-  	<% @auctions.each do |auction| %>
-    <tr>
-      <td> <%= auction.maxbid %> </td>
-      <td> <%= link_to "Ingresar", enterBid_path(:id => auction.id), class: 'btn btn-secondary' %> </td>
-    </tr>
-    <% end %>
-  </table>
-  <%= link_to "Volver al listado de residencias", residences_path, class: 'btn btn-secondary' %>
+  <div class="row residence-content">
+    <div class="container">
+      <h1> <%= @residence.name %> </h1> <!--DESCRIPCION DE UNA RESIDENCIA-->
+      <h6><%= image_tag 'ubication.png', height: '30', width: '20' %> <%= @residence.dir %>, <%= @residence.locality %>, <%= @residence.province %>, <%= @residence.country %></h6>
+      <h5>Descripcion</h5>
+      <p><%= @residence.desc %></p>
+    </div>
+    <div class="container">
+    <h2>Subastas de esta residencia:</h2>
+    <table class="table">
+      <tr>
+        <th> Precio Actual</th>
+      </tr>
+    	<% @auctions.each do |auction| %>
+      <tr>
+        <td> <%= auction.maxbid %> </td>
+        <td> <%= link_to "Ingresar", enterBid_path(:id => auction.id), class: 'btn btn-secondary' %> </td>
+      </tr>
+      <% end %>
+    </table>
+    <h2>Residencia en semana</h2>
+    <table class="table">
+      <tr>
+        <th>Año</th>
+        <th>Semana</th>
+        <th>Ganador</th>
+      </tr>
+    	<% @reservations.each do |reservation| %>
+      <tr>
+        <td> <%= reservation.year %> </td>
+        <td> <%= reservation.week %> </td>
+        <td> <%= reservation.user.userName %> </td>
+      </tr>
+      <% end %>
+    </table>
+    </div>
+    <div class="container">
+    <%= link_to "Volver al listado de residencias", residences_path, class: 'btn btn-secondary' %>
+    </div>
+  </div>
 </div>

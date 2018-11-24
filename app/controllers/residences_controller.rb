@@ -22,6 +22,7 @@ class ResidencesController < ApplicationController
   def show
   	@residence = Residence.find(params[:id]) #Asigna la residencia a la variable residencia
     @auctions = @residence.auctions
+    @reservations = @residence.reservations
   end
 
   def edit
