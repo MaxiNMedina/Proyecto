@@ -6,7 +6,6 @@ class AuctionsController < ApplicationController
 
   def show
     @auction = Auction.find(params[:id])
-    @user = User.new
   end
 
   def destroy

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  residence: one
+  year: 1
+  week: 1
+  is_available: false
+
+two:
+  residence: two
+  year: 1
+  week: 1
+  is_available: false
