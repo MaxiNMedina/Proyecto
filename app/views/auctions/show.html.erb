@@ -23,12 +23,12 @@
     	<div class="col-sm">
     		<p> <%= @auction.residence.name %></p>
     		<p> <%= @auction.residence.dir %>, <%= @auction.residence.locality %>, <%= @auction.residence.province %>, <%= @auction.residence.country %> </p>
-        <p> Usuario que va ganando <%= @auction.user.userName %>
+        <p> Usuario que va ganando: <%= @auction.user.userName %>.Esto es para probar relaciones. Luego lo oculto o lo borro </p>
     	</div>
     </div>
 </div>
   </br>
-  <%= link_to "Volver", auctions_path, class: 'btn btn-secondary' %>
+  <%= link_to "Volver", :back , class: 'btn btn-secondary' %>
   <%= link_to "Ingresar", enterBid_path(:id => @auction.id), class: 'btn btn-secondary' %>
 
 </div>
