@@ -9,8 +9,9 @@ class AvailabilityController < ApplicationController
 	end
 	def self.init(rid)
 		y=Date.today.cwyear
+		w=Date.today.cweek
 		for j in 1..2
-			for i in 1..52
+			for i in w..52
 				@availability = Availability.new
 				@availability.residence_id= rid
 				@availability.year = y
@@ -19,6 +20,7 @@ class AvailabilityController < ApplicationController
 				@availability.save
 			end
 			y= y+1
+			w= 1
 		end
 	end
 end

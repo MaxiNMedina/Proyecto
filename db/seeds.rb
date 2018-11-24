@@ -12,6 +12,21 @@ resAlex = Residence.create(name: "casa de Alex", country: "Argentina", province:
 resMaxi = Residence.create(name: "casa de Maxi", country: "Argentina", province: "Buenos Aires", locality:"La Plata", dir: "Avenida 44 N°1877", desc: "excelente", available: true, image_url: "residencia_2.jpg")
 resVic = Residence.create(name: "casa de Victor", country: "Argentina", province: "Buenos Aires", locality:"La Plata", dir: "Calle 28 N°120", desc: "super", available: false, image_url: "https://articles-images.sftcdn.net/wp-content/uploads/sites/2/2018/09/casa-alquiler.jpg")
 
+res_array = [resAlex, resMaxi, resVic]
+puts "Cargando base de datos de disponibilidad de residencias"
+puts "Esto puede tardar unos minutos"
+y=Date.today.cwyear
+w=Date.today.cweek
+	res_array.each do |res|
+		for j in 1..2
+			for i in w..52
+				res.availability = Availability.create(residence_id: res.id, year: y, week: i, is_available: true)
+			end
+			y= y+1
+			w= 1
+		end
+	end
+puts "La carga se ha completado"
 puts "Creando Administradores"
 admAlex = User.create(userName: "alex", email: "alex@mail.com", password: "alex123", credits: 2, isAdmin: true, isPremium: 'no')
 admMaxi = User.create(userName: "maxi",email: "maxi@mail.com", password: "maxi123", credits: 2, isAdmin: true, isPremium: 'no')
@@ -26,3 +41,4 @@ puts "Creando Usuarios"
 User.create(userName: "pepe", email: "pepe@mail.com", password: "pepe123", credits: 2, isAdmin: false, isPremium: 'no')
 User.create(userName: "jose",email: "jose@mail.com", password: "jose123", credits: 2, isAdmin: false, isPremium: 'si')
 User.create(userName: "maria",email: "maria@mail.com", password: "maria123", credits: 2, isAdmin: false, isPremium: 'no')
+
