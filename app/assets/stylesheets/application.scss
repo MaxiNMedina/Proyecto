@@ -19,24 +19,42 @@
 //  	padding-bottom: 220px;
 //   	margin-bottom: 114px;
 // }
-
+html, body {
+    overflow: auto;
+    min-height: 100%;
+    display: block;
+    position:absolute;
+    height:auto;
+    bottom:0;
+    top:0;
+    left:0;
+    right:0;
+    background-color: green;
+    z-index: -2;
+}
 body {
-  background: url('https://w-dog.net/wallpapers/8/19/511932503574273/bayern-munich-germany-mountain-house-morning-fog-tree-grass-nature.jpg') no-repeat center center fixed;
+  //background: url('https://w-dog.net/wallpapers/8/19/511932503574273/bayern-munich-germany-mountain-house-morning-fog-tree-grass-nature.jpg') no-repeat center center fixed;
+  background-color: white;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
+  margin: 0px;
 }
 
+#hsh-header {
+  background-color: #111D;
+}
 footer {
-	margin-top: 30%;
+  position: relative;
   width: 100% !important;
-  bottom: 100%;
   clear: both;
-  height: 40px;
+  bottom:0;
+  height: 60px;
 }
 footer .navbar {
 	border-top: 1px solid #999;
+  padding-bottom: 100px;
 	background-color: #EEE;
 }
 .footerlist ul{
@@ -49,7 +67,7 @@ footer .navbar {
 }
 .footerlist li{
 	list-style-type: none;
-	padding-right: 100px;
+	padding-right: 50px;
 	float: left;
 }
 .footerlist a{
@@ -66,15 +84,6 @@ footer .navbar {
 #logo {
 	right: 500px;
 }
-// .background {
-//      width: 50%;
-//      height: 200px;
-//      margin-left: 25%;
-//      border-radius: 50%;
-//      background-size: cover;
-//      background-repeat: no-repeat;
-// 		 background-color: white;
-// }
 
 .error {
 	color: red;
@@ -92,7 +101,6 @@ footer .navbar {
 	padding-top: 15px;
 	padding-bottom: 15px;
 }
-
 .profile-table {
 	border-style: none;
 	margin: 20px;
@@ -147,6 +155,7 @@ footer .navbar {
 	width: 500px;
 	height: 50px;
 	border-top: solid 1px;
+  padding-right: 10px;
 	padding-top: 15px;
 	padding-bottom: 50px;
 }
@@ -158,15 +167,24 @@ footer .navbar {
 .bold {
 	font-weight: bold;
 }
+.fit{
+  width: 100%;
+}
 
 .hsh-content {
-	margin: 80px 0px 0px 0px;
-
+	margin: 85px 0px 0px 0px;
 }
 .hsh-window {
-  margin-top: 200px;
-  padding: 50px 50px 50px 50px;
+  margin: 0px;
+  padding: 100px 50px 400px 50px;
   background-color: white;
+}
+#hsh-home {
+  //margin-top: 85px;
+}
+#hsh-home-content {
+  padding-bottom: 30%;
+  padding-bottom: 30%;
 }
 
 #usr-nav{
@@ -180,7 +198,6 @@ footer .navbar {
 	top: 8px;
 	right: 16px;
 }
-
 #usr-nav li {
 	float: left;
 	display: block;
