@@ -92,14 +92,6 @@ footer .navbar {
 	right: 500px;
 }
 
-.error {
-	color: red;
-	background-color: yellow;
-	font-weight: 600;
-	text-align: center;
-	width: 25%;
-}
-
 .profile {
 	text-indent: 20px;
 	border: 2px none grey;
@@ -171,6 +163,27 @@ footer .navbar {
 	color: black;
 }
 
+.form {
+  margin: 30px;
+  padding: 10px;
+  //border: solid 1px grey;
+}
+.form .col{
+padding-right: 100px;
+}
+.form .row{
+padding-bottom: 50px;
+}
+.form-footer {
+  margin: -100px;
+}
+.error {
+  margin-bottom: 30px;
+	color: red;
+	background-color: yellow;
+	font-weight: 600;
+}
+
 .bold {
 	font-weight: bold;
 }
@@ -179,10 +192,9 @@ footer .navbar {
 }
 
 .hsh-content {
-	margin: 85px 0px 0px 0px;
+	margin: 85px 0px 0px 0px; //debajo del fixed header
 }
 .hsh-window {
-  margin: 0px;
   padding: 100px 50px 400px 50px;
   background-color: white;
 }
@@ -190,7 +202,6 @@ footer .navbar {
   //margin-top: 85px;
 }
 #hsh-home-content {
-  padding-bottom: 30%;
   padding-bottom: 30%;
 }
 
