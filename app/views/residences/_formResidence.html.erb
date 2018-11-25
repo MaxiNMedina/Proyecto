@@ -1,53 +1,71 @@
 <div class="container">
-  <%= form_for @residence do |f| %>
 
-  <div class="row">
-    <%= f.label :name, 'Nombre de residencia' %>
-    <%= f.text_field :name, required: true, placeholder: "Nombre", class: 'form-control' %>
-  </div>
-  <br>
-  <div class="row">
-    <%= f.label :country, 'Pais' %>
-    <%= f.text_field :country, required: true, placeholder: "Argentina", class: 'form-control' %>
-  </div>
-  <br>
-  <div class="row">
-    <%= f.label :province, 'Provincia' %>
-    <%= f.text_field :province, required: true, placeholder: "Buenos Aires", class: 'form-control' %>
-  </div>
-  <br>
-  <div class="row">
-    <%= f.label :locality, 'Localidad' %>
-    <%= f.text_field :locality, required: true, placeholder: "La Plata", class: 'form-control' %>
-  </div>
-  <br>
-  <div class="row">
-    <%= f.label :dir, 'Direccion' %>
-    <%= f.text_field :dir, required: true, placeholder: "Calle 12 N°34", class: 'form-control' %>
-  </div>
-  <br>
-  <div class="row">
-    <%= f.label :desc, 'Descripcion' %>
-    <%= f.text_area :desc, required: true, placeholder: "Descripcion de la residencia", class: 'form-control' %>
-  </div>
-  <br>
-  <div class="row">
-    <%= f.label :available, 'Disponibilidad' %>
-    <%= f.select :available, [['Disponible', true], ['No disponible', false]], {}, {class: "form-control"} %>
-  </div>
-  <br>
-  <div class="">
-    <%= f.label :image_url, 'Ingrese la URL con la foto de la residencia:' %>
-    <%= f.url_field :image_url, required: true, placeholder: "Ingrese una URL", class: 'form-control' %>
+  <div class="form row">    <%= form_for @residence do |f| %>
+
+   <div class="row">
+      <div class="col">
+
+        <div class="row">
+          <%= f.label :name, 'Nombre de residencia' %>
+          <%= f.text_field :name, required: true, placeholder: "Nombre", class: 'form-control' %>
+        </div>
+
+        <div class="row">
+          <%= f.label :country, 'Pais' %>
+          <%= f.text_field :country, required: true, placeholder: "Argentina", class: 'form-control' %>
+        </div>
+
+        <div class="row">
+          <%= f.label :province, 'Provincia' %>
+          <%= f.text_field :province, required: true, placeholder: "Buenos Aires", class: 'form-control' %>
+        </div>
+
+        <div class="row">
+          <%= f.label :image_url, 'Ingrese la URL con la foto de la residencia:' %>
+          <%= f.url_field :image_url, required: true, placeholder: "Ingrese una URL", class: 'form-control' %>
+        </div>
+
+      </div>
+
+      <div class="col">
+
+        <div class="row">
+          <%= f.label :dir, 'Direccion' %>
+          <%= f.text_field :dir, required: true, placeholder: "Calle 12 N°34", class: 'form-control' %>
+        </div>
+
+        <div class="row">
+          <%= f.label :available, 'Disponibilidad' %>
+          <%= f.select :available, [['Disponible', true], ['No disponible', false]], {}, {class: "form-control"} %>
+        </div>
+
+        <div class="row">
+          <%= f.label :locality, 'Localidad' %>
+          <%= f.text_field :locality, required: true, placeholder: "La Plata", class: 'form-control' %>
+        </div>
+
+        <div class="row">
+          <%= f.label :desc, 'Descripcion' %>
+          <%= f.text_area :desc, required: true, placeholder: "Descripcion de la residencia", class: 'form-control' %>
+        </div>
+
+      </div>
+
+    </div>
   </div>
 
-  <br>
-  <p class="error"> <%= @error %></p>
-  <br>
-
-  <div>
-    <%= link_to "Volver", residences_path, class: 'btn btn-secondary' %>
-    <%= f.submit 'Guardar', class: 'btn btn-primary' %>
+  <div class="form-footer row">
+    <div class="col">
+      <div class="row">
+        <span class="error"> <%= @error %> </span>
+      </div>
+      <div class="row">
+        <div class="btn-group">
+          <%= link_to "Volver", residences_path, class: 'btn btn-secondary' %>
+          <%= f.submit 'Guardar', class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
   </div>
 
   <% end %>

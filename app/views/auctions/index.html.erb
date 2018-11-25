@@ -22,11 +22,11 @@
       		<td> <%= auction.maxbid %> </td>
       		<td> <%= auction.residence.name %> </td>
 			<td><%= link_to "Ver detalles", auction, class: 'btn btn-info btn-sm'%></td>
-			<!-- <td><%= link_to "Finalizar", auction, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Realmente desea finalizar la subasta?'} %></td> --> <!-- Oculte el boton de finalizar subastas ya que la subasta debe finalizar sola -->
+			<td><%= link_to "Finalizar", auction, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Realmente desea finalizar la subasta?'} %></td>
 		</tr>
 		<% end %>
 	<% if auctions.size == 0 %>
-		<tr> <td colspan="3"> No hay subastas </td> </tr>			
+		<tr> <td colspan="3"> No hay subastas </td> </tr>
 	<% end %>
 </table>
 <p> <%= link_to "Volver a pagina de inicio", root_path, class: 'btn btn-secondary' %> </p>

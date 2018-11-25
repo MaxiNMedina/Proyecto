@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+		<!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/full.css" rel="stylesheet">
+
 	  <title>Home Switch Home</title>
 	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -10,10 +21,19 @@
 	</head>
 
 	<body>
+		<div>
 		<%= render 'layouts/header' %>
-		<div class="container">
+		</div>
+		<div class="hsh-content">
 			<%= yield %>
 		</div>
+		<div>
 		<%= render 'layouts/footer' %>
+		</div>
 	</body>
+
+	<!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 </html>

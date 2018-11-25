@@ -17,11 +17,14 @@ class ResidencesController < ApplicationController
       end
       render :new
     end
+    AvailabilityController.init(@residence.id)
   end
 
   def show
   	@residence = Residence.find(params[:id]) #Asigna la residencia a la variable residencia
     @auctions = @residence.auctions
+    @reservations = @residence.reservations
+    @availabilities = @residence.availabilities
   end
 
   def edit

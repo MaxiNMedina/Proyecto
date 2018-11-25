@@ -1,13 +1,13 @@
-<footer class="container">  <!-- Footer -->
-	<div class="navbar navbar-expand-lg navbar-dark fixed-bottom">
-		<nav class="footerlist col-8">
-			<ul>
-				<li><%= link_to "Pagina principal", root_path%></li>
-				<li><%= link_to 'Ver Preguntas Frecuentes', faq_path%></li>
-				<li><%= link_to "Contacto", contact_path%></li>
-			</ul>
-		</nav>
-		<div class="col"></div>
-		<div class="col"><%= image_tag "logo.png", title: "Logo", id:"logo"%></div>
-	</div>
+<footer>  <!-- Footer -->
+	<nav class="navbar navbar-expand-lg navbar-dark">
+			<div class="container footerlist col-8">
+				<ul>
+					<li><%= link_to "Pagina principal", root_path%></li>
+					<li><%= link_to 'Ver Preguntas Frecuentes', faq_path%></li>
+					<li><%= link_to "Contacto", contact_path%></li>
+				</ul>
+			</div>
+			<div class="col"></div>
+			<div class="col"><%= image_tag "logo.png", title: "Logo", id:"logo"%></div>
+	</nav>
 </footer>
