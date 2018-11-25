@@ -41,6 +41,10 @@
           <td class="residence-field">$<%= @auction.maxbid %></td>
         </tr>
         <tr>
+          <td>Semana de reserva</td>
+          <td class="residence-field">Desde <%= Date.commercial(@auction.availability.year, @auction.availability.week).strftime("%d/%m/%Y") %> hasta <%= (Date.commercial(@auction.availability.year, @auction.availability.week) +6 ).strftime("%d/%m/%Y") %></td>
+        </tr>
+        <tr>
           <td>Fecha de inicio de la subasta</td>
           <td class="residence-field"><%= @auction.dateStart.strftime("%d/%m/%Y") %></td>
         </tr>
@@ -57,7 +61,7 @@
     </div>
 
   </div>
-  <%= link_to "Volver", :back , class: 'btn btn-secondary' %>
+  <%= link_to "Volver al listado de subastas", auctions_path , class: 'btn btn-secondary' %>
   <%= link_to "Ingresar", enterBid_path(:id => @auction.id), class: 'btn btn-secondary' %>
 
 </div>

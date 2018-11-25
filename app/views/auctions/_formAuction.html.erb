@@ -1,12 +1,13 @@
 <div class="container">
   <%= form_for @auction do |f| %>
 
-  <div class="form_group">
-    <%= f.label :residence_id, 'Eliga la residencia:' %>
-    <%= f.collection_select :residence_id, Residence.all, :id, :name, {}, class: 'form-control' %>
-  </div>
+  
+  <h2> La residencia escogida es  <%= @res.name %></h2>
+  <%= f.hidden_field :residence_id, value: params[:id] %>
+  <h2> Para la semana desde <%= Date.commercial(@disp.year, @disp.week) %> hasta el <%= Date.commercial(@disp.year, @disp.week) + 6 %> </h2>
+  <%= f.hidden_field :availability_id, value: params[:aid] %>
   <br>
-  <div class="row">
+  <div class="form_group">
     <%= f.label :"Puja maxima:" %>
     <%= f.number_field :maxbid, required: true , min: 0, class: 'form-control' %>
   </div>

@@ -17,11 +17,13 @@ class AuctionsController < ApplicationController
     end
 
   def new
+    @res = Residence.find(params[:id])
+    @disp = Availability.find(params[:aid])
     @auction = Auction.new
   end
 
   def create
-    @auction = Auction.new(params.require(:auction).permit(:residence_id, :maxbid, :dateStart, :user_id))
+    @auction = Auction.new(params.require(:auction).permit(:residence_id, :maxbid, :dateStart, :user_id, :availability_id))
     @auction.user = current_user
     @auction.dateEnd =  @auction.dateStart + 3
     if @auction.save
@@ -51,6 +53,20 @@ class AuctionsController < ApplicationController
     else
       redirect_to auctions_path
     end
+  end
+
+  def selectWeek
+    @auction = Auction.find(params[:id])
+  end
+
+  def setWeek
+    @auction = Auction.find(params[:id])
+    @auction.update(params.permit(:residence_id, :maxbid, :dateStart, :user_id, :availability_id))
+  end
+
+  def self.weeks_for_select
+    av=Availability.where(residence_id: params[:id])
+    [Date.commercial(av.year,av.week)]
   end
 
 end

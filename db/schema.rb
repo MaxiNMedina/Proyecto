@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_24_191228) do
+ActiveRecord::Schema.define(version: 2018_11_25_185247) do
 
   create_table "auctions", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 2018_11_24_191228) do
     t.date "dateStart"
     t.date "dateEnd"
     t.integer "user_id"
+    t.integer "availability_id"
+    t.index ["availability_id"], name: "index_auctions_on_availability_id"
     t.index ["residence_id"], name: "index_auctions_on_residence_id"
     t.index ["user_id"], name: "index_auctions_on_user_id"
   end

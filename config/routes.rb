@@ -9,11 +9,17 @@ Rails.application.routes.draw do
     resources :users do
   		member do
     		get 'be_premium'
-        get 'apply_premium'
-        get 'enable_premium'
-        get 'disable_premium'
+            get 'apply_premium'
+            get 'enable_premium'
+            get 'disable_premium'
  		end
 	end
+    resources :auctions do
+        member do
+            get 'selectWeek'
+            get 'setWeek'
+        end
+    end
     #ADMINISTRADORES
     get '/admins', to:'users#indexAdmins'
     get '/admins/new', to:'users#newAdmin'

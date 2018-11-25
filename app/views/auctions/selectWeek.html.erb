@@ -1,0 +1,9 @@
+<div class="container">
+	<%= form_for @auction do |f| %>
+		<div class="form_group">
+    		<%= f.label :availability_id, 'Eliga la semana:' %>
+    		<%= f.collection_select :availability_id, Availability.where(residence_id: @auction.residence_id), :id, :week, {}, class: 'form-control' %>
+  		</div>
+  		<%= f.submit 'Guardar', class: 'btn btn-primary' %>
+  	<% end %>
+</div>
