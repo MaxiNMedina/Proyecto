@@ -13,7 +13,7 @@ class AvailabilityController < ApplicationController
 		for j in 1..2
 			for i in w..52
 				@availability = Availability.new
-				@availability.residence_id= rid
+				@availability.residence_id = rid
 				@availability.year = y
 				@availability.week = i
 				@availability.is_available = true
