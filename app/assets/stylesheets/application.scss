@@ -119,6 +119,15 @@ padding-bottom: 50px;
 .fit{
   width: 100%;
 }
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+  supported by Chrome and Opera */
+}
 
 .hsh-content {
 	margin: 85px 0px 0px 0px; //debajo del fixed header
@@ -182,4 +191,97 @@ padding-bottom: 50px;
 	padding-top: 800px;
 }
 
-///
+/// RESDIDENCIAS
+
+.residence-content {
+	border-top: none 1px;
+	margin-top: 15px;
+  padding-top: 15px;
+}
+.residence-images {
+  position: relative !important;
+  width: 100% !important;
+  background-color: rgb(255, 255, 255) !important;
+  -moz-box-align: center !important;
+  align-items: center !important;
+  display: flex !important;
+  overflow: hidden !important;
+  //cursor: pointer !important;
+}
+.residence-pic {
+    transform: scale(1) !important;
+    opacity: 1 !important;
+    transition: -ms-transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, opacity 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s !important;
+}
+.residence-pic:hover {
+    transition: -ms-transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s !important;
+    transform: scale(1.05) !important;
+}
+.residence-table {
+	border-style: none;
+	margin: 20px;
+	margin-left: 50px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+.residence-table td {
+	width: 500px;
+	height: 50px;
+	border-top: solid 1px;
+  padding-right: 10px;
+	padding-top: 15px;
+	padding-bottom: 50px;
+}
+.residence-field {
+  font-weight: 100;
+	color: black;
+}
+
+/// USERS
+
+.profile {
+	text-indent: 20px;
+	border: 2px none grey;
+	border-radius: 20px;
+	margin: 20px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+.profile-table {
+	border-style: none;
+	margin: 20px;
+	margin-left: 50px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+.profile-table td {
+	width: 500px;
+	height: 50px;
+	border-top: solid 1px;
+	padding-top: 15px;
+	padding-bottom: 50px;
+}
+.profile-field {
+	font-weight: 100;
+	color: black;
+}
+
+#usr-nav{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #FFF0;
+
+	position: absolute;
+	top: 8px;
+	right: 16px;
+}
+#usr-nav li {
+	float: left;
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 16px;
+	text-decoration: none;
+}
