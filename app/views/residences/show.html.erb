@@ -24,10 +24,11 @@
     	<% @auctions.each do |auction| %>
       <tr>
         <td> <%= auction.maxbid %> </td>
-        <td> <%= link_to "Ingresar", enterBid_path(:id => auction.id), class: 'btn btn-secondary' %> </td>
+        <td> <%= link_to "Ir a subasta", auction, class: 'btn btn-secondary' %> </td>
       </tr>
       <% end %>
     </table>
+    <!--
     <h2>Residencia en semana</h2>
     <table class="table">
       <tr>
@@ -42,7 +43,7 @@
         <td> <%= reservation.user.userName %> </td>
       </tr>
       <% end %>
-    </table>
+    </table> -->
     <h2>Disponibilidad de residencia en semanas</h2>
     <table class="table">
         <tr>

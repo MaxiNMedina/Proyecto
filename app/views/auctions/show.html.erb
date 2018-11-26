@@ -61,7 +61,9 @@
     </div>
 
   </div>
+  
   <%= link_to "Volver al listado de subastas", auctions_path , class: 'btn btn-secondary' %>
-  <%= link_to "Ingresar", enterBid_path(:id => @auction.id), class: 'btn btn-secondary' %>
-
+  <% if not current_user.isAdmin? %>
+    <%= link_to "Ingresar", enterBid_path(:id => @auction.id), class: 'btn btn-secondary' %>
+  <% end %>
 </div>

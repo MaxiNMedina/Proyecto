@@ -19,7 +19,9 @@
       		<td> <%= auction.maxbid %> </td>
       		<td> <%= auction.residence.name %> </td>
 			<td><%= link_to "Ver detalles", auction, class: 'btn btn-info btn-sm'%></td>
-			<td><%= link_to "Finalizar", auction, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Realmente desea finalizar la subasta?'} %></td>
+			<% if current_user.present? && current_user.isAdmin? %>
+				<td><%= link_to "Finalizar", auction, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Realmente desea finalizar la subasta?'} %></td>
+			<%  end %>
 		</tr>
 		<% end %>
 	<% if auctions.size == 0 %>
