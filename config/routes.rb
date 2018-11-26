@@ -14,12 +14,6 @@ Rails.application.routes.draw do
             get 'disable_premium'
  		end
 	end
-    resources :auctions do
-        member do
-            get 'selectWeek'
-            get 'setWeek'
-        end
-    end
     #ADMINISTRADORES
     get '/admins', to:'users#indexAdmins'
     get '/admins/new', to:'users#newAdmin'

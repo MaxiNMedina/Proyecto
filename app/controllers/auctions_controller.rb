@@ -26,10 +26,14 @@ class AuctionsController < ApplicationController
     @auction = Auction.new(params.require(:auction).permit(:residence_id, :maxbid, :dateStart, :user_id, :availability_id))
     @auction.user = current_user
     @auction.dateEnd =  @auction.dateStart + 3
-    if @auction.save
-      redirect_to auctions_path, notice: "Se creo la subasta exitosamente."
+    if (@auction.dateStart <= Date.today || @auction.dateStart > Date.commercial(@auction.availability.year, @auction.availability.week))
+        redirect_to auctions_path, notice:"La fecha de inicio de la subasta debe ser despues de la fecha actual y antes de la semana de reserva."
     else
-      render :new
+      if @auction.save
+        redirect_to auctions_path, notice: "Se creo la subasta exitosamente."
+      else
+        render :new
+      end
     end
   end
 
@@ -53,20 +57,6 @@ class AuctionsController < ApplicationController
     else
       redirect_to auctions_path
     end
-  end
-
-  def selectWeek
-    @auction = Auction.find(params[:id])
-  end
-
-  def setWeek
-    @auction = Auction.find(params[:id])
-    @auction.update(params.permit(:residence_id, :maxbid, :dateStart, :user_id, :availability_id))
-  end
-
-  def self.weeks_for_select
-    av=Availability.where(residence_id: params[:id])
-    [Date.commercial(av.year,av.week)]
   end
 
 end

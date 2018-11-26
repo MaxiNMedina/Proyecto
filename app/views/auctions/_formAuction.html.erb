@@ -17,8 +17,12 @@
     <%= f.date_select :dateStart, start_year: Date.today.year, :use_month_names => ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre','Diciembre'], :order => [:day, :month, :year], required: true, class: 'form-control' %>
   </div>
   <br>
+
   <%= link_to "Volver", auctions_path, class: 'btn btn-secondary' %>
   <%= f.submit 'Guardar', class: 'btn btn-primary' %>
+  <div class="row">
+        <span class="error"> <%= @error %> </span>
+  </div>
 
   <% end %>
 
