@@ -17,6 +17,7 @@ class AuctionsController < ApplicationController
     end
 
   def new
+    #Parametros necesarios para el alta de subasta.
     @res = Residence.find(params[:id])
     @disp = Availability.find(params[:aid])
     @auction = Auction.new
