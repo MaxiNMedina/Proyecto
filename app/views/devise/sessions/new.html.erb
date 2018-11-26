@@ -3,7 +3,18 @@
   <h2>Iniciar Sesion</h2>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
+
+    <!--MUESTRO ERROR SI INGRESO MAL EL MAIL O LA CONTRASEÑA-->
+
+    <div id="notice" class="row fixed-top noselect">
+      <%= devise_error_messages! %>
+      <% flash.each do |key, notice| %>
+        <div id="notice-content" class="container alert alert-info">
+          <%= notice %>
+        </div>
+      <% end %>
+    </div>
+
     <div class="row">
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control'%>
