@@ -2,13 +2,13 @@
   <%= form_for @auction do |f| %>
 
   
-  <h2> La residencia escogida es  <%= @res.name %></h2>
+  <h2> Para la residencia "<%= @res.name %>"</h2>
   <%= f.hidden_field :residence_id, value: params[:id] %>
-  <h2> Para la semana desde <%= Date.commercial(@disp.year, @disp.week) %> hasta el <%= Date.commercial(@disp.year, @disp.week) + 6 %> </h2>
+  <h2> Para la semana de reserva sea desde <%= Date.commercial(@disp.year, @disp.week) %> hasta el <%= Date.commercial(@disp.year, @disp.week) + 6 %> </h2>
   <%= f.hidden_field :availability_id, value: params[:aid] %>
   <br>
   <div class="form_group">
-    <%= f.label :"Puja maxima:" %>
+    <%= f.label :"Puja base:" %>
     <%= f.number_field :maxbid, required: true , min: 0, class: 'form-control' %>
   </div>
   <br>
@@ -20,10 +20,6 @@
 
   <%= link_to "Volver", auctions_path, class: 'btn btn-secondary' %>
   <%= f.submit 'Guardar', class: 'btn btn-primary' %>
-  <div class="row">
-        <span class="error"> <%= @error %> </span>
-  </div>
-
   <% end %>
 
 </div>
