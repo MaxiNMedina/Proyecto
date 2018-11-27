@@ -2,7 +2,18 @@
   <h2>Registrarse</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
+    
+    <!-- DEBO ARREGLARLO
+    <div id="notice" class="row fixed-top noselect">
+      <%= devise_error_messages! %>
+      <% flash.each do |key, value| %>
+        <div id="notice-content" class="container alert alert-info">
+          <%= value %>
+        </div>
+      <% end %>
+    </div>
+  -->
+
 
      <div class="row">
       <%= f.label :name, 'Nombre de usuario' %>
