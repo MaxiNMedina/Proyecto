@@ -49,18 +49,23 @@
     <% if current_user.present? &&  !current_user.isAdmin? %>
     <!--TABLA DE SUBASTAS-->
     <div style="padding-top:70px">
-      <h2>Subastas de este usuario:</h2>
+      <h2>Subastas que vas ganando:</h2>
       <table class="table">
         <tr>
+          <th></th>
           <th> Nombre de la Residencia </th>
-          <th> Precio </th>
+          <th> Precio Actual </th>
         </tr>
-        <% @auctions.each do |auction| %>
-          <tr>
-            <!--<td> <%= auction.nombre_de_la_residencia %> </td>-->
-            <td> <%= auction.maxbid %> </td>
-            <td> <%= link_to "Ingresar", auction, class: 'btn btn-secondary' %> </td>
-          </tr>
+        <% auctions = Auction.all %>
+        <% auctions.each do |auction| %>
+          <% if auction.user_id == @user.id%>
+            <tr>
+              <td><%= image_tag auction.residence.image_url, height: '100', width: '200' %></td>
+              <td> <%= auction.residence.name %> </td>
+              <td> <%= auction.maxbid %> </td>
+              <td> <%= link_to "Ver", auction, class: 'btn btn-secondary' %> </td>
+            </tr>
+          <%end%>
         <%end%>
       </table>
     </div>
