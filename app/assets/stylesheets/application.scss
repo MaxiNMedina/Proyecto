@@ -52,6 +52,13 @@ body {
 #notice-content {
   width: auto;
 }
+#deviseERR {
+  margin-top: 100px;
+  margin-bottom: 0px;
+}
+#deviseERR-content {
+  width: auto;
+}
 footer {
   position: relative;
   width: 100% !important;
@@ -130,7 +137,8 @@ padding-bottom: 50px;
 }
 
 .hsh-content {
-	margin: 85px 0px 0px 0px; //debajo del fixed header
+	//margin: 85px 0px 0px 0px; //debajo del fixed header
+  margin: -15px 0px 0px 0px; //debajo del fixed header
 }
 .hsh-window {
   padding: 100px 50px 400px 50px;

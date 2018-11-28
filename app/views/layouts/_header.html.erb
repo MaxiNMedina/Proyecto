@@ -49,8 +49,17 @@
   <div id="notice" class="row fixed-top noselect">
     <% if flash[:notice] %>
     <div id="notice-content" class="container alert alert-info">
-    <%= notice %>
-    </div>
+          <%# <% flash.each do |key, notice| %>
+      <%= notice %>
     <% end %>
+    </div>
   </div>
+
+  <div id="deviseERR" class="row noselect">
+    <div id="deviseERR-content" class="container danger alert-danger">
+      <%= devise_error_messages! %>
+    </div>
+  </div>
+
+
 </header>
