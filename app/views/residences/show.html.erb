@@ -1,70 +1,134 @@
 <div class="hsh-window">
-  <!--Revisa si la residencia tiene una foto. Si no, mostrara una imagen de no disponible-->
-  <div class="row residence-images">
-  <% if @residence.image_url?  %> <!--&& Utils.image_exists?(@residence.image_url) -->
-    <%= image_tag @residence.image_url , class: 'img-fluid residence-pic' %>
-  <% else %>
-    <%= image_tag 'no_disponible.jpg', class: 'img-fluid' %>
-  <% end %>
-  </div>
+  <div class="container">
 
-  <div class="row residence-content">
-    <div class="container">
-      <h1> <%= @residence.name %> </h1> <!--DESCRIPCION DE UNA RESIDENCIA-->
-      <h6><%= image_tag 'ubication.png', height: '30', width: '20' %> <%= @residence.dir %>, <%= @residence.locality %>, <%= @residence.province %>, <%= @residence.country %></h6>
-      <h5>Descripcion</h5>
-      <p><%= @residence.desc %></p>
+    <!-- IMAGENES DE RESIDENCIA -->
+    <div class="row residence-images">
+      <div class="container">
+
+        <div class="row br10">
+          <div class="col">
+            <% if @residence.image_url?  %> <!--&& Utils.image_exists?(@residence.image_url) -->    <!--Revisa si la residencia tiene una foto. Si no, mostrara una imagen de no disponible-->
+              <%= image_tag @residence.image_url , class: 'img-fluid residence-pic fit' %>
+            <% else %>
+              <%= image_tag 'no_disponible.jpg', class: 'img-fluid' %>
+            <% end %>
+          </div>
+          <div class="col">
+            <% if @residence.image_url?  %> <!--&& Utils.image_exists?(@residence.image_url) -->
+              <%= image_tag @residence.image_url , class: 'img-fluid residence-pic fit' %>
+            <% else %>
+              <%= image_tag 'no_disponible.jpg', class: 'img-fluid' %>
+            <% end %>
+          </div>
+          <div class="col">
+            <% if @residence.image_url?  %> <!--&& Utils.image_exists?(@residence.image_url) -->
+              <%= image_tag @residence.image_url , class: 'img-fluid residence-pic fit' %>
+            <% else %>
+              <%= image_tag 'no_disponible.jpg', class: 'img-fluid' %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <% if @residence.image_url?  %> <!--&& Utils.image_exists?(@residence.image_url) -->
+              <%= image_tag @residence.image_url , class: 'img-fluid residence-pic fit' %>
+            <% else %>
+              <%= image_tag 'no_disponible.jpg', class: 'img-fluid' %>
+            <% end %>
+          </div>
+          <div class="col">
+            <% if @residence.image_url?  %> <!--&& Utils.image_exists?(@residence.image_url) -->
+              <%= image_tag @residence.image_url , class: 'img-fluid residence-pic fit' %>
+            <% else %>
+              <%= image_tag 'no_disponible.jpg', class: 'img-fluid' %>
+            <% end %>
+          </div>
+          <div class="col">
+            <% if @residence.image_url?  %> <!--&& Utils.image_exists?(@residence.image_url) -->
+              <%= image_tag @residence.image_url , class: 'img-fluid residence-pic fit' %>
+            <% else %>
+              <%= image_tag 'no_disponible.jpg', class: 'img-fluid' %>
+            <% end %>
+          </div>
+        </div>
+
+      </div>
     </div>
-    <div class="container">
-    <h2>Subastas de esta residencia:</h2>
-    <table class="table">
-      <tr>
-        <th> Precio Actual</th>
-      </tr>
-    	<% @auctions.each do |auction| %>
-      <tr>
-        <td> <%= auction.maxbid %> </td>
-        <td> <%= link_to "Ir a subasta", auction, class: 'btn btn-secondary' %> </td>
-      </tr>
-      <% end %>
-    </table>
-    <!--
-    <h2>Residencia en semana</h2>
-    <table class="table">
-      <tr>
-        <th>Año</th>
-        <th>Semana</th>
-        <th>Ganador</th>
-      </tr>
-    	<% @reservations.each do |reservation| %>
-      <tr>
-        <td> <%= reservation.year %> </td>
-        <td> <%= reservation.week %> </td>
-        <td> <%= reservation.user.userName %> </td>
-      </tr>
-      <% end %>
-    </table> -->
-    <h2>Disponibilidad de residencia en semanas</h2>
-    <table class="table">
-        <tr>
-          <th>Desde</th>
-          <th>Hasta</th>
-        </tr>
-        <% for i in 24 .. 31 do %> <!--NOTA IMPORTANTE: "24" indica el valor de id en la tabla que serian 6 meses despues de la semana de la fecha actual, mientras que "31" serian dos meses despues de estos seis meses. Esto me muestra una franja acotada.  -->
-          <% if @availabilities[i].is_available %>
+
+    <!-- INFORMACION DE RESIDENCIA -->
+    <div class="row residence-content">
+      <div class="container">
+        <!-- DESCRIPCION -->
+        <div class="row br30">
+          <div class="col">
+            <h1><%= @residence.name %></h1> <!--DESCRIPCION DE UNA RESIDENCIA-->
+            <h6><%= image_tag 'ubication.png', height: '30', width: '20' %> <%= @residence.dir %>, <%= @residence.locality %>, <%= @residence.province %>, <%= @residence.country %></h6>
+            <h5>Descripcion</h5>
+            <p><%= @residence.desc %></p>
+          </div>
+        </div>
+        <!-- SUBASTAS -->
+        <div class="row br30">
+          <h2>Subastas de esta residencia:</h2>
+          <table class="table">
             <tr>
-              <td>  <%= Date.commercial(@availabilities[i].year, @availabilities[i].week).strftime("%d/%m/%Y") %>  </td>
-              <td>  <%= (Date.commercial(@availabilities[i].year, @availabilities[i].week)+6).strftime("%d/%m/%Y") %>  </td> <!-- Esto muestra el ultimo dia de la semana que corresponde -->
-              <% if current_user.present? && current_user.isAdmin? && !Auction.exists?(:availability_id => @availabilities[i])%>
-                <td><%= link_to "Crear Subasta", new_auction_path(:id => @residence.id, :aid => @availabilities[i]) ,class: 'btn btn-info'%></td>
-              <%end%>
+              <th> Precio Actual</th>
             </tr>
-          <% end %>
-        <% end %>
-      </table>
+          	<% @auctions.each do |auction| %>
+            <tr>
+              <td> <%= auction.maxbid %> </td>
+              <td> <%= link_to "Ir a subasta", auction, class: 'btn btn-secondary' %> </td>
+            </tr>
+            <% end %>
+          </table>
+        </div>
+        <!-- RESIDENCIA EN SEMANA -->
+        <div class="row">
+          <!--
+          <h2>Residencia en semana</h2>
+          <table class="table">
+            <tr>
+              <th>Año</th>
+              <th>Semana</th>
+              <th>Ganador</th>
+            </tr>
+          	<% @reservations.each do |reservation| %>
+            <tr>
+              <td> <%= reservation.year %> </td>
+              <td> <%= reservation.week %> </td>
+              <td> <%= reservation.user.userName %> </td>
+            </tr>
+            <% end %>
+          </table> -->
+        </div>
+        <!-- DISPONIBILIDAD -->
+        <div class="row br30">
+          <h2>Disponibilidad de residencia en semanas</h2>
+          <table class="table">
+              <tr>
+                <th>Desde</th>
+                <th>Hasta</th>
+              </tr>
+              <% for i in 24 .. 31 do %> <!--NOTA IMPORTANTE: "24" indica el valor de id en la tabla que serian 6 meses despues de la semana de la fecha actual, mientras que "31" serian dos meses despues de estos seis meses. Esto me muestra una franja acotada.  -->
+                <% if @availabilities[i].is_available %>
+                  <tr>
+                    <td>  <%= Date.commercial(@availabilities[i].year, @availabilities[i].week).strftime("%d/%m/%Y") %>  </td>
+                    <td>  <%= (Date.commercial(@availabilities[i].year, @availabilities[i].week)+6).strftime("%d/%m/%Y") %>  </td> <!-- Esto muestra el ultimo dia de la semana que corresponde -->
+                    <% if current_user.present? && current_user.isAdmin? && !Auction.exists?(:availability_id => @availabilities[i])%>
+                      <td><%= link_to "Crear Subasta", new_auction_path(:id => @residence.id, :aid => @availabilities[i]) ,class: 'btn btn-info'%></td>
+                    <%end%>
+                  </tr>
+                <% end %>
+              <% end %>
+            </table>
+        </div>
+        <!-- MENU -->
+        <div class="row">
+          <p class="br30"><%= link_to "Volver al listado de residencias", residences_path, class: 'btn btn-secondary' %></p>
+        </div>
+      </div>
     </div>
-    <div class="container">
-    <%= link_to "Volver al listado de residencias", residences_path, class: 'btn btn-secondary' %>
-    </div>
+
   </div>
 </div>

@@ -48,25 +48,24 @@
           <%= f.label :desc, 'Descripcion' %>
           <%= f.text_area :desc, required: true, placeholder: "Descripcion de la residencia", class: 'form-control' %>
         </div>
-
       </div>
-
     </div>
+
     <div class="form-footer row">
-    <div class="col">
-      <div class="row">
-        <span class="error"> <%= @error %> </span>
-      </div>
-      <div class="row">
-        <div class="btn-group">
-          <%= link_to "Volver", residences_path, class: 'btn btn-secondary' %>
-          <%= f.submit 'Guardar', class: 'btn btn-primary' %>
+      <div class="col-sm">
+        <div class="row">
+          <span class="error"> <%= @error %> </span>
+        </div>
+        <div class="row">
+          <div class="btn-gap">
+            <%= link_to "Volver", residences_path, class: 'btn btn-secondary' %>
+            <%= f.submit 'Guardar', class: 'btn btn-primary' %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  </div>
 
   <% end %>
 
+  </div>
 </div>

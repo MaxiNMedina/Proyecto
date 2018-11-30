@@ -1,9 +1,10 @@
-<div class="hsh-window container">
-	<h1> Borrar Usuario </h1>
+<div class="hsh-window">
+	<div class="container">
+		<h1> Borrar Usuario </h1>
 
-  <%= form_for(:user, :url => {:action => 'destroy', :id => @user.id}) do |f| %>
-    <p>Borrar este usuario - Ok?</p>
-    <%= submit_tag("Borrar") %>
-  <% end %>
-
+	  <%= form_for(:user, :url => {:action => 'destroy', :id => @user.id}) do |f| %>
+	    <p>Borrar este usuario - Ok?</p>
+	    <%= submit_tag("Borrar") %>
+	  <% end %>
+	</div>
 </div>

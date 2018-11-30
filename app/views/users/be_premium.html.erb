@@ -1,11 +1,15 @@
 <div class="hsh-window">
-	<h1>Convertirse en un usuario premium</h1>
-	<p>Estimado <%= @user.userName %>, esta a punto de pasar a ser parte de nuestros clientes con el mayor prestigio de nuestra empresa.</p>
-	<p>Como parte de nuestros selectos usuarios premium usted tendra la capacidad en cualquiera de nuestras residencias al instante.</p>
-	<p>Para pasar a formar parte de nuestros usuarios premium, debera depositar una suma de dinero en cualquiera de nuestras sucursales personalmente.</p>
-	<p>Al presionar el boton confirmar, se dara inicio al tramite en el sistema. Se informara a nuestro personal y se pondra en contacto con usted a la brevedad para informarle cuanto debera depositar y las sucursales a las que puede concurrir para hacerlo.</p>
 	<div class="container">
-			<%= link_to 'Confirmar', { :controller => 'users', :action => 'apply_premium' , :id=> @user.id }, class: 'btn btn-info'%>
-			<%= link_to "Cancelar", root_path, class: 'btn btn-secondary'%>	
+		<div class="row">
+		<h1>Convertirse en un usuario premium</h1>
+		<p>Estimado <%= @user.userName %>, esta a punto de pasar a ser parte de nuestros clientes con el mayor prestigio de nuestra empresa.</p>
+		<p>Como parte de nuestros selectos usuarios premium usted tendra la capacidad en cualquiera de nuestras residencias al instante.</p>
+		<p>Para pasar a formar parte de nuestros usuarios premium, debera depositar una suma de dinero en cualquiera de nuestras sucursales personalmente.</p>
+		<p>Al presionar el boton confirmar, se dara inicio al tramite en el sistema. Se informara a nuestro personal y se pondra en contacto con usted a la brevedad para informarle cuanto debera depositar y las sucursales a las que puede concurrir para hacerlo.</p>
+		</div>
+		<div class="row">
+				<%= link_to 'Confirmar', { :controller => 'users', :action => 'apply_premium' , :id=> @user.id }, class: 'btn btn-info'%>
+				<%= link_to "Cancelar", root_path, class: 'btn btn-secondary'%>
+		</div>
 	</div>
 </div>
