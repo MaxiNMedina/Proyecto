@@ -10,7 +10,7 @@ class Residence < ApplicationRecord
 
 	def self.search(search)
 		if search
-			where(["name LIKE ?", "%#{search}%"])
+			where(["name LIKE ? OR dir LIKE ? OR country LIKE ? OR province LIKE ? OR locality LIKE ?", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%"])
 		else
 			Residence.all
 		end
