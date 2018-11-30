@@ -11,8 +11,12 @@
     <h1 class="my-4">Residencias
       <small>Disponibles</small>
     </h1>
-
     <% residences = Residence.all %>
+
+    <% if residences.size == 0 %>
+      <p> <td colspan="3"> No hay residencias </td> </p>
+    <% end %>
+
     <% residences.each do |residence| %>
       <% if residence.available? %>
     <div class="row">

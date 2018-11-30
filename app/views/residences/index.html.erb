@@ -9,8 +9,8 @@
 				<%end%>
 			</div>
 		</div>
-
-		<div class="row">
+		<!-- RESIDENCIAS ACTIVAS -->
+		<div class="row br30">
 			<table class="table">
 
 				<tr>
@@ -23,7 +23,7 @@
 					<th>  </th>
 				</tr>
 
-				<% residences = Residence.all %>
+				<% residences = Residence.open %>
 					<% residences.each do |residence| %>
 						<% if residence.available? %> <!-- Solo muestro las residencias disponibles-->
 							<tr>
@@ -53,6 +53,55 @@
 
 			</table>
 		</div>
+		<!-- RESIDENCIAS NO DISPONIBLES -->
+		<% if user_signed_in? %>
+		<% if current_user.isAdmin? %>
+		<div class="row br30">
+			<h1> Listado de Residencias No Disponibles </h1>  <!-- TABLA DE RESIDENCIAS-->
+			<table class="table">
+
+				<tr>
+					<th>  </th>
+					<th> Nombre </th>
+					<th> Descripción </th>
+					<th> Direccion </th>
+					<th> Localidad </th>
+					<th>  </th>
+					<th>  </th>
+				</tr>
+
+				<% residences = Residence.closed %>
+					<% residences.each do |residence| %>
+						<% if residence.available? %> <!-- Solo muestro las residencias disponibles-->
+							<tr>
+							<td><%= image_tag residence.image_url, height: '100', width: '200' %></td>
+							<td> <%= link_to residence.name, residence, class: 'btn btn-link btn-sm'%> </td>
+							<td> <%= truncate(residence.desc, length: 15, seperator: ' ') %> </td>
+							<td> <%= residence.dir %> </td>
+							<td> <%= "#{residence.country}, #{residence.province}, #{residence.locality}" %> </td>
+
+ 							<!-- Funciones exclusivas para administradores -->
+							<% if user_signed_in? && current_user.isAdmin? %>
+								<td><%= link_to "Editar", edit_residence_path(residence), class: 'btn btn-dark btn-sm'%></td>
+								<!-- Se fija si en el listado hay residencias que se encuentran en subasta -->
+								<% if Auction.exists?(residence_id: residence.id) %>
+									<td><%= link_to "En subasta", residence, method: :delete,  class: 'btn btn-danger btn-sm disabled', data: { confirm: 'Realmente desea borrar la residencia?'}%></td>
+								<% else %>
+									<td><%= link_to "Borrar", residence, method: :delete,  class: 'btn btn-danger btn-sm', data: { confirm: 'Realmente desea borrar la residencia?'}%></td>
+								<% end %>
+							<% end %>
+							</tr>
+					<% end %>
+				<% end %>
+
+				<% if residences.size == 0 %>
+					<tr> <td colspan="3"> No hay residencias </td> </tr>
+				<% end %>
+
+			</table>
+		</div>
+		<% end %>
+		<% end %>
 
 		<div class="row">
 			<p class="br30"> <%= link_to "Volver a pagina de inicio", root_path, class: 'btn btn-secondary' %> </p>
