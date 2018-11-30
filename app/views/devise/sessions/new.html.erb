@@ -7,7 +7,6 @@
     <!--MUESTRO ERROR SI INGRESO MAL EL MAIL O LA CONTRASEÑA-->
 
     <div id="notice" class="row fixed-top noselect">
-      <%= devise_error_messages! %>
       <% flash.each do |key, notice| %>
         <div id="notice-content" class="container alert alert-info">
           <%= notice %>

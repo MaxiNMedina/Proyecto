@@ -1,6 +1,85 @@
 <div id="hsh-home" class="row">
-  <%= image_tag 'https://w-dog.net/wallpapers/8/19/511932503574273/bayern-munich-germany-mountain-house-morning-fog-tree-grass-nature.jpg', class: 'fit' %>
+  <%= image_tag 'http://s1.1zoom.me/b5050/701/Houses_Design_Mansion_494577_1920x1080.jpg', class: 'fit' %>
 </div>
 <div id="hsh-home-content" class="row">
-	
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <!-- Page Heading -->
+
+    <h1 class="my-4">Residencias
+      <small>Disponibles</small>
+    </h1>
+
+    <% residences = Residence.all %>
+    <% residences.each do |residence| %>
+      <% if residence.available? %>
+    <div class="row">
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <span><%= image_tag residence.image_url, class:"fit" %></span>
+            <div class="card-body">
+              <h4 class="card-title">
+                <span><%= residence.name %></span>
+              </h4>
+              <p class="card-text"> <%= residence.desc %></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <span><%= image_tag residence.image_url, class:"fit" %></span>
+            <div class="card-body">
+              <h4 class="card-title">
+                <span><%= residence.name %></span>
+              </h4>
+              <p class="card-text"> <%= residence.desc %></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <span><%= image_tag residence.image_url, class:"fit" %></span>
+            <div class="card-body">
+              <h4 class="card-title">
+                <span><%= residence.name %></span>
+              </h4>
+              <p class="card-text"> <%= residence.desc %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+    <!-- /.row -->
+
+    <!-- Pagination -->
+    <!-- <ul class="pagination justify-content-center">
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">Previous</span>
+        </a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">1</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">2</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">3</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Next</span>
+        </a>
+      </li>
+    </ul> -->
+
+  </div>
+<!-- /.container -->
+
 </div>
