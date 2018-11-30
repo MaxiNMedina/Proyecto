@@ -9,4 +9,5 @@ class User < ApplicationRecord
   enum isPremium: { si: 0, solicitado: 1, no: 2 }
 
   scope :admins, -> {where(isAdmin: 1)}
+  scope :clients, -> {where(isAdmin: 0)}
 end

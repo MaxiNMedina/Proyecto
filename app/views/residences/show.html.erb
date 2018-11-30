@@ -70,12 +70,12 @@
         </div>
         <!-- SUBASTAS -->
         <div class="row br30">
-          <h2>Subastas de esta residencia:</h2>
+          <h2>Subastas Activas de esta residencia:</h2>
           <table class="table">
             <tr>
               <th> Precio Actual</th>
             </tr>
-          	<% @auctions.each do |auction| %>
+          	<% @auctionsOpen.each do |auction| %>
             <tr>
               <td> <%= auction.maxbid %> </td>
               <td> <%= link_to "Ir a subasta", auction, class: 'btn btn-secondary' %> </td>
@@ -83,6 +83,25 @@
             <% end %>
           </table>
         </div>
+        <!-- SUBASTAS PENDIENTES-->
+        <% if user_signed_in? %>
+        <% if current_user.isAdmin? %>
+        <div class="row br30">
+          <h2>Subastas Pendientes de esta residencia:</h2>
+          <table class="table">
+            <tr>
+              <th> Precio Actual</th>
+            </tr>
+          	<% @auctionsClosed.each do |auction| %>
+            <tr>
+              <td> <%= auction.maxbid %> </td>
+              <td> <%= link_to "Ir a subasta", auction, class: 'btn btn-secondary' %> </td>
+            </tr>
+            <% end %>
+          </table>
+        </div>
+        <% end %>
+        <% end %>
         <!-- RESIDENCIA EN SEMANA -->
         <div class="row">
           <!--
@@ -117,6 +136,9 @@
                     <td>  <%= (Date.commercial(@availabilities[i].year, @availabilities[i].week)+6).strftime("%d/%m/%Y") %>  </td> <!-- Esto muestra el ultimo dia de la semana que corresponde -->
                     <% if current_user.present? && current_user.isAdmin? && !Auction.exists?(:availability_id => @availabilities[i])%>
                       <td><%= link_to "Crear Subasta", new_auction_path(:id => @residence.id, :aid => @availabilities[i]) ,class: 'btn btn-info'%></td>
+                    <%end%>
+                    <% if current_user.present? && current_user.isPremium? && !Auction.exists?(:availability_id => @availabilities[i])%>
+                      <td><%= link_to "Compra Directa", root_path(:id => @residence.id, :aid => @availabilities[i]) ,class: 'btn btn-warning'%></td>
                     <%end%>
                   </tr>
                 <% end %>

@@ -18,7 +18,13 @@ Rails.application.routes.draw do
     get '/admins/new', to:'users#newAdmin'
     post '/admins', to:'users#createAdmin'
     get '/admins/:id/destroy', to:'users#destroyAdmin'
-    delete '/admins/:id/destroy', to:'users#destroyAdmin', as: 'destroyAdmin'
+    delete '/admins/:id/destroy', to:'users#destroyAdmin', as: 'admin_destroy'
+
+    #USERS
+    get '/clients/:id/delete', to:'users#deleteClient', as: 'client_delete'
+    get '/clients/deleted', to:'users#deletedClient', as: 'client_deleted'
+    get '/clients/:id/destroy', to:'users#destroyClient'
+    delete '/clients/:id/destroy', to:'users#destroyClient', as: 'client_destroy'
 
     #
     get '/enterBid', to:'auctions#enterBid'
