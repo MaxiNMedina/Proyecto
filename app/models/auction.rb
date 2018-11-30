@@ -5,8 +5,12 @@ class Auction < ApplicationRecord
 	belongs_to :availability
 
  #FONCTION SQL PARA ENCONTRAR UNA FECHA ENTRE DOS FECHAS
-	scope :open, -> { where("? BETWEEN dateStart AND dateEnd", Date.today)}
-	scope :closed, -> { where("? NOT BETWEEN dateStart AND dateEnd", Date.today)}
+	#scope :open, -> { where("? BETWEEN dateStart AND dateEnd", Date.today)}
+	#scope :closed, -> { where("? NOT BETWEEN dateStart AND dateEnd", Date.today)}
+
+	#FONCTION POSTGRESQL PARA ENCONTRAR UNA FECHA ENTRE DOS FECHAS
+ 	scope :open, -> { where("today >= dateStart AND today <= dateEnd")}
+ 	scope :closed, -> { where("today < from_date AND today > to_date")}
 
 	def isActive()
 		if Date.today > self.dateStart && Date.today < self.dateEnd
