@@ -3,6 +3,33 @@
 
 		<div class="row">
 			<div class="col">
+
+			    <!-- Buscador -->
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-12 col-md-10 col-lg-8">
+							<form class="card card-sm">
+								<div class="card-body row no-gutters align-items-center">
+								    <%= form_tag residences_path, :method => 'get' do%>
+								    	<div class="col">
+								    		<%= text_field_tag :search, params[:search], placeholder:"Nombre de residencia...", class:"form-control form-control-lg form-control-borderless " %>
+								    	</div>
+								    	<div class="col-auto">
+								    		<%= submit_tag "Buscar", class:"btn btn-lg btn-success"%>
+								    	</div>
+								    <% end %>
+								</div>
+							</form>
+							<!-- Busqueda Avanzada solo para Usuarios-->
+							<% if current_user.present? && !current_user.isAdmin?%>
+							 	<%= link_to "Busqueda Avanzada", new_search_path %>
+							 <% end %>
+						</div>
+					</div>
+				</div>
+				<br/>
+
+
 				<h1> Listado de Residencias </h1>  <!-- TABLA DE RESIDENCIAS-->
 				<% if current_user.present? && current_user.isAdmin?%>
 					<p class="br30"><%= link_to "Crear Residencia", new_residence_path ,class: 'btn btn-info'%></p>
@@ -23,8 +50,8 @@
 					<th>  </th>
 				</tr>
 
-				<% residences = Residence.all %>
-					<% residences.each do |residence| %>
+				
+					<% @residence.each do |residence| %>
 						<% if residence.available? %> <!-- Solo muestro las residencias disponibles-->
 							<tr>
 							<td><%= image_tag residence.image_url, height: '100', width: '200' %></td>
@@ -47,7 +74,7 @@
 					<% end %>
 				<% end %>
 
-				<% if residences.size == 0 %>
+				<% if @residence.size == 0 %>
 					<tr> <td colspan="3"> No hay residencias </td> </tr>
 				<% end %>
 

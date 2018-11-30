@@ -1,6 +1,7 @@
 class ResidencesController < ApplicationController
+  
   def index
-    @residence = Residence.all
+      @residence = Residence.search(params[:search])
   end
 
   def new

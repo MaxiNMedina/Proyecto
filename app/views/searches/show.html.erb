@@ -1,0 +1,63 @@
+<div class="hsh-window">
+	<div class="container">
+
+		<div class="row">
+			<div class="col">
+				<h1> Listado de Residencias </h1>  <!-- TABLA DE RESIDENCIAS-->
+				<% if current_user.present? && current_user.isAdmin?%>
+					<p class="br30"><%= link_to "Crear Residencia", new_residence_path ,class: 'btn btn-info'%></p>
+				<%end%>
+			</div>
+		</div>
+
+		<div class="row">
+			<table class="table">
+				<!--Si no hay residencias que coinciden con la busqueda lo informo, sino las muestro-->
+				<% if @search.search_residences.empty? %>
+					<p>No se encontraron residencias</p>
+				<% else %>
+					<tr>
+						<th>  </th>
+						<th> Nombre </th>
+						<th> Descripción </th>
+						<th> Direccion </th>
+						<th> Localidad </th>
+						<th>  </th>
+						<th>  </th>
+					</tr>
+					<% @search.search_residences.each do |residence| %>
+						<% if residence.available? %> <!-- Solo muestro las residencias disponibles-->
+							<tr>
+							<td><%= image_tag residence.image_url, height: '100', width: '200' %></td>
+							<td> <%= link_to residence.name, residence, class: 'btn btn-link btn-sm'%> </td>
+							<td> <%= truncate(residence.desc, length: 15, seperator: ' ') %> </td>
+							<td> <%= residence.dir %> </td>
+							<td> <%= "#{residence.country}, #{residence.province}, #{residence.locality}" %> </td>
+
+ 							<!-- Funciones exclusivas para administradores -->
+							<% if user_signed_in? && current_user.isAdmin? %>
+								<td><%= link_to "Editar", edit_residence_path(residence), class: 'btn btn-dark btn-sm'%></td>
+								<!-- Se fija si en el listado hay residencias que se encuentran en subasta -->
+								<% if Auction.exists?(residence_id: residence.id) %>
+									<td><%= link_to "En subasta", residence, method: :delete,  class: 'btn btn-danger btn-sm disabled', data: { confirm: 'Realmente desea borrar la residencia?'}%></td>
+								<% else %>
+									<td><%= link_to "Borrar", residence, method: :delete,  class: 'btn btn-danger btn-sm', data: { confirm: 'Realmente desea borrar la residencia?'}%></td>
+								<% end %>
+							<% end %>
+							</tr>
+						<% end %>
+					<% end %>	
+				<% end %>
+
+
+
+			</table>
+		</div>
+
+		<div class="row">
+			<p class="br30"> <%= link_to "Volver a pagina de inicio", root_path, class: 'btn btn-secondary' %> </p>
+			<p class="br30"> <%= link_to "Buscar Nuevamente", new_search_path, class: 'btn btn-primary' %> </p>
+		</div>
+
+	</div>
+</div>
