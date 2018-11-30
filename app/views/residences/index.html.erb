@@ -50,8 +50,8 @@
 					<th>  </th>
 				</tr>
 
-				<% residences = Residence.open %>
-					<% residences.each do |residence| %>
+				
+					<% @residence.each do |residence| %>
 						<% if residence.available? %> <!-- Solo muestro las residencias disponibles-->
 							<tr>
 							<td><%= image_tag residence.image_url, height: '100', width: '200' %></td>
@@ -74,7 +74,7 @@
 					<% end %>
 				<% end %>
 
-				<% if residences.size == 0 %>
+				<% if @residence.size == 0 %>
 					<tr> <td colspan="3"> No hay residencias </td> </tr>
 				<% end %>
 
@@ -97,14 +97,10 @@
 					<th>  </th>
 				</tr>
 
-<<<<<<< HEAD
+
 				
 					<% @residence.each do |residence| %>
-=======
-				<% residences = Residence.closed %>
-					<% residences.each do |residence| %>
->>>>>>> c64a68c7703a66caebbe95014f8cd402c850d6c9
-						<% if residence.available? %> <!-- Solo muestro las residencias disponibles-->
+						<% if !residence.available? %> <!-- Solo muestro las residencias disponibles-->
 							<tr>
 							<td><%= image_tag residence.image_url, height: '100', width: '200' %></td>
 							<td> <%= link_to residence.name, residence, class: 'btn btn-link btn-sm'%> </td>

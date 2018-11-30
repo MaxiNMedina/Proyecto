@@ -46,7 +46,7 @@ class ResidencesController < ApplicationController
   #Usado para mandar parametros de la residencia. Lo uso en la modificacion de residencia para actualizar los datos.
   #Se puede usar para otros metdos, como por ej. create.
   def residence_params
-    params.require(:residence).permit(:name, :desc, :dir, :available, :image_url)
+    params.require(:residence).permit(:name, :desc, :dir, :available, :image_url, :country, :province, :locality)
   end
 
 #  def enterBids
