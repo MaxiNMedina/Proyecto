@@ -10,8 +10,14 @@ class AuctionsController < ApplicationController
 
   def destroy
       @auction = Auction.find(params[:id])
-      @reservation = Reservation.new(residence: @auction.residence, user: @auction.user, year: "2018", week: "1")
+      #Creo una reserva con los datos de la subasta finalizada
+      @reservation = Reservation.new(residence: @auction.residence, user: @auction.user, year: @auction.availability.year, week: @auction.availability.week)
       @reservation.save
+      #Actualizo la tabla de disponibilidad de la residencia que ya fue reservada
+      #@availability = Availability.where({ :residence => @auction.residence, :year => @auction.availability.year, :week => @auction.availability.year})
+      Availability.where(:id => @auction.availability.id ).update_all(:is_available => false)
+      #@availability.update_all(:is_available => false)
+      #Termina la actualizacion y elimina la subasta del sistema
       @auction = Auction.destroy(params[:id])
       redirect_to auctions_path
     end

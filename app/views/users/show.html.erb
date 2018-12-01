@@ -88,7 +88,7 @@
         <tr>
           <th></th>
           <th> Nombre de la Residencia </th>
-          <th> Precio Actual </th>
+          <th> Semana </th>
         </tr>
         <% reservations = Reservation.all %>
           <% reservations.each do |reservation| %>
@@ -96,8 +96,7 @@
               <tr>
                 <td> <%= image_tag reservation.residence.image_url, height: '100', width: '200' %></td>
                 <td> <%= reservation.residence.name %> </td>
-                <td> <%= "#{reservation.year} + #{reservation.week}" %> </td>
-                <td> <%= link_to "Ver", auction, class: 'btn btn-secondary' %> </td>
+                <td> Del <%= Date.commercial(reservation.year, reservation.week).strftime("%d/%m/%Y") %> hasta el <%= (Date.commercial(reservation.year, reservation.week) +6 ).strftime("%d/%m/%Y") %> </td>
               </tr>
             <% end %>
           <% end %>
