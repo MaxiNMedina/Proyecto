@@ -21,6 +21,7 @@
 			<p>Estas seguro de querer borrar tu cuenta premium?</p>
 			<p><%= link_to "Borrar", client_destroy_path(@client),  class: 'btn btn-danger btn-sm', data: { confirm: 'Realmente desea borrar su cuenta premium?'}%></p>
 		<% end %>
+		 <%= link_to "Volver", user_path, class: 'btn btn-secondary' %>
 
 	</div>
 </div>
