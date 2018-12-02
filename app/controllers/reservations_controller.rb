@@ -11,6 +11,8 @@ class ReservationsController < ApplicationController
   	def new
       @res = Residence.find(params[:id])
       @disp = Availability.find(params[:aid])
+      @disp.is_available = false
+      @disp.save
     	@reservation = Reservation.new
   	end
 
