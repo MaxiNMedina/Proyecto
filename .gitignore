@@ -4,3 +4,4 @@
 *.DS_Store
 *.tmp
 *.cache
+tmp/cache/bootsnap-load-path-cache
