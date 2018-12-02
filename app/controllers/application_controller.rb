@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:userName, :password, :credits, :isAdmin, :isPremium ])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:userName, :email, :password, :isAdmin, :isPremium, :credits, :name, :surname, :birthday, :credit_card_number, :cvv, :card_expiry_date ])
   end
 
 	######## PARA PONER ERRORES DE DEVISE EN header

@@ -32,7 +32,7 @@
     <div class="row profile">
       <table class="profile-table">
         <tr>
-          <td class="bold"> Nombre </td>
+          <td class="bold"> Nombre de usuario </td>
           <td class="profile-field"><%= @user.userName %></td>
         </tr>
         <tr>
@@ -45,11 +45,32 @@
         </tr>
         <tr>
           <td class="bold"> Fecha de Nacimiento </td>
-          <td class="profile-field"><%=  %></td>
+          <td class="profile-field"><%= @user.birthday.strftime("%d/%m/%Y") %></td>
         </tr>
         <tr>
           <td class="bold"> Premium </td>
           <td class="profile-field"><%= @user.isPremium %></td>
+        </tr>
+        <!--DATOS AGREGADOS-->
+        <tr>
+          <td class="bold">Nombre </td>
+          <td class="profile-field"><%= @user.name %></td>
+        </tr>
+        <tr>
+          <td class="bold"> Apellido </td>
+          <td class="profile-field"><%= @user.surname %></td>
+        </tr>
+        <tr>
+          <td class="bold"> Tarjeta de credito </td>
+          <td class="profile-field"><%= @user.credit_card_number %></td>
+        </tr>
+        <tr>
+          <td class="bold"> Fecha de vencimiento de tarjeta </td>
+          <td class="profile-field"><%= @user.card_expiry_date.strftime("%m/%Y") %></td>
+        </tr>
+        <tr>
+          <td class="bold"> Clave de vencimiento de tarjeta </td>
+          <td class="profile-field"><%= @user.cvv %></td>
         </tr>
       </table>
     </div>
