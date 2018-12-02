@@ -1,5 +1,6 @@
 class MainController < ApplicationController
   def index
-    @residence = Residence.all
+    @residences = Residence.all
+    @hotsales = Hotsale.all
   end
 end

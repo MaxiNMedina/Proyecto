@@ -10,8 +10,14 @@ class AuctionsController < ApplicationController
 
   def destroy
       @auction = Auction.find(params[:id])
-      @reservation = Reservation.new(residence: @auction.residence, user: @auction.user, year: "2018", week: "1")
-      @reservation.save
+      if !@auction.user.isAdmin?
+        @reservation = Reservation.new(residence: @auction.residence, user: @auction.user, year: @auction.availability.year, week: @auction.availability.week)
+        @reservation.save
+      else
+        @hotsale = Hotsale.new(residence: @auction.residence, availability: @auction.availability, price: @auction.maxbid / 2)
+        @hotsale.save
+      end
+
       @auction = Auction.destroy(params[:id])
       redirect_to auctions_path
     end
