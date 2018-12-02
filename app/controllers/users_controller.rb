@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new( params.require(:user).permit(:userName, :email, :password, :credits, :isAdmin, :isPremium) )
+    @user = User.new( params.require(:user).permit(:userName, :email, :password, :isAdmin, :isPremium, :credits, :name, :surname, :birthday, :credit_card_number, :cvv, :card_expiry_date) )
     if @user.save
         redirect_to users_path, notice: "Se añadio un usuario exitosamente."
     else

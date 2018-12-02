@@ -10,15 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_02_142736) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 2018_12_02_172346) do
 
   create_table "auctions", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "residence_id"
+    t.integer "residence_id"
     t.integer "maxbid"
     t.date "dateStart"
     t.date "dateEnd"
@@ -30,8 +27,8 @@ ActiveRecord::Schema.define(version: 2018_12_02_142736) do
   end
 
   create_table "auctions_users", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "auction_id"
+    t.integer "user_id"
+    t.integer "auction_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["auction_id"], name: "index_auctions_users_on_auction_id"
@@ -49,8 +46,8 @@ ActiveRecord::Schema.define(version: 2018_12_02_142736) do
   end
 
   create_table "hotsales", force: :cascade do |t|
-    t.bigint "residence_id"
-    t.bigint "availability_id"
+    t.integer "residence_id"
+    t.integer "availability_id"
     t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -95,8 +92,8 @@ ActiveRecord::Schema.define(version: 2018_12_02_142736) do
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
-    t.string "password"
     t.integer "credits"
+    t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "isAdmin"
@@ -106,10 +103,16 @@ ActiveRecord::Schema.define(version: 2018_12_02_142736) do
     t.datetime "remember_created_at"
     t.string "userName"
     t.integer "isPremium"
+    t.integer "reservation_id"
+    t.string "name"
+    t.string "surname"
+    t.date "birthday"
+    t.bigint "credit_card_number"
+    t.integer "cvv"
+    t.date "card_expiry_date"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reservation_id"], name: "index_users_on_reservation_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "hotsales", "availabilities"
-  add_foreign_key "hotsales", "residences"
 end
