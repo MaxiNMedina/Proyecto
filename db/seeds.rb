@@ -36,3 +36,7 @@ User.create(userName: "jose",email: "jose@mail.com", password: "jose123", credit
 User.create(userName: "maria",email: "maria@mail.com", password: "maria123", credits: 2, isAdmin: false, isPremium: 'no', name: "Maria", surname: "De Tal", birthday: Date.new(1973,10,6), credit_card_number: 1111222233333333, cvv: 123, card_expiry_date: Date.new(2021,5,30))
 User.create(userName: "juanperez", email: "juanperez@gmail.com ", password: "12345678", credits: 2, isAdmin: false, isPremium: 'no', name: "Juan", surname: "Perez", birthday: Date.new(1992,5,29), credit_card_number: 12345678901234567, cvv: 123, card_expiry_date: Date.new(2022,5,30))
 
+puts "Creando Reservas"
+Reservation.create(residence_id: resMaxi.id, user_id: 4)
+Reservation.create(residence_id: resAlex.id, user_id: admMaxi.id)
+Reservation.create(residence_id: resVic.id, user_id: admVic.id)

@@ -3,14 +3,38 @@
 
 		<div class="row">
 			<div class="col">
+
+			    <!-- Buscador -->
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-12 col-md-10 col-lg-8">
+							<form class="card card-sm">
+								<div class="card-body row no-gutters align-items-center">
+								    <%= form_tag residences_path, :method => 'get' do%>
+								    	<div class="col">
+								    		<%= text_field_tag :search, params[:search], placeholder:"Ingrese Nombre, Direccion, Pais, Provincia o Localidad", class:"form-control form-control-lg form-control-borderless " %>
+								    	</div>
+								    	<div class="col-auto">
+								    		<%= submit_tag "Buscar", class:"btn btn-lg btn-success"%>
+								    	</div>
+								    <% end %>
+								</div>
+							</form>
+							<%= link_to "Busqueda Avanzada", new_search_path %>
+						</div>
+					</div>
+				</div>
+				<br/>
+
+
 				<h1> Listado de Residencias </h1>  <!-- TABLA DE RESIDENCIAS-->
 				<% if current_user.present? && current_user.isAdmin?%>
 					<p class="br30"><%= link_to "Crear Residencia", new_residence_path ,class: 'btn btn-info'%></p>
 				<%end%>
 			</div>
 		</div>
-
-		<div class="row">
+		<!-- RESIDENCIAS ACTIVAS -->
+		<div class="row br30">
 			<table class="table">
 
 				<tr>
@@ -23,8 +47,8 @@
 					<th>  </th>
 				</tr>
 
-				<% residences = Residence.all %>
-					<% residences.each do |residence| %>
+				
+					<% @residence.each do |residence| %>
 						<% if residence.available? %> <!-- Solo muestro las residencias disponibles-->
 							<tr>
 							<td><%= image_tag residence.image_url, height: '100', width: '200' %></td>
@@ -47,12 +71,62 @@
 					<% end %>
 				<% end %>
 
-				<% if residences.size == 0 %>
+				<% if @residence.size == 0 %>
 					<tr> <td colspan="3"> No hay residencias </td> </tr>
 				<% end %>
 
 			</table>
 		</div>
+		<!-- RESIDENCIAS NO DISPONIBLES -->
+		<% if user_signed_in? %>
+		<% if current_user.isAdmin? %>
+		<div class="row br30">
+			<h1> Listado de Residencias No Disponibles </h1>  <!-- TABLA DE RESIDENCIAS-->
+			<table class="table">
+
+				<tr>
+					<th>  </th>
+					<th> Nombre </th>
+					<th> Descripción </th>
+					<th> Direccion </th>
+					<th> Localidad </th>
+					<th>  </th>
+					<th>  </th>
+				</tr>
+
+
+				
+					<% @residence.each do |residence| %>
+						<% if !residence.available? %> <!-- Solo muestro las residencias disponibles-->
+							<tr>
+							<td><%= image_tag residence.image_url, height: '100', width: '200' %></td>
+							<td> <%= link_to residence.name, residence, class: 'btn btn-link btn-sm'%> </td>
+							<td> <%= truncate(residence.desc, length: 15, seperator: ' ') %> </td>
+							<td> <%= residence.dir %> </td>
+							<td> <%= "#{residence.country}, #{residence.province}, #{residence.locality}" %> </td>
+
+ 							<!-- Funciones exclusivas para administradores -->
+							<% if user_signed_in? && current_user.isAdmin? %>
+								<td><%= link_to "Editar", edit_residence_path(residence), class: 'btn btn-dark btn-sm'%></td>
+								<!-- Se fija si en el listado hay residencias que se encuentran en subasta -->
+								<% if Auction.exists?(residence_id: residence.id) %>
+									<td><%= link_to "En subasta", residence, method: :delete,  class: 'btn btn-danger btn-sm disabled', data: { confirm: 'Realmente desea borrar la residencia?'}%></td>
+								<% else %>
+									<td><%= link_to "Borrar", residence, method: :delete,  class: 'btn btn-danger btn-sm', data: { confirm: 'Realmente desea borrar la residencia?'}%></td>
+								<% end %>
+							<% end %>
+							</tr>
+					<% end %>
+				<% end %>
+
+				<% if @residence.size == 0 %>
+					<tr> <td colspan="3"> No hay residencias </td> </tr>
+				<% end %>
+
+			</table>
+		</div>
+		<% end %>
+		<% end %>
 
 		<div class="row">
 			<p class="br30"> <%= link_to "Volver a pagina de inicio", root_path, class: 'btn btn-secondary' %> </p>

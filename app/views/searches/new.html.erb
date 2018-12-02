@@ -1,0 +1,40 @@
+<div class="hsh-window" align="center">
+  <h2>Busqueda Avanzada</h2>
+
+  <%= form_for @search, html: {class: "pure-form"} do |f| %>
+
+
+     <div class="row">
+      <%= f.label :nombre%>
+      <%= f.text_field :keywords, class: 'form-control' %>
+    </div>
+
+    <div class="row">
+      <%= f.label :direccion %>
+      <%= f.text_field :dir , class: 'form-control' %>
+    </div>
+
+     <div class="row">
+      <%= f.label :pais %>
+      <%= f.text_field :country , class: 'form-control' %>
+    </div>
+
+     <div class="row">
+      <%= f.label :provincia %>
+      <%= f.text_field :province , class: 'form-control' %>
+    </div>
+
+     <div class="row">
+      <%= f.label :localidad %>
+      <%= f.text_field :locality , class: 'form-control' %>
+    </div>
+
+    <div style="padding-top:20px">
+      <%= f.submit "Buscar", class: 'btn btn btn-success' %>
+    </div>
+
+  <% end %>
+  <div class="row">
+    <p class="br30"><%= link_to "Volver al listado de residencias", residences_path, class: 'btn btn-secondary' %></p>
+  </div>
+</div>

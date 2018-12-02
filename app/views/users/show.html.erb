@@ -109,6 +109,7 @@
         <tr>
           <th></th>
           <th> Nombre de la Residencia </th>
+
           <th> Semana </th>
         </tr>
         <% reservations = Reservation.all %>
@@ -118,6 +119,7 @@
                 <td> <%= image_tag reservation.residence.image_url, height: '100', width: '200' %></td>
                 <td> <%= reservation.residence.name %> </td>
                 <td> Del <%= Date.commercial(reservation.year, reservation.week).strftime("%d/%m/%Y") %> hasta el <%= (Date.commercial(reservation.year, reservation.week) +6 ).strftime("%d/%m/%Y") %> </td>
+                <td> <%= link_to "Ver", user_path, class: 'btn btn-secondary' %> </td>
               </tr>
             <% end %>
           <% end %>
@@ -129,29 +131,53 @@
 
       <!--MENU-->
     <div class="row btn-gap">
-      <p><%= link_to "Volver a pagina de inicio", root_path, class: 'btn btn-secondary' %></p>
-      <p><%= link_to "Editar perfil", edit_user_path(@user), class: 'btn btn-dark '%></p>
-      <% if current_user.present? &&  current_user.isAdmin? %>
-        <p><%= link_to "Lista de Administradores", admins_path, class: 'btn btn-warning' %></p>
-      <% end %>
 
-      <!--Revisa si un usuario es premium o no dependiendo de condiciones para mostrar el boton correspondiente-->
-
-      <% if !current_user.isAdmin? %> <!--Pregnta si es un usuario comun-->
-        <% if current_user.isPremium == "no" %> <!--Si lo es, pregunta si solicito ser premium-->
-            <p><%= link_to "Pasar a ser premium", be_premium_user_path, class: 'btn btn-info' %></p>
-        <% end %>
-      <% else %> <!--Si no es asi, entonces es un administrador-->
-        <% if @user.isPremium == "solicitado" %> <!--Revisa si el usuario que esta mirando el administrador solicito ser premium-->
-          <p><%= link_to "Habilitar usuario a ser premium", enable_premium_user_path, class: 'btn btn-info' %></p>
-        <% else %>
-          <% if @user.isPremium == "si" %> <!--Si no entro en el anterior if, pregunta si ya es un usuario premium-->
-            <p><%= link_to "Desabilitar usuario de condicion premium", disable_premium_user_path, class: 'btn btn-danger' %></p>
+      <div class="col">
+        <span><%= link_to "Inicio", root_path, class: 'btn btn-secondary' %></span>
+        <span><%= link_to "Editar perfil", edit_user_path(@user), class: 'btn btn-dark '%></span>
+        <% if current_user.present? &&  current_user.isAdmin? %>
+          <% if @user.isAdmin %>
+          <span><%= link_to "Ver Admins", admins_path, class: 'btn btn-warning' %></span>
+          <% else %>
+          <span><%= link_to "Ver Usuarios", users_path, class: 'btn btn-info' %></span>
           <% end %>
         <% end %>
-      <% end %>
+      </div>
+
+      <div class="col">
+        <!--Revisa si un usuario es premium o no dependiendo de condiciones para mostrar el boton correspondiente-->
+        <% if !current_user.isAdmin? %> <!--Pregnta si es un usuario comun-->
+          <% if current_user.isPremium == "no" %> <!--Si lo es, pregunta si solicito ser premium-->
+              <span><%= link_to "Pasar a ser premium", be_premium_user_path, class: 'btn btn-info' %></span>
+          <% end %>
+        <% else %> <!--Si no es asi, entonces es un administrador-->
+          <% if @user.isPremium == "solicitado" %> <!--Revisa si el usuario que esta mirando el administrador solicito ser premium-->
+            <span><%= link_to "Habilitar premium", enable_premium_user_path, class: 'btn btn-info' %></span>
+          <% else %>
+            <% if @user.isPremium == "si" %> <!--Si no entro en el anterior if, pregunta si ya es un usuario premium-->
+              <span><%= link_to "Desabilitar premium", disable_premium_user_path, class: 'btn btn-danger' %></span>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="col">
+        <!-- BORRAR USER -->
+        <% if current_user.present? && !current_user.isAdmin? %>
+            <% if not current_user.isPremium %>
+              <span><%= link_to "Borrar mi cuenta premium", client_delete_path, class: 'btn btn-danger' %></span>
+            <% else %>
+              <span><%= link_to "Borrar mi cuenta", client_delete_path, class: 'btn btn-warning' %></span>
+            <% end %>
+          <% else if !@user.isAdmin? && current_user.isAdmin? %>
+            <span><%= link_to "Borrar este usuario", client_delete_path, class: 'btn btn-danger' %></span>
+          <% else if @user.isAdmin? && current_user.isAdmin? && current_user != @user %>
+            <span><%= link_to "Borrar este admin", admin_destroy_path, class: 'btn btn-danger' %></span>
+          <% end %>
+          <% end %>
+        <% end %>
+      </div>
 
     </div>
-
   </div>
 </div>

@@ -1,0 +1,27 @@
+<div class="hsh-window">
+	<div class="container">
+
+		<% if current_user.isAdmin? %>
+			<h1> Borrar Usuario - Admin </h1>
+		    <p>Borrar este usuario - Ok?</p>
+				<p><%= link_to "Borrar", client_destroy_path(@client),  class: 'btn btn-danger btn-sm', data: { confirm: 'Realmente desea borrar este usuario?'}%></p>
+		<% end %>
+
+		<% if current_user.present? && !current_user.isPremium? && !current_user.isAdmin?  %>
+			<h1> Borrar Mi Cuenta </h1>
+
+		    <p>Estas seguro de querer borrar tu cuenta?</p>
+				<p><%= link_to "Borrar", client_destroy_path(@client),  class: 'btn btn-danger btn-sm', data: { confirm: 'Realmente desea borrar su cuenta?'}%></p>
+		<% end %>
+
+		<% if current_user.present? && current_user.isPremium? && !current_user.isAdmin? %>
+			<h1> Borrar Mi Cuenta Premium </h1>
+
+			<p class="error">Usted debe pasar por alguno de los sucursales para firmar que desea borrar su usuario en el sistema.</p>
+			<p>Estas seguro de querer borrar tu cuenta premium?</p>
+			<p><%= link_to "Borrar", client_destroy_path(@client),  class: 'btn btn-danger btn-sm', data: { confirm: 'Realmente desea borrar su cuenta premium?'}%></p>
+		<% end %>
+		 <%= link_to "Volver", user_path, class: 'btn btn-secondary' %>
+
+	</div>
+</div>

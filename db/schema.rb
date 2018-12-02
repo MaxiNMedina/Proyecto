@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2018_12_02_172346) do
   create_table "auctions", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "residence_id"
+    t.integer "residence_id"
     t.integer "maxbid"
     t.date "dateStart"
     t.date "dateEnd"
@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(version: 2018_12_02_172346) do
   end
 
   create_table "auctions_users", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "auction_id"
+    t.integer "user_id"
+    t.integer "auction_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["auction_id"], name: "index_auctions_users_on_auction_id"
@@ -43,6 +43,16 @@ ActiveRecord::Schema.define(version: 2018_12_02_172346) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["residence_id"], name: "index_availabilities_on_residence_id"
+  end
+
+  create_table "hotsales", force: :cascade do |t|
+    t.integer "residence_id"
+    t.integer "availability_id"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["availability_id"], name: "index_hotsales_on_availability_id"
+    t.index ["residence_id"], name: "index_hotsales_on_residence_id"
   end
 
   create_table "reservations", force: :cascade do |t|
@@ -69,10 +79,21 @@ ActiveRecord::Schema.define(version: 2018_12_02_172346) do
     t.string "locality"
   end
 
+  create_table "searches", force: :cascade do |t|
+    t.string "keywords"
+    t.string "dir"
+    t.string "desc"
+    t.string "country"
+    t.string "province"
+    t.string "locality"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
-    t.string "password"
     t.integer "credits"
+    t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "isAdmin"

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  residence: one
+  availability: one
+  price: 1
+
+two:
+  residence: two
+  availability: two
+  price: 1
