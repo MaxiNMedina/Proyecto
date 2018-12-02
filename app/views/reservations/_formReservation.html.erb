@@ -7,7 +7,6 @@
   <h2> Para la semana del <%= Date.commercial(@disp.year, @disp.week) %> al <%= Date.commercial(@disp.year, @disp.week) + 6 %> </h2>
   <%= f.hidden_field :year, value: Date.commercial(@disp.year, @disp.week) %>
   <%= f.hidden_field :week, value: Date.commercial(@disp.week) %>
-  <%= f.hidden_field :availability_id, value: params[:aid] %>
   <br>
 
   <%= link_to "Volver", residences_path, class: 'btn btn-secondary' %>
