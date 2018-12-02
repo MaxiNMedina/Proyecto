@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-  before_action :authenticate_user!, only: [:enterBid]
+
 	def index
     	@reservation = Reservation.all
  	end
@@ -24,6 +24,5 @@ class ReservationsController < ApplicationController
         render :new
       end
   	end
-
 
 end

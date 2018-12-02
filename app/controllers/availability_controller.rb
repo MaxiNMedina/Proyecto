@@ -23,4 +23,5 @@ class AvailabilityController < ApplicationController
 			w= 1
 		end
 	end
+
 end
