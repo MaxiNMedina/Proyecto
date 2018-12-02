@@ -1,0 +1,17 @@
+<div class="container">
+
+<%= form_for @reservation do |f| %>
+
+<h2> Usted va a reservar la Residencia: <%= @res.name %></h2>
+  <%= f.hidden_field :residence_id, value: params[:id] %>
+  <h2> Para la semana del <%= Date.commercial(@disp.year, @disp.week) %> al <%= Date.commercial(@disp.year, @disp.week) + 6 %> </h2>
+  <%= f.hidden_field :year, value: Date.commercial(@disp.year, @disp.week) %>
+  <%= f.hidden_field :week, value: Date.commercial(@disp.week) %>
+  <%= f.hidden_field :availability_id, value: params[:aid] %>
+  <br>
+
+  <%= link_to "Volver", residences_path, class: 'btn btn-secondary' %>
+  <%= f.submit 'Pagar Reserva', class: 'btn btn-primary', data: { confirm: 'Confirmar Compra?'} %>
+  <% end %>
+
+</div>

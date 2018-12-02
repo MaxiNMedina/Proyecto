@@ -35,3 +35,8 @@ User.create(userName: "pepe", email: "pepe@mail.com", password: "pepe123", credi
 User.create(userName: "jose",email: "jose@mail.com", password: "jose123", credits: 2, isAdmin: false, isPremium: 'si')
 User.create(userName: "maria",email: "maria@mail.com", password: "maria123", credits: 2, isAdmin: false, isPremium: 'no')
 User.create(userName: "Juan Pérez", email: "juanperez@gmail.com ", password: "12345678", credits: 2, isAdmin: false, isPremium: 'no')
+
+puts "Creando Reservas"
+Reservation.create(residence_id: resMaxi.id, user_id: 4)
+Reservation.create(residence_id: resAlex.id, user_id: admMaxi.id)
+Reservation.create(residence_id: resVic.id, user_id: admVic.id)

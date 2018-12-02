@@ -88,7 +88,6 @@
         <tr>
           <th></th>
           <th> Nombre de la Residencia </th>
-          <th> Precio Actual </th>
         </tr>
         <% reservations = Reservation.all %>
           <% reservations.each do |reservation| %>
@@ -96,8 +95,7 @@
               <tr>
                 <td> <%= image_tag reservation.residence.image_url, height: '100', width: '200' %></td>
                 <td> <%= reservation.residence.name %> </td>
-                <td> <%= "#{reservation.year} + #{reservation.week}" %> </td>
-                <td> <%= link_to "Ver", auction, class: 'btn btn-secondary' %> </td>
+                <td> <%= link_to "Ver", user_path, class: 'btn btn-secondary' %> </td>
               </tr>
             <% end %>
           <% end %>
