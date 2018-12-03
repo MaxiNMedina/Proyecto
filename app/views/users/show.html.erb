@@ -119,7 +119,8 @@
                 <td> <%= image_tag reservation.residence.image_url, height: '100', width: '200' %></td>
                 <td> <%= reservation.residence.name %> </td>
                 <td> Del <%= Date.commercial(reservation.year, reservation.week).strftime("%d/%m/%Y") %> hasta el <%= (Date.commercial(reservation.year, reservation.week) +6 ).strftime("%d/%m/%Y") %> </td>
-                <td> <%= link_to "Ver", user_path, class: 'btn btn-secondary' %> </td>
+                <td> <%= link_to "Ver detalles de su reserva", reservation, class: 'btn btn-secondary' %> </td>
+                <td> <%= link_to "Cancelar su reserva", reservation, method: :delete,  class: 'btn btn-danger btn-sm', data: { confirm: "Realmente desea cancelar su reserva?"}%> </td>
               </tr>
             <% end %>
           <% end %>

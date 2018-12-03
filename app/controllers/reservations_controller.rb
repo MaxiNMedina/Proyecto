@@ -27,4 +27,16 @@ class ReservationsController < ApplicationController
       end
   	end
 
+    def destroy #Cancela la reserva
+      @reservation = Reservation.find(params[:id])
+      #Marco la residencia como disponible para esa semana
+      Availability.where(:residence_id => @reservation.residence_id, :week =>@reservation.week, :year => @reservation.year).update_all(:is_available => true)
+      @reservation = Reservation.destroy(params[:id])
+      redirect_to current_user
+    end
+
+    def show
+      @reservation = Reservation.find(params[:id])
+    end
+
 end

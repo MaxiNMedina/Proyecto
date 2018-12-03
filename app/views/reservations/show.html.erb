@@ -1,0 +1,10 @@
+<div class="hsh-window">
+	<div class="container">
+    	<div class="row br30">
+    		<h1> Reserva Nº <%= @reservation.id %> </h1>
+    	</div>
+
+    	<p>Reservo <%= @reservation.user.userName %></p>
+    	<p>Para la semana del <%= Date.commercial(@reservation.year, @reservation.week).strftime("%d/%m/%Y") %> al <%= (Date.commercial(@reservation.year, @reservation.week) +6 ).strftime("%d/%m/%Y") %></p>
+	</div>
+</div>
