@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_02_172346) do
+ActiveRecord::Schema.define(version: 2018_12_04_225529) do
 
   create_table "auctions", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 2018_12_02_172346) do
     t.integer "week"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "price"
     t.index ["residence_id"], name: "index_reservations_on_residence_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end

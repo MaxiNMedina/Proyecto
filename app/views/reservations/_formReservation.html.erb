@@ -8,9 +8,11 @@
   <%= f.hidden_field :year, value: Date.commercial(@disp.year, @disp.week) %>
   <%= f.hidden_field :week, value: Date.commercial(@disp.week) %>
   <br>
+  <h2> El precio de adjudicacion es de $9999 (Este precio es solo para pruebas.)</h2>
+  <%= f.hidden_field :price, value: 9999 %>
 
-  <%= link_to "Volver", residences_path, class: 'btn btn-secondary' %>
-  <%= f.submit 'Pagar Reserva', class: 'btn btn-primary', data: { confirm: 'Confirmar Compra?'} %>
+  <%= link_to "Volver al listado de residencias", residences_path, class: 'btn btn-secondary' %>
+  <%= f.submit 'Confirmar Reserva', class: 'btn btn-primary', data: { confirm: 'Confirmar Compra?'} %>
   <% end %>
 
 </div>

@@ -18,7 +18,7 @@ class ReservationsController < ApplicationController
 
   	def create    #Crea una nueva reserva y la guarda en la base de datos
       
-      @reservation = Reservation.new(params.require(:reservation).permit(:residence_id, :user_id, :year, :week))
+      @reservation = Reservation.new(params.require(:reservation).permit(:residence_id, :user_id, :year, :week, :price))
       @reservation.user = current_user
       if @reservation.save
         redirect_to root_path, notice: "Gracias por su compra! En las proximas 24hs recibira un e-mail con los datos de su reserva y su factura de compra"
