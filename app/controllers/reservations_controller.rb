@@ -11,16 +11,17 @@ class ReservationsController < ApplicationController
   	def new
       @res = Residence.find(params[:id])
       @disp = Availability.find(params[:aid])
-      @disp.is_available = false
-      @disp.save
     	@reservation = Reservation.new
   	end
 
   	def create    #Crea una nueva reserva y la guarda en la base de datos
-      
+      @disp = Availability.find(params[:availability_id])
       @reservation = Reservation.new(params.require(:reservation).permit(:residence_id, :user_id, :year, :week, :price))
       @reservation.user = current_user
+      #Marco que la residencia reservada no esta disponible para el año y semana de la reserva
       if @reservation.save
+        @disp.update(is_available: false)
+        current_user.update(credits: current_user.credits - 1)
         redirect_to root_path, notice: "Gracias por su compra! En las proximas 24hs recibira un e-mail con los datos de su reserva y su factura de compra"
       else
         render :new
