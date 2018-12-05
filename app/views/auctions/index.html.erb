@@ -1,31 +1,80 @@
-<div class="centered">
-<h1> Listado de Subastas </h1>  <!-- TABLA DE SUBASTAS-->
-<br>
-<%= link_to "Crear Subasta", new_auction_path ,class: 'btn btn-info'%>
-<br>
-<br>
-<table class="table">
+<div class="hsh-window">
+	<div class="container">
+		<!-- TITULO -->
+		<div class="row">
+			<div class="col br30">
+				<h1> Listado de Subastas </h1>
+			</div>
+		</div>
+		<!-- SUBASTAS ACTIVAS -->
+		<div class="row">
+			<table class="table">
 
-	<tr>
-		<th> N° de subasta </th>
-    	<th> Puja maxima </th>
-    	<th> Para la residencia </th>
-    	<th></th>
-    	<th></th>
-	</tr>
-	<% auctions = Auction.all %>
-	<% auctions.each do |auction| %>
-		<tr>
-			<td> <%= auction.id %> </td>
-      		<td> <%= auction.maxbid %> </td>
-      		<td> <%= auction.residence.name %> </td>
-			<td><%= link_to "Ver detalles", auction, class: 'btn btn-info btn-sm'%></td>
-			<!-- <td><%= link_to "Finalizar", auction, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Realmente desea finalizar la subasta?'} %></td> --> <!-- Oculte el boton de finalizar subastas ya que la subasta debe finalizar sola -->
-		</tr>
+				<tr>
+					<th> Puja maxima </th>
+					<th> Para la residencia </th>
+					<th>  </th>
+					<th>  </th>
+				</tr>
+
+				<% auctions = Auction.open %>
+					<% auctions.each do |auction| %>
+						<tr>
+							<td> <%= auction.id %> </td>
+				      <td> <%= auction.maxbid %> </td>
+				      <td> <%= auction.residence.name %> </td>
+							<td><%= link_to "Ver detalles", auction, class: 'btn btn-info btn-sm'%></td>
+							<% if current_user.present? && current_user.isAdmin? %>
+								<td><%= link_to "Finalizar", auction, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Realmente desea finalizar la subasta?'} %></td>
+							<%  end %>
+						</tr>
+					<% end %>
+
+				<% if auctions.size == 0 %>
+					<tr> <td colspan="3"> No hay subastas activas </td> </tr>
+				<% end %>
+
+			</table>
+		</div>
+		<!-- SUBASTAS PENDIENTES -->
+		<% if user_signed_in? %>
+		<% if current_user.isAdmin? %>
+		<div class="row">
+			<h1> Listado de Subastas Pendientes </h1>
+			<table class="table">
+
+				<tr>
+					<th> Puja maxima </th>
+					<th> Para la residencia </th>
+					<th>  </th>
+					<th>  </th>
+				</tr>
+
+				<% auctions = Auction.closed %>
+					<% auctions.each do |auction| %>
+						<tr>
+							<td> <%= auction.id %> </td>
+				      <td> <%= auction.maxbid %> </td>
+				      <td> <%= auction.residence.name %> </td>
+							<td><%= link_to "Ver detalles", auction, class: 'btn btn-info btn-sm'%></td>
+							<% if current_user.present? && current_user.isAdmin? %>
+								<td><%= link_to "Borrar", auction, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Realmente desea borrar la subasta?'} %></td>
+							<%  end %>
+						</tr>
+					<% end %>
+
+				<% if auctions.size == 0 %>
+					<tr> <td colspan="3"> No hay subastas activas </td> </tr>
+				<% end %>
+
+			</table>
+		</div>
 		<% end %>
-	<% if auctions.size == 0 %>
-		<tr> <td colspan="3"> No hay subastas </td> </tr>			
-	<% end %>
-</table>
-<p> <%= link_to "Volver a pagina de inicio", root_path, class: 'btn btn-secondary' %> </p>
+		<% end %>
+
+		<div class="row">
+			<p class="br30"> <%= link_to "Volver a pagina de inicio", root_path, class: 'btn btn-secondary' %> </p>
+		</div>
+
+	</div>
 </div>

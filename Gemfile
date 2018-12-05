@@ -5,7 +5,7 @@ ruby '2.5.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.1'
-#PostgreSQL 
+#PostgreSQL
 gem 'pg'
 #SQLite
 gem 'sqlite3'
@@ -66,6 +66,8 @@ gem 'hirb'
 gem 'bootstrap', '~> 4.1.3'
 gem 'jquery-ui-rails'
 gem 'jquery-rails'
-gem 'devise', git: 'git://github.com/plataformatec/devise.git' 
+gem 'devise', git: 'git://github.com/plataformatec/devise.git'
 # debugger con binding.pry
 gem "pry-byebug"
+# squeel para el metodo isActive de auction, fecha entre dos fechas
+#gem 'squeel' NO ANDA

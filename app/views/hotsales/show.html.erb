@@ -1,0 +1,45 @@
+<div class="hsh-window">
+  <div class="container">
+
+    <div class="row br30">
+      <h1> HotSale de <%= @hotsale.residence.name %> </h1> <!--DESCRIPCION DE UNA SUBASTA-->
+    </div>
+
+    <!-- IMAGENES -->
+    <div class="row residence-images">
+    	<div class="col" style="padding-bottom: 50px">
+        <%= image_tag @hotsale.residence.image_url , height: '300', width: '500', class: "residence-pic fit" %>
+    	</div>
+    </div>
+    <!-- INFORMACION SUBASTA -->
+  	<div class="row residence-content">
+    	<div class="col">
+        <table class="residence-table">
+          <tr>
+            <td class="residence-field"><h2> <%= @hotsale.residence.name %></h2>  <p> <%= @hotsale.residence.dir %>, <%= @hotsale.residence.locality %>, <%= @hotsale.residence.province %>, <%= @hotsale.residence.country %> </p></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Precio actual</td>
+            <td class="residence-field">$<%= @hotsale.price %></td>
+          </tr>
+          <tr>
+            <td>Semana de reserva</td>
+            <td class="residence-field">Desde <%= Date.commercial(@hotsale.availability.year, @hotsale.availability.week).strftime("%d/%m/%Y") %> hasta <%= (Date.commercial(@hotsale.availability.year, @hotsale.availability.week) +6 ).strftime("%d/%m/%Y") %></td>
+          </tr>
+        </table>
+    	</div>
+    </div>
+    <!-- MENU -->
+    <div class="row btn-gap">
+      <%= link_to "Volver", root_path , class: 'btn btn-secondary' %>
+      <% if  current_user.present? && !current_user.isAdmin? %>
+        <%= link_to "Comprar", @hotsale, method: :delete, class: 'btn btn-warning' %>
+      <% else if current_user.isAdmin? %>
+        <%= link_to "Borrar", @hotsale, method: :delete, class: 'btn btn-danger' %>
+      <% end %>
+      <% end %>
+    </div>
+
+  </div>
+</div>

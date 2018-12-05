@@ -1,38 +1,159 @@
-<!DOCTYPE html>
-<html lang="es">
+<div id="hsh-home" class="row">
+  <%= image_tag 'http://s1.1zoom.me/b5050/701/Houses_Design_Mansion_494577_1920x1080.jpg', class: 'fit' %>
+</div>
+<div id="hsh-home-content" class="container">
 
+  <!-- Page Content -->
+<% if @hotsales.size != 0 %>
+  <div class="row">
+    <h1 class="my-4">Hotsales
+      <small>Disponibles</small>
+    </h1>
 
-    <head>
-      <title>Home Switch Home</title>
-    </head>
-
-    <body class="background">
-      <nav id="hsh-nav">
-      <ul>
-        <% if current_user.present? && current_user.isAdmin?%> <!--Solo muestro estos botones a los administradores -->
-          <li><%= link_to "Ver Residencias", residences_path, class: 'btn-hsh'%></li>
-          <li><%= link_to "Ver Subastas", auctions_path, class: 'btn-hsh'%></li>
-          <li><%= link_to "Ver Usuarios", users_path, class: 'btn-hsh'%></li>
-          <li><%= link_to "Ver Administradores", admins_path, class: 'btn-hsh'%></li>
-        <% end %>
-      </ul>
-      </nav>
-
-      <ul id="usr-nav">
-        <% if user_signed_in? %>
-            <li><%= link_to current_user.email, current_user, class: 'btn btn-light'%></li>
-            <li><%= link_to 'Cerrar Sesion', destroy_user_session_path, method: :delete, class: 'btn btn-danger'%></li>
-        <% else%>
-          <li><%= link_to "Iniciar Sesion", new_user_session_path, class: 'btn btn-light'%></li>
-          <li><%= link_to "Registrarse", new_user_registration_path, class: 'btn btn btn-success'%></li>
-        <% end %>
-      </ul>
-
-      <!--JAJAJA-->
-      <div id="home-bottom">
-        <% if user_signed_in? && current_user.isAdmin?%>
-          <iframe width="640" height="360" src="https://www.youtube.com/embed/videoseries?list=RDEMe12_MlgO8mGFdeeftZ2nOQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        <%end%>
+    <% @hotsales.each do |hotsale| %>
+      <% if hotsale.residence.available? %>
+    <div class="row">
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <span><%= image_tag hotsale.residence.image_url, class:"fit" %></span>
+            <div class="card-body">
+              <h4 class="card-title">
+                <span><%= link_to hotsale.residence.name, hotsale %> $<%= hotsale.price %></span>
+              </h4>
+              <p class="card-text"> <%= hotsale.residence.desc %></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <span><%= image_tag hotsale.residence.image_url, class:"fit" %></span>
+            <div class="card-body">
+              <h4 class="card-title">
+                <span><%=link_to hotsale.residence.name, hotsale %> $<%= hotsale.price %></span>
+              </h4>
+              <p class="card-text"> <%= hotsale.residence.desc %></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <span><%= image_tag hotsale.residence.image_url, class:"fit" %></span>
+            <div class="card-body">
+              <h4 class="card-title">
+                <span><%= link_to hotsale.residence.name, hotsale %> $<%= hotsale.price %></span>
+              </h4>
+              <p class="card-text"> <%= hotsale.residence.desc %></p>
+            </div>
+          </div>
+        </div>
       </div>
-    </body>
-</html>
+      <% end %>
+    <% end %>
+    <!-- /.row -->
+
+    <!-- Pagination -->
+    <!-- <ul class="pagination justify-content-center">
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">Previous</span>
+        </a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">1</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">2</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">3</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Next</span>
+        </a>
+      </li>
+    </ul> -->
+  </div>
+<% end %>
+
+  <div class="row">
+    <h1 class="my-4">Residencias
+      <small>Disponibles</small>
+    </h1>
+    <% residences = Residence.all %>
+
+    <% if residences.size == 0 %>
+      <p> <td colspan="3"> No hay residencias </td> </p>
+    <% end %>
+
+    <% residences.each do |residence| %>
+      <% if residence.available? %>
+    <div class="row">
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <span><%= image_tag residence.image_url, class:"fit" %></span>
+            <div class="card-body">
+              <h4 class="card-title">
+                <span><%= residence.name %></span>
+              </h4>
+              <p class="card-text"> <%= residence.desc %></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <span><%= image_tag residence.image_url, class:"fit" %></span>
+            <div class="card-body">
+              <h4 class="card-title">
+                <span><%= residence.name %></span>
+              </h4>
+              <p class="card-text"> <%= residence.desc %></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-sm-6 portfolio-item">
+          <div class="card h-100">
+            <span><%= image_tag residence.image_url, class:"fit" %></span>
+            <div class="card-body">
+              <h4 class="card-title">
+                <span><%= residence.name %></span>
+              </h4>
+              <p class="card-text"> <%= residence.desc %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    <% end %>
+    <!-- /.row -->
+
+    <!-- Pagination -->
+    <!-- <ul class="pagination justify-content-center">
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">Previous</span>
+        </a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">1</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">2</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">3</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Next</span>
+        </a>
+      </li>
+    </ul> -->
+  </div>
+
+
+</div>

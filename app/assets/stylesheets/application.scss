@@ -13,26 +13,69 @@
  */
 @import "bootstrap";
 
+// SITIO GENERAL
 
+// body {
+// 	background-color:#FFFF; /*Color de fondo blanco*/
+//  	padding-bottom: 220px;
+//   	margin-bottom: 114px;
+// }
+html, body {
+    //overflow: auto;
+    min-height: 100%;
+    display: block;
+    position:absolute;
+    height:auto;
+    bottom:0;
+    top:0;
+    left:0;
+    right:0;
+    //background-color: green;
+    //z-index: -2;
+}
 body {
-	background-color:#FFFF; /*Color de fondo blanco*/
- 	padding-bottom: 220px;
-  	margin-bottom: 114px;
+  //background: url('https://w-dog.net/wallpapers/8/19/511932503574273/bayern-munich-germany-mountain-house-morning-fog-tree-grass-nature.jpg') no-repeat center center fixed;
+  background-color: white;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+  margin: 0px;
 }
 
+// HEADER
+
+#hsh-header {
+  background-color: #111D;
+}
+#notice {
+  margin-top: 100px;
+  //margin-right: 500px;
+}
+#notice-content {
+  width: auto;
+}
+#deviseERR {
+  margin-top: 100px;
+  margin-bottom: 0px;
+}
+#deviseERR-content {
+  width: auto;
+}
+
+// FOOTER
+
 footer {
-	position: absolute;
-	margin-top: 50%;
-	top: 100%;
-	right: 0%;
-	width: 100%;
+  position: relative;
+  width: 100% !important;
+  clear: both;
+  bottom:0;
+  height: 60px;
 }
 footer .navbar {
 	border-top: 1px solid #999;
+  padding-bottom: 100px;
 	background-color: #EEE;
-}
-.footerlist {
-	width: 70%;
 }
 .footerlist ul{
 	list-style-type: none;
@@ -44,7 +87,7 @@ footer .navbar {
 }
 .footerlist li{
 	list-style-type: none;
-	padding-right: 100px;
+	padding-right: 50px;
 	float: left;
 }
 .footerlist a{
@@ -59,93 +102,83 @@ footer .navbar {
 	text-decoration: none;
 }
 #logo {
-	padding-right: 10px;
-}
-.background {
-     width: 50%;
-     height: 200px;
-     margin-left: 25%;
-     border-radius: 50%;
-     background-image: url('https://w-dog.net/wallpapers/8/19/511932503574273/bayern-munich-germany-mountain-house-morning-fog-tree-grass-nature.jpg');
-     background-size: cover;
-     background-repeat: no-repeat;
-	 background-color: white;
-
-}
-header .navbar{
-	position: absolute;
-	top: 8px;
-	left: 16px;
-}
-.header-logo {
-	color: #FFF;
-  text-shadow: 0 0 3px #000;
+	right: 500px;
 }
 
+// FORMS
+
+.form {
+  margin: 30px;
+  padding: 10px;
+  //border: solid 1px grey;
+}
+.form .col{
+padding-right: 100px;
+}
+.form .row{
+padding-bottom: 50px;
+}
+.form-footer {
+  margin: -100px;
+}
 .error {
+  margin-bottom: 30px;
 	color: red;
 	background-color: yellow;
 	font-weight: 600;
-	text-align: center;
-	width: 25%;
 }
 
-.profile {
-	text-indent: 20px;
-	border: 2px none grey;
-	border-radius: 20px;
-	margin: 20px;
-	padding-top: 15px;
-	padding-bottom: 15px;
-}
-
-.profile-table {
-	border-style: none;
-	margin: 20px;
-	margin-left: 50px;
-	padding-top: 15px;
-	padding-bottom: 15px;
-}
-.profile-table td {
-	width: 500px;
-	height: 50px;
-	border-top: solid 1px;
-	padding-top: 15px;
-	padding-bottom: 50px;
-}
-.profile-field {
-	font-weight: 100;
-	color: black;
-}
+// CONTENIDOS
 
 .bold {
 	font-weight: bold;
 }
-.centered {
-	padding-top: 120px;
+.fit{
+  width: 100%;
+  height: 100%;
+}
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently
+  supported by Chrome and Opera */
+}
+.btn-gap .btn{
+  margin-right: 5px;
+}
+.br30 {
+  margin-bottom: 30px;
+}
+.br10 {
+  margin-bottom: 10px;
+}
+.sp30 {
+  margin: 0px 30px;
+}
+.sp10 {
+  margin: 0px 30px;
 }
 
-#usr-nav{
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
-	background-color: #FFF0;
+// SITIO CONTENIDOS
 
-	position: absolute;
-	top: 8px;
-	right: 16px;
+.hsh-content {
+	//margin: 85px 0px 0px 0px; //debajo del fixed header
+  margin: -15px 0px 0px 0px; //debajo del fixed header
 }
-
-#usr-nav li {
-	float: left;
-	display: block;
-	color: white;
-	text-align: center;
-	padding: 16px;
-	text-decoration: none;
+.hsh-window {
+  padding: 100px 50px 200px 50px;
+  background-color: white;
 }
-
+#hsh-home {
+  //margin-top: 85px;
+}
+#hsh-home-content {
+  margin-top: 100px;
+  padding-bottom: 200px;
+}
 
 .btn-hsh {
 		display: inline-block;
@@ -169,6 +202,9 @@ header .navbar{
 		text-decoration: none;
 }
 
+#hsh-body{
+	margin: 200px 0px 0px 150px;
+}
 #hsh-nav{
 	list-style-type: none;
 	background-color: #FFF0;
@@ -189,4 +225,99 @@ header .navbar{
 	height: 800px;
 	border: 1px none #999;
 	padding-top: 800px;
+}
+
+/// RESDIDENCIAS
+
+.residence-content {
+	border-top: none 1px;
+	margin-top: 15px;
+  padding-top: 15px;
+}
+.residence-images {
+  width: 100% !important;
+  // background-color: rgb(255, 255, 255) !important;
+  // -moz-box-align: center !important;
+  // align-items: center !important;
+  // display: flex !important;
+  // overflow: hidden !important;
+  // position: relative !important;
+  //cursor: pointer !important;
+}
+.residence-pic {
+    transform: scale(1) !important;
+    opacity: 1 !important;
+    transition: -ms-transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, opacity 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s !important;
+}
+.residence-pic:hover {
+    transition: -ms-transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s, transform 450ms cubic-bezier(0.645, 0.045, 0.355, 1) 0s !important;
+    transform: scale(1.05) !important;
+}
+.residence-table {
+	border-style: none;
+	margin: 20px;
+	margin-left: 50px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+.residence-table td {
+	width: 500px;
+	height: 50px;
+	border-top: solid 1px;
+  padding-right: 10px;
+	padding-top: 15px;
+	padding-bottom: 50px;
+}
+.residence-field {
+  font-weight: 100;
+	color: black;
+}
+
+/// USERS
+
+.profile {
+	text-indent: 20px;
+	border: 2px none grey;
+	border-radius: 20px;
+	margin: 20px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+.profile-table {
+	border-style: none;
+	margin: 20px;
+	margin-left: 50px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+.profile-table td {
+	width: 500px;
+	height: 50px;
+	border-top: solid 1px;
+	padding-top: 15px;
+	padding-bottom: 50px;
+}
+.profile-field {
+	font-weight: 100;
+	color: black;
+}
+
+#usr-nav{
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #FFF0;
+
+	position: absolute;
+	top: 8px;
+	right: 16px;
+}
+#usr-nav li {
+	float: left;
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 16px;
+	text-decoration: none;
 }

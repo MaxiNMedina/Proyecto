@@ -1,9 +1,8 @@
-<div class="centered" align="center">
+<div class="hsh-window" align="center">
 
 	<h2>Ha olvidado su contraseña?</h2>
 
 	<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-	  <%= devise_error_messages! %>
 
 	  <div class="row">
 	    <%= f.label :email %><br />

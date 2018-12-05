@@ -1,77 +1,184 @@
-<div class="centered">
-  <div>
-  <h1>Perfil</h1>
-  <% if @user.isAdmin? %> <!--SI SOY USUARIO VEO ESTO-->
-<div class="profile">
-  <table class="profile-table">
-    <tr>
-      <td class="bold"> Nombre </td>
-      <td class="profile-field"><%= @user.userName %></td>
-    </tr>
-    <tr>
-      <td class="bold"> Email </td>
-      <td class="profile-field"><%= @user.email %></td>
-    </tr>
-    <tr>
-      <td class="bold"> Creado el </td>
-      <td class="profile-field"><%= @user.created_at %></td>
-    </tr>
-    <tr>
-      <td class="bold"> Editado el </td>
-      <td class="profile-field"><%= @user.updated_at %></td>
-    </tr>
-    <tr>
-      <td class="bold"> Administrador </td>
-      <td class="profile-field"> SI </td>
-    </tr>
-  </table>
-</div>
-  <%else%>
-    <p> Nombre de Usuario: <%= @user.userName %> </p>
-    <p> Creditos: <%= @user.credits %> </p>
-    <p> Usuario Premium: <%= @user.isPremium %> </p>
-
-    <!--Revisa si un usuario es premium o no dependiendo de condiciones para mostrar el boton correspondiente-->
-    <% if !current_user.isAdmin? %> <!--Pregnta si es un usuario comun-->
-      <% if current_user.isPremium == "no" %> <!--Si lo es, pregunta si solicito ser premium-->
-          <tr><%= link_to "Pasar a ser premium", be_premium_user_path, class: 'btn btn-info' %></tr>
-      <% end %>
-    <% else %> <!--Si no es asi, entonces es un administrador-->
-      <% if @user.isPremium == "solicitado" %> <!--Revisa si el usuario que esta mirando el administrador solicito ser premium-->
-        <tr><%= link_to "Habilitar usuario a ser premium", enable_premium_user_path, class: 'btn btn-info' %></tr>
-      <% else %>
-        <% if @user.isPremium == "si" %> <!--Si no entro en el anterior if, pregunta si ya es un usuario premium-->
-          <tr><%= link_to "Desabilitar usuario de condicion premium", disable_premium_user_path, class: 'btn btn-danger' %></tr>
-        <% end %>
-      <% end %>
-    <% end %>
-
-    <% if current_user.present? &&  !current_user.isAdmin? %>
-    <!--TABLA DE SUBASTAS-->
-    <div style="padding-top:70px">
-      <h2>Subastas de este usuario:</h2>
-      <table class="table">
+<div class="hsh-window">
+  <div class="container">
+    <h1>Perfil</h1>
+      <!--PERFIL DE ADMIN-->
+    <% if @user.isAdmin? %>
+    <div class="profile row">
+      <table class="profile-table">
         <tr>
-          <th> Nombre de la Residencia </th>
-          <th> Precio </th>
+          <td class="bold"> Nombre </td>
+          <td class="profile-field"><%= @user.userName %></td>
         </tr>
-        <% @auctions.each do |auction| %>
-          <tr>
-            <!--<td> <%= auction.nombre_de_la_residencia %> </td>-->
-            <td> <%= auction.maxbid %> </td>
-            <td> <%= link_to "Ingresar", auction, class: 'btn btn-secondary' %> </td>
-          </tr>
-        <%end%>
+        <tr>
+          <td class="bold"> Email </td>
+          <td class="profile-field"><%= @user.email %></td>
+        </tr>
+        <tr>
+          <td class="bold"> Creado el </td>
+          <td class="profile-field"><%= @user.created_at %></td>
+        </tr>
+        <tr>
+          <td class="bold"> Editado el </td>
+          <td class="profile-field"><%= @user.updated_at %></td>
+        </tr>
+        <tr>
+          <td class="bold"> Administrador </td>
+          <td class="profile-field"> <%= @user.isAdmin %> </td>
+        </tr>
       </table>
     </div>
-    <%end%>
-  <% end %>
+    <%else%>
+      <!--PERFIL DE USER-->
+    <div class="row profile">
+      <table class="profile-table">
+        <tr>
+          <td class="bold"> Nombre de usuario </td>
+          <td class="profile-field"><%= @user.userName %></td>
+        </tr>
+        <tr>
+          <td class="bold"> Email </td>
+          <td class="profile-field"><%= @user.email %></td>
+        </tr>
+        <tr>
+          <td class="bold"> Creditos </td>
+          <td class="profile-field"><%= @user.credits %></td>
+        </tr>
+        <tr>
+          <td class="bold"> Fecha de Nacimiento </td>
+          <td class="profile-field"><%= @user.birthday.strftime("%d/%m/%Y") %></td>
+        </tr>
+        <tr>
+          <td class="bold"> Premium </td>
+          <td class="profile-field"><%= @user.isPremium %></td>
+        </tr>
+        <!--DATOS AGREGADOS-->
+        <tr>
+          <td class="bold">Nombre </td>
+          <td class="profile-field"><%= @user.name %></td>
+        </tr>
+        <tr>
+          <td class="bold"> Apellido </td>
+          <td class="profile-field"><%= @user.surname %></td>
+        </tr>
+        <tr>
+          <td class="bold"> Tarjeta de credito </td>
+          <td class="profile-field"><%= @user.credit_card_number %></td>
+        </tr>
+        <tr>
+          <td class="bold"> Fecha de vencimiento de tarjeta </td>
+          <td class="profile-field"><%= @user.card_expiry_date.strftime("%m/%Y") %></td>
+        </tr>
+        <tr>
+          <td class="bold"> Clave de vencimiento de tarjeta </td>
+          <td class="profile-field"><%= @user.cvv %></td>
+        </tr>
+      </table>
+    </div>
 
-  <td><%= link_to "Volver a pagina de inicio", root_path, class: 'btn btn-secondary' %></td>
-  <td><%= link_to "Editar perfil", edit_user_path(@user), class: 'btn btn-dark '%></td>
-  
-  <% if current_user.present? &&  current_user.isAdmin? %>
-    <td><%= link_to "Lista de Administradores", admins_path, class: 'btn btn-warning' %></td>
-  <% end %>
+    <!--TABLA DE SUBASTAS-->
+    <% if current_user.present? %>
+    <div class="row">
+      <h2>Subastas que vas ganando:</h2>
+      <table class="table">
+        <tr>
+          <th></th>
+          <th> Nombre de la Residencia </th>
+          <th> Precio Actual </th>
+          <th></th>
+        </tr>
+        <% auctions = Auction.all %>
+          <% auctions.each do |auction| %>
+            <% if auction.user_id == @user.id%>
+              <tr>
+                <td> <%= image_tag auction.residence.image_url, height: '100', width: '200' %></td>
+                <td> <%= auction.residence.name %> </td>
+                <td> <%= auction.maxbid %> </td>
+                <td> <%= link_to "Ver", auction, class: 'btn btn-secondary' %> </td>
+              </tr>
+            <% end %>
+          <% end %>
+      </table>
+    </div>
+    <% end %>
 
+    <!--TABLA DE RESERVAS-->
+    <% if current_user.present? %>
+    <div class="row br30" style="padding-top:70px">
+      <h2>Tus reservas</h2>
+      <table class="table">
+        <tr>
+          <th></th>
+          <th> Nombre de la Residencia </th>
+
+          <th> Semana </th>
+        </tr>
+        <% reservations = Reservation.all %>
+          <% reservations.each do |reservation| %>
+            <% if reservation.user_id == @user.id%>
+              <tr>
+                <td> <%= image_tag reservation.residence.image_url, height: '100', width: '200' %></td>
+                <td> <%= reservation.residence.name %> </td>
+                <td> Del <%= Date.commercial(reservation.year, reservation.week).strftime("%d/%m/%Y") %> hasta el <%= (Date.commercial(reservation.year, reservation.week) +6 ).strftime("%d/%m/%Y") %> </td>
+                <td> <%= link_to "Ver detalles de su reserva", reservation, class: 'btn btn-secondary' %> </td>
+                <td> <%= link_to "Cancelar su reserva", reservation, method: :delete,  class: 'btn btn-danger btn-sm', data: { confirm: "Realmente desea cancelar su reserva?"}%> </td>
+              </tr>
+            <% end %>
+          <% end %>
+      </table>
+    </div>
+    <% end %>
+
+    <% end %>
+
+      <!--MENU-->
+    <div class="row btn-gap">
+
+      <div class="col">
+        <span><%= link_to "Inicio", root_path, class: 'btn btn-secondary' %></span>
+        <span><%= link_to "Editar perfil", edit_user_path(@user), class: 'btn btn-dark '%></span>
+        <% if current_user.present? &&  current_user.isAdmin? %>
+          <% if @user.isAdmin %>
+          <span><%= link_to "Ver Admins", admins_path, class: 'btn btn-warning' %></span>
+          <% else %>
+          <span><%= link_to "Ver Usuarios", users_path, class: 'btn btn-info' %></span>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="col">
+        <!--Revisa si un usuario es premium o no dependiendo de condiciones para mostrar el boton correspondiente-->
+        <% if !current_user.isAdmin? %> <!--Pregnta si es un usuario comun-->
+          <% if current_user.isPremium == "no" %> <!--Si lo es, pregunta si solicito ser premium-->
+              <span><%= link_to "Pasar a ser premium", be_premium_user_path, class: 'btn btn-info' %></span>
+          <% end %>
+        <% else %> <!--Si no es asi, entonces es un administrador-->
+          <% if @user.isPremium == "solicitado" %> <!--Revisa si el usuario que esta mirando el administrador solicito ser premium-->
+            <span><%= link_to "Habilitar premium", enable_premium_user_path, class: 'btn btn-info' %></span>
+          <% else %>
+            <% if @user.isPremium == "si" %> <!--Si no entro en el anterior if, pregunta si ya es un usuario premium-->
+              <span><%= link_to "Desabilitar premium", disable_premium_user_path, class: 'btn btn-danger' %></span>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class="col">
+        <!-- BORRAR USER -->
+        <% if current_user.present? && !current_user.isAdmin? %>
+            <% if not current_user.isPremium %>
+              <span><%= link_to "Borrar mi cuenta premium", client_delete_path, class: 'btn btn-danger' %></span>
+            <% else %>
+              <span><%= link_to "Borrar mi cuenta", client_delete_path, class: 'btn btn-warning' %></span>
+            <% end %>
+          <% else if !@user.isAdmin? && current_user.isAdmin? %>
+            <span><%= link_to "Borrar este usuario", client_delete_path, class: 'btn btn-danger' %></span>
+          <% else if @user.isAdmin? && current_user.isAdmin? && current_user != @user %>
+            <span><%= link_to "Borrar este admin", admin_destroy_path, class: 'btn btn-danger' %></span>
+          <% end %>
+          <% end %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
 </div>

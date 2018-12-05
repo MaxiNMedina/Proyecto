@@ -1,9 +1,10 @@
-<div class="centered container">
-	<h1> Borrar Residencia </h1>
+<div class="hsh-window">
+	<div class="container">
+		<h1> Borrar Residencia </h1>
 
-  <%= form_for(:residence, :url => {:action => 'destroy', :id => @residence.id}) do |f| %>
-    <p>Borrar esta residencia - Ok?</p>
-    <%= submit_tag("Borrar") %>
-  <% end %>
-
+	  <%= form_for(:residence, :url => {:action => 'destroy', :id => @residence.id}) do |f| %>
+	    <p>Borrar esta residencia - Ok?</p>
+	    <%= submit_tag("Borrar") %>
+	  <% end %>
+	</div>
 </div>

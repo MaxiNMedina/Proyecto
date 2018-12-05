@@ -1,22 +1,35 @@
-<div>
-<%= form_for @admin, :url => { :action => "createAdmin" }, :html => { :method => "createAdmin" } do |f|  %>
+<div class="container">
 
-<%= f.label :email, 'Email' %>
-<%= f.text_field :email, required: true, placeholder: "admin@mail.com", class: 'form-control'  %>
+  <div class="row br30">
+    <h1> Alta de Administrador </h1>
+  </div>
 
-<%= f.label :password, 'Contrasena' %>
-<%= f.password_field :password, required: true, class: 'form-control'  %>
+  <%= form_for @admin, :url => { :action => "createAdmin" }, :html => { :method => "createAdmin" } do |f|  %>
+  <div class="row br30">
+    <%= f.label :email, 'Email' %>
+    <%= f.text_field :email, required: true, placeholder: "admin@mail.com", class: 'form-control'  %>
+  </div>
 
-<%= f.label :userName %>
-<%= f.text_field :userName, required: true, class: 'form-control' %>
+  <div class="row br30">
+    <%= f.label :password, 'Contrasena' %>
+    <%= f.password_field :password, required: true, class: 'form-control'  %>
+  </div>
 
-<%= f.hidden_field :credits, value: 9 %>
-<%= f.hidden_field :isAdmin, value: true %>
+  <div class="row br30">
+    <%= f.label :userName %>
+    <%= f.text_field :userName, required: true, class: 'form-control' %>
+  </div>
 
-<br>
-  <p class="error"> <%= @error %></p>
+  <div class="row br30">
+    <%= f.hidden_field :credits, value: 9 %>
+    <%= f.hidden_field :isAdmin, value: true %>
+  </div>
 
-<%= link_to "Volver", :back, class: 'btn btn-secondary' %>
-<%= f.submit 'Guardar', class: 'btn btn-primary' %>
-<% end %>
+  <div class="row btn-gap">
+    <p class="error"> <%= @error %></p>
+    <%= link_to "Volver", :back, class: 'btn btn-secondary' %>
+    <%= f.submit 'Guardar', class: 'btn btn-primary' %>
+  <% end %>
+  </div>
+
 </div>

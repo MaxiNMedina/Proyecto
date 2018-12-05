@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new( params.require(:user).permit(:userName, :email, :password, :credits, :isAdmin) )
+    @user = User.new( params.require(:user).permit(:userName, :email, :password, :isAdmin, :isPremium, :credits, :name, :surname, :birthday, :credit_card_number, :cvv, :card_expiry_date) )
     if @user.save
         redirect_to users_path, notice: "Se añadio un usuario exitosamente."
     else
@@ -46,7 +46,21 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.destroy(params[:id])
-    redirect_to users_path
+    redirect_to root_path
+  end
+
+  def deleteClient
+    @client = User.find(params[:id])
+  end
+  def deletedClient
+    @deletedWasPremium = :deletedWasPremium
+  end
+
+  def destroyClient
+    @client = User.find(params[:id])
+    @deletedWasPremium = @client.isPremium
+    @client = User.destroy(params[:id])
+    redirect_to client_deleted_path
   end
 
   def destroyAdmin

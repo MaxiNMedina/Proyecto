@@ -1,26 +1,45 @@
-<div class="centered">
-	<h1> Listado de Administradores </h1>  <!-- TABLA DE ADMINS-->
-	<br>
-	<p> <%= link_to "Crear Administrador", admins_new_path ,class: 'btn btn-info' %> </p>
+<div class="hsh-window">
+	<div class="container">
 
-	<table class="table">
-		<tr>
-			<th> Nombre de Usuario </th>
-			<th> Email </th>
-		</tr>
-			<% admins = User.admins %>
-			<% admins.each do |admin| %>
-					<tr>
-						<td> <%= link_to admin.userName, user_path(admin.id) %> </td>
-						<td> <%= admin.email %> </td>
-						<td> <%= link_to "Editar", edit_user_path(admin.id), class: 'btn btn-info btn-sm'%> </td>
-			      <td><%= link_to "Borrar", "/admins/#{admin.id}/destroy",  class: 'btn btn-danger btn-sm', data: { confirm: 'Realmente desea borrar este administrador?'}%></td>
-					</tr>
+		<div class="row br30">
+			<div class="col">
+				<h1 class="br30"> Listado de Administradores </h1>
+				<%= link_to "Crear Administrador", admins_new_path ,class: 'btn btn-info' %>
+			</div>
+		</div>
+
+		<div class="row br30">
+			<table class="table">
+
+				<tr>
+					<th> Nombre de Usuario </th>
+					<th> Email </th>
+				</tr>
+
+				<% admins = User.admins %> <!-- Uso un scope, mejor que un if -->
+				<% admins.each do |admin| %>
+						<tr>
+							<td> <%= link_to admin.userName, user_path(admin.id) %> </td>
+							<td> <%= admin.email %> </td>
+							<td> <%= link_to "Editar", edit_user_path(admin.id), class: 'btn btn-info btn-sm'%> </td>
+							<% if admin != current_user %>
+				      	<td><%= link_to "Borrar", "/admins/#{admin.id}/destroy",  class: 'btn btn-danger btn-sm', data: { confirm: 'Realmente desea borrar este administrador?'}%></td>
+							<% else %>
+								<td><%= link_to "Admin Actual", "/admins/#{admin.id}/destroy",  class: 'btn btn-danger btn-sm disabled', data: { confirm: 'Realmente desea borrar este administrador?'}%></td>
+							<% end %>
+						</tr>
+					<% end %>
+
+				<% if admins.size == 0 %>
+					<tr> <td colspan="3"> No hay admins </td> </tr>
 				<% end %>
 
-			<% if admins.size == 0 %>
-				<tr> <td colspan="3"> No hay admins </td> </tr>
-			<% end %>
-	</table>
-		<p> <%= link_to "Volver a pagina de inicio", root_path, class: 'btn btn-secondary' %> </p>
+			</table>
+		</div>
+
+		<div class="row">
+			<p> <%= link_to "Volver a pagina de inicio", root_path, class: 'btn btn-secondary' %> </p>
+		</div>
+
+	</div>
 </div>

@@ -19,8 +19,7 @@
     </div>
   <% end %>
 
-  <br>
-
+  <div class="row btn-gap">
     <%if current_user.present? && current_user.isAdmin? %>
       <%= link_to "Volver", :back, class: 'btn btn-secondary' %>
     <%else%>
@@ -28,7 +27,7 @@
     <%end%>
 
     <%= f.submit 'Guardar', class: 'btn btn-primary' %>
+  </div>
 
   <% end %>
-
 </div>

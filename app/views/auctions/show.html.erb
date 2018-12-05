@@ -1,34 +1,58 @@
-<div class="centered">
-  <h1> Subasta Nº <%= @auction.id %> </h1> <!--DESCRIPCION DE UNA SUBASTA-->
-  <br>
+<div class="hsh-window">
   <div class="container">
-  	<div class="row">
-  		<div class="col-sm">
-  			<h6> Precio actual: $<%= @auction.maxbid %>  </h6>
-  		</div>
-  		<div class="col-sm">
-  			<h6> Fecha de inicio de la subasta: <%= @auction.dateStart.strftime("%d/%m/%Y") %>  </h6>
-  		</div>
-  		<div class="col-sm">
-  			<h6> Fecha de fin de la subasta: <%= @auction.dateEnd.strftime("%d/%m/%Y") %>  </h6> 
-  		</div>  
-  	</div>
-  </div>
-  </br>
-  <div class="container">
-  	<div class="row">
-    	<div class="col-sm">
-     		<%= image_tag @auction.residence.image_url , height: '300', width: '480' %>
-    	</div>
-    	<div class="col-sm">
-    		<p> <%= @auction.residence.name %></p>
-    		<p> <%= @auction.residence.dir %>, <%= @auction.residence.locality %>, <%= @auction.residence.province %>, <%= @auction.residence.country %> </p>
-        <p> Usuario que va ganando <%= @auction.user.userName %>
+
+    <div class="row br30">
+      <h1> Subasta Nº <%= @auction.id %> </h1> <!--DESCRIPCION DE UNA SUBASTA-->
+    </div>
+
+    <!-- IMAGENES -->
+    <div class="row residence-images">
+    	<div class="col" style="padding-bottom: 50px">
+        <%= image_tag @auction.residence.image_url , height: '300', width: '500', class: "residence-pic fit" %>
     	</div>
     </div>
-</div>
-  </br>
-  <%= link_to "Volver", auctions_path, class: 'btn btn-secondary' %>
-  <%= link_to "Ingresar", enterBid_path(:id => @auction.id), class: 'btn btn-secondary' %>
+    <!-- INFORMACION SUBASTA -->
+  	<div class="row residence-content">
+    	<div class="col">
+        <table class="residence-table">
+          <tr>
+            <td class="residence-field"><h2> <%= @auction.residence.name %></h2>    		<p> <%= @auction.residence.dir %>, <%= @auction.residence.locality %>, <%= @auction.residence.province %>, <%= @auction.residence.country %> </p></td>
+            <td>
+            <% if not @auction.user.isAdmin? %>
+              Usuario que va ganando:
+              <%= @auction.user.userName %>
+            <% else %>
+              ¡Nueva subasta!</td>
+            <% end %>
+          </tr>
+          <tr>
+            <td>Precio actual</td>
+            <td class="residence-field">$<%= @auction.maxbid %></td>
+          </tr>
+          <tr>
+            <td>Semana de reserva</td>
+            <td class="residence-field">Desde <%= Date.commercial(@auction.availability.year, @auction.availability.week).strftime("%d/%m/%Y") %> hasta <%= (Date.commercial(@auction.availability.year, @auction.availability.week) +6 ).strftime("%d/%m/%Y") %></td>
+          </tr>
+          <tr>
+            <td>Fecha de inicio de la subasta</td>
+            <td class="residence-field"><%= @auction.dateStart.strftime("%d/%m/%Y") %></td>
+          </tr>
+          <tr>
+            <td>Fecha de fin de la subasta</td>
+            <td class="residence-field"><%= @auction.dateEnd.strftime("%d/%m/%Y") %></td>
+          </tr>
+        </table>
+    	</div>
+    </div>
+    <!-- MENU -->
+    <div class="row btn-gap">
+      <%= link_to "Volver al listado de subastas", auctions_path , class: 'btn btn-secondary' %>
+      <% if  current_user.present? && !current_user.isAdmin? %>
+        <% if Date.today >= @auction.dateStart && @auction.user != current_user %>  
+          <%= link_to "Ingresar", enterBid_path(:id => @auction.id), class: 'btn btn-secondary' %>
+        <% end %>
+      <% end %>
+    </div>
 
+  </div>
 </div>

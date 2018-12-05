@@ -1,17 +1,65 @@
-<header >
-    <div class="navbar navbar-fixed-top" role="navigation"> <!-- Barra de celeste-->
-      <div class="container" >
-          <%= link_to root_path, class: 'navbar-brand' do %>    <!-- Link a pagina principal (tocando logo o titulo)-->
-            <h2 class="header-logo">  <!-- titulo color blanco y logo-->
-              <%= image_tag "HSH-Logo.png", title: "Logo", class: "logo" %>
-              Home Switch Home
-            </h2>
+<header>
+  <!-- Navigation -->
+  <nav id="hsh-header" class="row navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+
+      <%= link_to root_path, class: 'navbar-brand' do %>    <!-- Link a pagina principal (tocando logo o titulo)-->
+      <h2 class="header-logo">  <!-- titulo color blanco y logo-->
+      <%= image_tag "HSH-Logo.png", title: "Logo", class: "logo" %>
+      <%= image_tag "HSH-Text.png", title: "Logo", class: "logo" %>
+      </h2>
+      <% end %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <%= link_to "Residencias", residences_path, class: 'nav-link'%>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Subastas", auctions_path, class: 'nav-link'%>
+            </li>
+            <% if current_user.present? && current_user.isAdmin?%>
+            <li class="nav-item">
+              <%= link_to "Usuarios", users_path, class: 'nav-link'%>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Admins", admins_path, class: 'nav-link'%>
+            </li>
           <% end %>
-          <% if flash[:notice] %>
-              <div class="alert alert-info">
-                <%= notice %>
-              </div>
-            <% end %>
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <%= link_to current_user.email, current_user, class: 'nav-link'%></li>
+            <li class="nav-item">
+              <%= link_to 'Cerrar Sesion', destroy_user_session_path, method: :delete, class: 'nav-link'%></li>
+          <% else%>
+            <li class="nav-item">
+              <%= link_to "Iniciar Sesion", new_user_session_path, class: 'nav-link'%></li>
+            <li class="nav-item">
+              <%= link_to "Registrarse", new_user_registration_path, class: 'nav-link'%></li>
+          <% end %>
+          </ul>
+
         </div>
-    </div><!--/.nav-collapse -->
+    </div>
+  </nav>
+
+  <div id="notice" class="row fixed-top noselect">
+    <% if flash[:notice] %>
+    <div id="notice-content" class="container alert alert-info">
+          <%# <% flash.each do |key, notice| %>
+      <%= notice %>
+    <% end %>
+    </div>
+  </div>
+
+  <div id="deviseERR" class="row noselect">
+    <div id="deviseERR-content" class="container danger alert-danger">
+      <%= devise_error_messages! %>
+    </div>
+  </div>
+
+
 </header>

@@ -1,6 +1,7 @@
 class ResidencesController < ApplicationController
+  
   def index
-    @residence = Residence.all
+      @residence = Residence.search(params[:search])
   end
 
   def new
@@ -17,11 +18,15 @@ class ResidencesController < ApplicationController
       end
       render :new
     end
+    AvailabilityController.init(@residence.id)
   end
 
   def show
   	@residence = Residence.find(params[:id]) #Asigna la residencia a la variable residencia
-    @auctions = @residence.auctions
+    @auctionsOpen = @residence.auctions.open
+    @auctionsClosed = @residence.auctions.closed
+    @reservations = @residence.reservations
+    @availabilities = @residence.availabilities
   end
 
   def edit
@@ -41,7 +46,7 @@ class ResidencesController < ApplicationController
   #Usado para mandar parametros de la residencia. Lo uso en la modificacion de residencia para actualizar los datos.
   #Se puede usar para otros metdos, como por ej. create.
   def residence_params
-    params.require(:residence).permit(:name, :desc, :dir, :available, :image_url)
+    params.require(:residence).permit(:name, :desc, :dir, :available, :image_url, :country, :province, :locality)
   end
 
 #  def enterBids
