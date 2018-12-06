@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_04_225529) do
+ActiveRecord::Schema.define(version: 2018_12_06_150254) do
 
   create_table "auctions", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -87,6 +87,13 @@ ActiveRecord::Schema.define(version: 2018_12_04_225529) do
     t.string "country"
     t.string "province"
     t.string "locality"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "settings", force: :cascade do |t|
+    t.integer "user_fee"
+    t.integer "premium_user_fee"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

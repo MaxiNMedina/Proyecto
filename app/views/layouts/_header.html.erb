@@ -28,6 +28,9 @@
             <li class="nav-item">
               <%= link_to "Admins", admins_path, class: 'nav-link'%>
             </li>
+            <li class="nav-item">
+              <%= link_to "Cuotas", setting_path(:id => 1), class: 'nav-link'%>
+            </li>
           <% end %>
           <% if user_signed_in? %>
             <li class="nav-item">
