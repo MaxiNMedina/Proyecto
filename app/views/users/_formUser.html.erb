@@ -6,10 +6,50 @@
     <%= f.text_field :userName, required: true, class: 'form-control' %>
   </div>
 
-  <div class="row">
-    <%= f.label :dir, 'Email' %>
-    <%= f.email_field :email, required: true, class: 'form-control' %>
+  <div class="row top10">
+    <%= link_to "Cambiar Datos de cuenta", edit_user_registration_path %>
   </div>
+
+  <!-- DATOS PERSONALES -->
+<% if !current_user.isAdmin%>
+  <div class="row top30 br10">
+    <h3>Datos personales</h3>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-md-6">
+      <%= f.label :name, 'Nombre' %>
+      <%= f.text_field :name, required: true, class: 'form-control' %>
+    </div>
+
+    <div class="form-group col-md-6">
+      <%= f.label :surname, 'Apellido' %>
+      <%= f.text_field :surname, required: true, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="row br10 col-md-6">
+    <%= f.label :birthday, 'Fecha de nacimiento' %>
+    <%= f.text_field :birthday, start_year: 1900, end_year: Date.today.year, :use_month_names => ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre','Diciembre'], :order => [:day, :month, :year], required: true, type: 'date', class: 'form-control' %>
+  </div>
+
+  <div class="row">
+    <div class="form-group col-md-6">
+      <%= f.label :credit_card_number, 'Numero de tarjeta de credito' %>
+      <%= f.text_field :credit_card_number, maxlength: 16, required: true, class: 'form-control' %>
+    </div>
+
+    <div class="form-group col-md-2">
+      <%= f.label :card_expiry_date, 'Fecha de vencimiento de tarjeta' %>
+      <%= f.date_select :card_expiry_date, start_year: Date.today.year, use_two_digit_numbers: true, discard_day: true, :order => [:month, :year], required: true,  class: 'form-control' %>
+    </div>
+
+    <div class="form-group col-md-2">
+      <%= f.label :cvv, 'Codigo de seguridad' %>
+      <%= f.text_field :cvv, maxlength: 4, required: true, class: 'form-control' %>
+    </div>
+  </div>
+<% end %>
 
   <% if current_user.isAdmin%> <!--Solo muestro a los administradores -->
     <div class="row">

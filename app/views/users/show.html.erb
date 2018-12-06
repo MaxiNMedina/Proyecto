@@ -27,7 +27,7 @@
         </tr>
       </table>
     </div>
-    <%else%>
+    <%else if !@user.isAdmin?%>
       <!--PERFIL DE USER-->
     <div class="row profile">
       <table class="profile-table">
@@ -74,7 +74,7 @@
         </tr>
       </table>
     </div>
-
+    <% end %>
     <!--TABLA DE SUBASTAS-->
     <% if current_user.present? %>
     <div class="row">

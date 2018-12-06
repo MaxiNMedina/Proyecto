@@ -80,7 +80,7 @@ class UsersController < ApplicationController
   #Usado para mandar parametros del usuario. Lo uso en la modificacion del usuario para actualizar los datos.
   #Se puede usar para otros metdos, como por ej. create.
   def user_params
-    params.require(:user).permit(:userName, :email, :password, :credits)
+    params.require(:user).permit(:userName, :email, :password, :isAdmin, :isPremium, :credits, :name, :surname, :birthday, :credit_card_number, :cvv, :card_expiry_date)
   end
 
   def be_premium
