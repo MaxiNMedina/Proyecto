@@ -10,9 +10,9 @@
       <small>Disponibles</small>
     </h1>
 
-    <% @hotsales.each do |hotsale| %>
-      <% if hotsale.residence.available? %>
     <div class="row">
+      <% @hotsales.each do |hotsale| %>
+        <% if hotsale.residence.available? %>
         <div class="col-lg-4 col-sm-6 portfolio-item">
           <div class="card h-100">
             <span><%= image_tag hotsale.residence.image_url, class:"fit" %></span>
@@ -24,29 +24,6 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            <span><%= image_tag hotsale.residence.image_url, class:"fit" %></span>
-            <div class="card-body">
-              <h4 class="card-title">
-                <span><%=link_to hotsale.residence.name, hotsale %> $<%= hotsale.price %></span>
-              </h4>
-              <p class="card-text"> <%= hotsale.residence.desc %></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            <span><%= image_tag hotsale.residence.image_url, class:"fit" %></span>
-            <div class="card-body">
-              <h4 class="card-title">
-                <span><%= link_to hotsale.residence.name, hotsale %> $<%= hotsale.price %></span>
-              </h4>
-              <p class="card-text"> <%= hotsale.residence.desc %></p>
-            </div>
-          </div>
-        </div>
-      </div>
       <% end %>
     <% end %>
     <!-- /.row -->
@@ -88,9 +65,10 @@
       <p> <td colspan="3"> No hay residencias </td> </p>
     <% end %>
 
-    <% residences.each do |residence| %>
-      <% if residence.available? %>
+
     <div class="row">
+      <% residences.each do |residence| %>
+        <% if residence.available? %>
         <div class="col-lg-4 col-sm-6 portfolio-item">
           <div class="card h-100">
             <span><%= image_tag residence.image_url, class:"fit" %></span>
@@ -102,29 +80,6 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            <span><%= image_tag residence.image_url, class:"fit" %></span>
-            <div class="card-body">
-              <h4 class="card-title">
-                <span><%= residence.name %></span>
-              </h4>
-              <p class="card-text"> <%= residence.desc %></p>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-sm-6 portfolio-item">
-          <div class="card h-100">
-            <span><%= image_tag residence.image_url, class:"fit" %></span>
-            <div class="card-body">
-              <h4 class="card-title">
-                <span><%= residence.name %></span>
-              </h4>
-              <p class="card-text"> <%= residence.desc %></p>
-            </div>
-          </div>
-        </div>
-      </div>
       <% end %>
     <% end %>
     <!-- /.row -->
