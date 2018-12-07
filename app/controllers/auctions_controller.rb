@@ -15,7 +15,7 @@ class AuctionsController < ApplicationController
       Availability.where(:id => @auction.availability.id ).update_all(:is_available => false)
       #Termina la actualizacion y elimina la subasta del sistema
       if !@auction.user.isAdmin?
-        @reservation = Reservation.new(residence: @auction.residence, user: @auction.user, year: @auction.availability.year, week: @auction.availability.week)
+        @reservation = Reservation.new(residence: @auction.residence, user: @auction.user, year: @auction.availability.year, week: @auction.availability.week, price: @auction.maxbid)
         @reservation.save
       else
         @hotsale = Hotsale.new(residence: @auction.residence, availability: @auction.availability, price: @auction.maxbid / 2)

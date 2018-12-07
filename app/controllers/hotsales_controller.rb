@@ -40,15 +40,13 @@ class HotsalesController < ApplicationController
   # PATCH/PUT /hotsales/1
   # PATCH/PUT /hotsales/1.json
   def update
-    respond_to do |format|
-      if @hotsale.update(hotsale_params)
-        format.html { redirect_to @hotsale, notice: 'Hotsale was successfully updated.' }
-        format.json { render :show, status: :ok, location: @hotsale }
+      if @hotsale.update(params[:hotsale].permit(:price))
+        flash[:notice] = "¡Hotsale Editada!"
+        redirect_to @hotsale
       else
-        format.html { render :edit }
-        format.json { render json: @hotsale.errors, status: :unprocessable_entity }
+        flash[:notice] = "¡Error! Este Hotsale no se edito"
+        redirect_to @hotsale
       end
-    end
   end
 
   # DELETE /hotsales/1

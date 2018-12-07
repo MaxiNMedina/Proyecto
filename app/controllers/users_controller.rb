@@ -74,13 +74,20 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
+    if !@user.isAdmin?
+      @user.update(user_params)
+    else
+      @user.update(admin_params)
+    end
     redirect_to user_path
   end
   #Usado para mandar parametros del usuario. Lo uso en la modificacion del usuario para actualizar los datos.
   #Se puede usar para otros metdos, como por ej. create.
   def user_params
-    params.require(:user).permit(:userName, :email, :password, :credits)
+    params.require(:user).permit(:userName, :email, :password, :isAdmin, :isPremium, :credits, :name, :surname, :birthday, :credit_card_number, :cvv, :card_expiry_date)
+  end
+  def admin_params
+    params.require(:user).permit(:userName, :email, :password, :isAdmin, :credits)
   end
 
   def be_premium

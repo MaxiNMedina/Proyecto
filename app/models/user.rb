@@ -10,4 +10,24 @@ class User < ApplicationRecord
 
   scope :admins, -> {where(isAdmin: 1)}
   scope :clients, -> {where(isAdmin: 0)}
+
+  validate :age_is_invalid, :expiry_date_is_invalid
+
+  def age_is_invalid
+    if self.isAdmin == false && !current_user.isAdmin?
+      today = Date.today
+      if today - self.birthday < 18
+        errors.add(:birthday, "Necesita ser mayor de edad para registrarse")
+      end
+    end
+  end
+
+  def expiry_date_is_invalid
+    if self.isAdmin == false && !current_user.isAdmin?
+  	 if card_expiry_date.present? && card_expiry_date <= Date.today
+      	 errors.add(:card_expiry_date, "La fecha de vencimiento de la tarjeta ha caducado o esta punto de vencer")
+      end
+    end
+  end
+
 end

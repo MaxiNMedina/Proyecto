@@ -1,0 +1,20 @@
+<div class="hsh-window">
+  <div class="container">
+  	<%= form_for @setting do |f| %>
+  		<div class="row">
+        	<%= f.label :user_fee, 'Cuota para usuarios comunes' %>
+        	<%= f.number_field :user_fee, required: true, class: 'form-control' %>
+        </div>
+        <div class="row">
+        	<%= f.label :premium_user_fee, 'Cuota para usuarios premium' %>
+        	<%= f.number_field :premium_user_fee, required: true, class: 'form-control' %>
+        </div>
+        <div class="row">
+        	<div class="btn-gap">
+        		<%= link_to "Volver", setting_path(:id => 1) , class: 'btn btn-secondary' %>
+        		<%= f.submit 'Guardar', class: 'btn btn-primary' %>
+        	</div>
+        </div>
+  	<% end %>
+  </div>
+</div>
