@@ -174,9 +174,9 @@
               <span><%= link_to "Borrar mi cuenta", client_delete_path, class: 'btn btn-warning' %></span>
             <% end %>
           <% else if !@user.isAdmin? && current_user.isAdmin? %>
-            <span><%= link_to "Borrar este usuario", client_delete_path, class: 'btn btn-danger' %></span>
+            <!-- <span><%= link_to "Borrar este usuario", client_delete_path, class: 'btn btn-danger' %></span> -->
           <% else if @user.isAdmin? && current_user.isAdmin? && current_user != @user %>
-            <span><%= link_to "Borrar este admin", admin_destroy_path, class: 'btn btn-danger' %></span>
+            <!-- <span><%= link_to "Borrar este admin", admin_destroy_path, class: 'btn btn-danger' %></span> -->
           <% end %>
           <% end %>
         <% end %>

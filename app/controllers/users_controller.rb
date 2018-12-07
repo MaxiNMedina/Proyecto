@@ -51,6 +51,8 @@ class UsersController < ApplicationController
 
   def deleteClient
     @client = User.find(params[:id])
+    @clientReservations = @client.reservations
+    @clientAuctions = @client.auctions
   end
   def deletedClient
     @deletedWasPremium = :deletedWasPremium

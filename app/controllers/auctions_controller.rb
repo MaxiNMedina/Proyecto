@@ -34,7 +34,7 @@ class AuctionsController < ApplicationController
 
   def create
     @auction = Auction.new(params.require(:auction).permit(:residence_id, :maxbid, :dateStart, :user_id, :availability_id))
-    @auction.user = current_user
+    @auction.user_id = 1  #Asigna a root la nueva subasta para que no sea nil auction.user
     @auction.dateEnd =  @auction.dateStart + 3
     if (@auction.dateStart <= Date.today || @auction.dateStart > Date.commercial(@auction.availability.year, @auction.availability.week) || @auction.dateEnd > Date.commercial(@auction.availability.year, @auction.availability.week))
         redirect_to auctions_path, notice:"La fecha de inicio de la subasta debe ser despues de la fecha actual y antes de la semana de reserva."

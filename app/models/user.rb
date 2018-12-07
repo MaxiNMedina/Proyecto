@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_and_belongs_to_many :auctions
+  has_many :reservations
 
   enum isPremium: { si: 0, solicitado: 1, no: 2 }
 
@@ -15,7 +16,7 @@ class User < ApplicationRecord
 
   #Deje el self.isAdmin porque current_user solo funciona cuando lo usas desde un controlador o una vista. NO funciona en modelos, para eso hay que usar el self.
   def age_is_invalid
-    if self.isAdmin == false 
+    if self.isAdmin == false
       today = Date.today
       if today - self.birthday < 18
         errors.add(:birthday, "Necesita ser mayor de edad para registrarse")
