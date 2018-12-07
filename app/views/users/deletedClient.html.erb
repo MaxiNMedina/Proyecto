@@ -7,15 +7,20 @@
 			<p> La cuenta fue eliminada </p>
 		<% end %>
 
-		<% if !@deletedWasPremium && !user_signed_in?%>
+		<% if @deletedWasPremium == 'no' && !user_signed_in?%>
 			<h1> Cuenta Borrada </h1>
 			<p> Su cuenta fue borrada </p>
 		<% end %>
 
-		<% if @deletedWasPremium && !user_signed_in? %>
+		<% if @deletedWasPremium == 'yes' && !user_signed_in? %>
 			<h1> Cuenta Premium Borrada </h1>
 			<p> Su cuenta fue borrada pero no totalmente </p>
-			<p class="error">Usted debe pasar por alguno de los sucursales para firmar que desea borrar su usuario en el sistema.</p>
+			<p class="error">Usted debe pasar por alguna de las sucursales para firmar que desea borrar su usuario en el sistema.</p>
+		<% end %>
+
+		<% if true %>
+			<h1> Cuenta Borrada </h1>
+			<p> Su cuenta fue borrada </p>
 		<% end %>
 
 		<p> <%= link_to "Volver a pagina de inicio", root_path, class: 'btn btn-secondary' %> </p>

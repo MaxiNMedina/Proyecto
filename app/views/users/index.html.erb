@@ -21,7 +21,11 @@
 					<% users.each do |user| %>
 					<% if not user.isAdmin%> <!--Solo muestro a los usuarios -->
 						<tr>
+							<% if current_user.id == 1 %>
 							<td> <%= link_to user.userName, user %> </td>
+							<% else %>
+							<td> <%= user.userName %> </td>
+							<% end %>
 							<td> <%= user.email %> </td>
 							<td> <%= user.credits %> </td>
 

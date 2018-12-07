@@ -1,0 +1,43 @@
+<div class="hsh-window">
+	<div class="container">
+    	<div class="row br30">
+    		<h1>Pagar la reserva N° <%= @reservation.id %></h1>
+    		<br>
+    		<h3>El total a pagar es de $<%= @reservation.price %>.</h3>
+    		<br>
+    		<h3>Por favor ingrese los datos de su tarjeta de credito para confirmar el pago. Los datos a ingresar deben ser los de su tarjeta registrada en el sistema. Si desea pagar con otra tarjeta, por favor cancele esta operacion, cambie los datos desde su perfil de usuario y vuelva a intentarlo nuevamente.</h3>
+
+    		<%= form_tag pay_path %>
+
+    			<%= hidden_field_tag 'id', @reservation.id  %>
+    			<div class="form-group">
+      				<label for="name">Titular de la tarjeta. Ingrese tal y como aparece en la tarjeta.</label>
+      				<div class="row">
+        				<input type="text" id="name" name="name" class="form-control" placeholder="Titular de la tarjeta" required>
+      				</div> 
+    			</div>
+      			<div class="form-group">
+      				<label for="number">Numero de la tarjeta</label>
+      				<div class="row">
+        				<input type="text" id="number" name="number" class="form-control" placeholder="Numero de tarjeta" maxlength="16" required>
+      				</div> 
+    			</div>
+    			<div class="form-group">
+    				<label for="date">Fecha de vencimiento de la tarjeta</label>
+    				<div class="form-row">
+    				<%= date_select "fecha", 'date', discard_day: true, order: [:month, :year] %>
+    				</div>
+    			</div>
+    			<div class="form-group">
+      				<label for="code">Codigo de seguridad</label>
+      				<div class="row">
+        				<input type="text" id="code" name="code" class="form-control" placeholder="CVV" required>
+      				</div> 
+    			</div>
+    			<%= link_to "Volver", :back, class: 'btn btn-secondary' %>
+      			<%= button_to 'Confirmar pago', { action: "pay" }, class: 'btn btn-primary'  %>
+    		</form>
+
+    	</div>
+    </div>
+</div>

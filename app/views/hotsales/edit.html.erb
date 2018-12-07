@@ -1,0 +1,22 @@
+<div class="hsh-window"
+  <div class="container">
+
+    <div class="row br30">
+      <h1> Editar HotSale </h1>
+    </div>
+
+    <%= form_for @hotsale do |f|  %>
+    <div class="row br30">
+      <%= f.label :price, 'Precio' %>
+      <%= f.text_field :price, required: true, class: 'form-control'  %>
+    </div>
+
+    <div class="row btn-gap">
+      <p class="error"> <%= @error %></p>
+      <%= link_to "Volver", :back, class: 'btn btn-secondary' %>
+      <%= f.submit 'Guardar', class: 'btn btn-primary' %>
+    <% end %>
+    </div>
+
+  </div>
+</div>

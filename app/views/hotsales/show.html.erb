@@ -21,7 +21,11 @@
           </tr>
           <tr>
             <td>Precio actual</td>
-            <td class="residence-field">$<%= @hotsale.price %></td>
+            <td class="residence-field">$<%= @hotsale.price %> </br>
+            <% if current_user.isAdmin? %>
+                <%=link_to "Cambiar precio", edit_hotsale_path %>
+              <% end %>
+            </td>
           </tr>
           <tr>
             <td>Semana de reserva</td>
