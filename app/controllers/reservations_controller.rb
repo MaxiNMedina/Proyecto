@@ -40,4 +40,22 @@ class ReservationsController < ApplicationController
       @reservation = Reservation.find(params[:id])
     end
 
+    def pay_reservation
+      @reservation = Reservation.find(params[:id])
+    end
+
+    def pay
+      @reservation = Reservation.find(params[:id])
+      user = @reservation.user
+      #Esto es necesario asi puedo comparar correctamente las fechas de vencimiento de la tarjeta
+      fecha = params[:fecha]
+      date = Date.new fecha["date(1i)"].to_i, fecha["date(2i)"].to_i, fecha["date(3i)"].to_i
+      if current_user.id == user.id && user.credit_card_number == params[:number].to_i && user.card_expiry_date.month == date.month && user.card_expiry_date.year == date.year && user.cvv == params[:code].to_i
+        @reservation.update(price: 0)
+        redirect_to root_path, notice: "Se ha confirmado su pago, se descontara de su tarjeta."
+      else
+        redirect_to pay_reservation_url, notice: "Hubo un error. Verifique los datos e intente nuevamente."
+      end
+    end
+
 end

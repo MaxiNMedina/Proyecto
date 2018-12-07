@@ -26,6 +26,10 @@ Rails.application.routes.draw do
     get '/clients/:id/destroy', to:'users#destroyClient'
     delete '/clients/:id/destroy', to:'users#destroyClient', as: 'client_destroy'
 
+    #RESERVAS
+    get '/reservations/:id/pay_reservation', to: 'reservations#pay_reservation', as: 'pay_reservation' 
+    post '/reservations/:id/pay', to: 'reservations#pay', as: 'pay'
+
     #
     get '/enterBid', to:'auctions#enterBid'
     get '/contact', to:'contacto#contact'
