@@ -5,10 +5,11 @@
     <%= f.label :name, 'Nombre de usuario' %>
     <%= f.text_field :userName, required: true, class: 'form-control' %>
   </div>
-
-  <div class="row top10">
-    <%= link_to "Cambiar Datos de cuenta", edit_user_registration_path %>
+<% if current_user.userName == @user.userName %>
+  <div class="row top10 br10">
+    <%= link_to "Cambiar Datos de cuenta", edit_user_registration_path(@user) %>
   </div>
+<% end %>
 
   <!-- DATOS PERSONALES -->
 <% if !current_user.isAdmin%>
@@ -59,7 +60,7 @@
     </div>
   <% end %>
 
-  <div class="row btn-gap">
+  <div class="row top30 btn-gap">
     <%if current_user.present? && current_user.isAdmin? %>
       <%= link_to "Volver", :back, class: 'btn btn-secondary' %>
     <%else%>
