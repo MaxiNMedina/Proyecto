@@ -32,6 +32,9 @@ class ReservationsController < ApplicationController
       @reservation = Reservation.find(params[:id])
       #Marco la residencia como disponible para esa semana
       Availability.where(:residence_id => @reservation.residence_id, :week =>@reservation.week, :year => @reservation.year).update_all(:is_available => true)
+      if @reservation.year <= Date.today.year && @reservation.week < Date.today.week #Le devuelvo un credito si la reserva se cancela antes de la semana reservada
+        @reservation.user.credits = @reservation.user.credits + 1
+      end
       @reservation = Reservation.destroy(params[:id])
       redirect_to current_user
     end

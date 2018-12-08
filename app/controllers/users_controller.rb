@@ -41,6 +41,7 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
+    @cc_number = mask @user.credit_card_number.to_s
     @auctions = @user.auctions
   end
 
@@ -115,6 +116,14 @@ class UsersController < ApplicationController
     @user.isPremium = "no"
     @user.save
     redirect_to users_path
+  end
+
+  def last_digits(number)    
+    number.to_s.length <= 4 ? number : number.to_s.slice(-4..-1) 
+  end
+
+  def mask(number)
+    "XXXX-XXXX-XXXX-#{last_digits(number)}"
   end
 
 end

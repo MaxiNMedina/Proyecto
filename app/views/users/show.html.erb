@@ -65,6 +65,10 @@
           <td class="profile-field"><%= @user.credit_card_number %></td>
         </tr>
         <tr>
+          <td class="bold"> Tarjeta de credito II</td>
+          <td class="profile-field"><%= @cc_number %></td>
+        </tr>
+        <tr>
           <td class="bold"> Fecha de vencimiento de tarjeta </td>
           <td class="profile-field"><%= @user.card_expiry_date.strftime("%m/%Y") %></td>
         </tr>
