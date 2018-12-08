@@ -36,6 +36,47 @@
 
 			</table>
 		</div>
+
+		<!-- SUBASTAS TERMINADAS -->
+		<% if user_signed_in? %>
+		<% if current_user.isAdmin? %>
+		<div class="row">
+			<h1> Listado de Subastas Terminadas </h1>
+			<table class="table">
+
+				<tr>
+					<th> Puja maxima </th>
+					<th> Para la residencia </th>
+					<th>  </th>
+					<th>  </th>
+				</tr>
+
+				<% auctions = Auction.finished %>
+					<% auctions.each do |auction| %>
+						<tr>
+							<td> <%= auction.id %> </td>
+				      <td> <%= auction.maxbid %> </td>
+				      <td> <%= auction.residence.name %> </td>
+							<td><%= link_to "Ver detalles", auction, class: 'btn btn-info btn-sm'%></td>
+							<% if current_user.present? && current_user.isAdmin? %>
+								<% if auction.user.isAdmin%>
+								<td><%= link_to "Poner en Hotsale", auction, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Realmente desea borrar la subasta?'} %></td>
+								<% else %>
+								<td><%= link_to "Finalizar subasta para #{auction.user.name}", auction, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Realmente desea borrar la subasta?'} %></td>
+								<% end %>
+							<% end %>
+						</tr>
+					<% end %>
+
+				<% if auctions.size == 0 %>
+					<tr> <td colspan="3"> No hay subastas activas </td> </tr>
+				<% end %>
+
+			</table>
+		</div>
+		<% end %>
+		<% end %>
+
 		<!-- SUBASTAS PENDIENTES -->
 		<% if user_signed_in? %>
 		<% if current_user.isAdmin? %>
@@ -50,7 +91,7 @@
 					<th>  </th>
 				</tr>
 
-				<% auctions = Auction.closed %>
+				<% auctions = Auction.pending %>
 					<% auctions.each do |auction| %>
 						<tr>
 							<td> <%= auction.id %> </td>
@@ -58,8 +99,12 @@
 				      <td> <%= auction.residence.name %> </td>
 							<td><%= link_to "Ver detalles", auction, class: 'btn btn-info btn-sm'%></td>
 							<% if current_user.present? && current_user.isAdmin? %>
-								<td><%= link_to "Borrar", auction, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Realmente desea borrar la subasta?'} %></td>
-							<%  end %>
+								<% if auction.user.isAdmin%>
+								<!-- <td><%= link_to "Borrar", auction, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Realmente desea borrar la subasta?'} %></td> -->
+								<% else %>
+								<td><%= link_to "Finalizar subasta para #{auction.user.name}", auction, method: :delete, class: 'btn btn-danger btn-sm', data: { confirm: 'Realmente desea borrar la subasta?'} %></td>
+								<% end %>
+							<% end %>
 						</tr>
 					<% end %>
 

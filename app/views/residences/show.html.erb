@@ -137,7 +137,7 @@
                     <% if current_user.present? && current_user.isAdmin? && !Auction.exists?(:availability_id => @availabilities[i])%>
                       <td><%= link_to "Crear Subasta", new_auction_path(:id => @residence.id, :aid => @availabilities[i]) ,class: 'btn btn-info'%></td>
                     <%end%>
-                    <% if current_user.present? && current_user.isPremium=='si' && !Auction.exists?(:availability_id => @availabilities[i])%>
+                    <% if current_user.present? && current_user.isPremium == 'si' && !Auction.exists?(:availability_id => @availabilities[i])%>
                       <% if current_user.credits > 0 %>
                         <td><%= link_to "Compra Directa", new_reservation_path(:id => @residence.id, :aid => @availabilities[i]) ,class: 'btn btn-warning'%></td>
                       <% else %>

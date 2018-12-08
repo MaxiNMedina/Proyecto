@@ -23,7 +23,11 @@
 							<td> <%= admin.email %> </td>
 							<td> <%= link_to "Editar", edit_user_path(admin.id), class: 'btn btn-info btn-sm'%> </td>
 							<% if admin != current_user %>
-				      	<td><%= link_to "Borrar", "/admins/#{admin.id}/destroy",  class: 'btn btn-danger btn-sm', data: { confirm: 'Realmente desea borrar este administrador?'}%></td>
+								<% if admin.email == "root@mail.com" %>
+								<td><%= link_to "Root", "/admins/#{admin.id}/destroy",  class: 'btn btn-danger btn-sm disabled', data: { confirm: 'Realmente desea borrar este administrador?'}%></td>
+								<% else %>
+								<td><%= link_to "Borrar", "/admins/#{admin.id}/destroy",  class: 'btn btn-danger btn-sm', data: { confirm: 'Realmente desea borrar este administrador?'}%></td>
+								<% end %>
 							<% else %>
 								<td><%= link_to "Admin Actual", "/admins/#{admin.id}/destroy",  class: 'btn btn-danger btn-sm disabled', data: { confirm: 'Realmente desea borrar este administrador?'}%></td>
 							<% end %>

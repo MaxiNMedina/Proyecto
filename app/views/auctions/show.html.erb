@@ -18,12 +18,15 @@
           <tr>
             <td class="residence-field"><h2> <%= @auction.residence.name %></h2>    		<p> <%= @auction.residence.dir %>, <%= @auction.residence.locality %>, <%= @auction.residence.province %>, <%= @auction.residence.country %> </p></td>
             <td>
-            <% if not @auction.user.isAdmin? %>
-              Usuario que va ganando:
-              <%= @auction.user.userName %>
-            <% else %>
-              ¡Nueva subasta!</td>
+            <% if @auction.user != nil %>
+              <% if !@auction.user.isAdmin? %>
+                Usuario que va ganando:
+                <%= @auction.user.userName %>
+              <% else %>
+                ¡Nueva subasta!
+              <% end %>
             <% end %>
+            </td>
           </tr>
           <tr>
             <td>Precio actual</td>
@@ -48,7 +51,7 @@
     <div class="row btn-gap">
       <%= link_to "Volver al listado de subastas", auctions_path , class: 'btn btn-secondary' %>
       <% if  current_user.present? && !current_user.isAdmin? %>
-        <% if Date.today >= @auction.dateStart && @auction.user != current_user %>  
+        <% if Date.today >= @auction.dateStart && @auction.user != current_user %>
           <%= link_to "Ingresar", enterBid_path(:id => @auction.id), class: 'btn btn-secondary' %>
         <% end %>
       <% end %>
