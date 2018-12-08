@@ -8,10 +8,7 @@
     	<p>Para la semana del <%= Date.commercial(@reservation.year, @reservation.week).strftime("%d/%m/%Y") %> al <%= (Date.commercial(@reservation.year, @reservation.week) +6 ).strftime("%d/%m/%Y") %></p>
     	<% if  @reservation.price =! 0 %>
     		<p>Aun no se registro su pago. El precio a pagar es <%= @reservation.price %></p>
-<<<<<<< HEAD
+
 		<% end %>
-=======
-			<% end %>
->>>>>>> f18ebd1fc5a1eb248d3cc1363b0b90853aa5a427
 	</div>
 </div>
