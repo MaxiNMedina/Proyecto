@@ -4,6 +4,7 @@
 
 <h2> Usted va a reservar la Residencia: <%= @res.name %></h2>
   <%= f.hidden_field :residence_id, value: params[:id] %>
+  
   <h2> Para la semana del <%= Date.commercial(@disp.year, @disp.week).strftime("%d/%m/%Y") %> al <%= (Date.commercial(@disp.year, @disp.week) + 6).strftime("%d/%m/%Y")  %> </h2>
   <%= f.hidden_field :year, value: @disp.year %>
   <%= f.hidden_field :week, value: @disp.week %>
