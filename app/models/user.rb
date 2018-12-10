@@ -34,8 +34,8 @@ class User < ApplicationRecord
 
   def credit_card_number_is_invalid
     if self.isAdmin == false
-     if self.credit_card_number.present? && self.credit_card_number.to_s.length < 16
-         errors.add(:card_expiry_date, "El numero de la tarjeta debe ser de 16 digitos")
+     if self.credit_card_number.present? && self.credit_card_number.to_s.length < 14
+         errors.add(:credit_card_number, "El numero de la tarjeta debe ser de al menos 14 digitos")
       end
     end
   end

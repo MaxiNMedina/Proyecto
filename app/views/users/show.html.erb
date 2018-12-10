@@ -62,19 +62,7 @@
         </tr>
         <tr>
           <td class="bold"> Tarjeta de credito </td>
-          <td class="profile-field"><%= @user.credit_card_number %></td>
-        </tr>
-        <tr>
-          <td class="bold"> Tarjeta de credito II</td>
           <td class="profile-field"><%= @cc_number %></td>
-        </tr>
-        <tr>
-          <td class="bold"> Fecha de vencimiento de tarjeta </td>
-          <td class="profile-field"><%= @user.card_expiry_date.strftime("%m/%Y") %></td>
-        </tr>
-        <tr>
-          <td class="bold"> Clave de seguridad de la tarjeta </td>
-          <td class="profile-field"><%= @user.cvv %></td>
         </tr>
       </table>
     </div>
@@ -124,8 +112,8 @@
                 <td> <%= reservation.residence.name %> </td>
                 <td> Del <%= Date.commercial(reservation.year, reservation.week).strftime("%d/%m/%Y") %> hasta el <%= (Date.commercial(reservation.year, reservation.week) +6 ).strftime("%d/%m/%Y") %> </td>
                 <td> <%= link_to "Ver detalles", reservation, class: 'btn btn-secondary' %> </td>
-                <% if reservation.price > 0 %>
-                  <td> <%= link_to "Pagar", pay_reservation_url, class: 'btn btn-warning' %> </td>
+                <% if reservation.price > 0 && current_user.present? && current_user.id == reservation.user_id %>
+                  <td> <%= link_to "Pagar", pay_reservation_path(:id=> reservation.id), class: 'btn btn-warning' %> </td>
                 <% end %>
                 <td> <%= link_to "Cancelar su reserva", reservation, method: :delete,  class: 'btn btn-danger btn-sm', data: { confirm: "Realmente desea cancelar su reserva?"}%> </td>
               </tr>
