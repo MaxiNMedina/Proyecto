@@ -45,9 +45,9 @@
 			<table class="table">
 
 				<tr>
+					<th> N° </th>
 					<th> Puja maxima </th>
 					<th> Para la residencia </th>
-					<th>  </th>
 					<th>  </th>
 				</tr>
 
@@ -55,8 +55,8 @@
 					<% auctions.each do |auction| %>
 						<tr>
 							<td> <%= auction.id %> </td>
-				      <td> <%= auction.maxbid %> </td>
-				      <td> <%= auction.residence.name %> </td>
+				      		<td> <%= auction.maxbid %> </td>
+				      		<td> <%= auction.residence.name %> </td>
 							<td><%= link_to "Ver detalles", auction, class: 'btn btn-info btn-sm'%></td>
 							<% if current_user.present? && current_user.isAdmin? %>
 								<% if auction.user.isAdmin%>
@@ -85,18 +85,19 @@
 			<table class="table">
 
 				<tr>
+					<th> N° </th>
 					<th> Puja maxima </th>
 					<th> Para la residencia </th>
-					<th>  </th>
-					<th>  </th>
+					<th> Fecha de inicio </th>
 				</tr>
 
 				<% auctions = Auction.pending %>
 					<% auctions.each do |auction| %>
 						<tr>
 							<td> <%= auction.id %> </td>
-				      <td> <%= auction.maxbid %> </td>
-				      <td> <%= auction.residence.name %> </td>
+				      		<td> <%= auction.maxbid %> </td>
+				      		<td> <%= auction.residence.name %> </td>
+				      		<td><%= auction.dateStart.strftime("%d/%m/%Y") %></td>
 							<td><%= link_to "Ver detalles", auction, class: 'btn btn-info btn-sm'%></td>
 							<% if current_user.present? && current_user.isAdmin? %>
 								<% if auction.user.isAdmin%>
