@@ -10,7 +10,9 @@
 
   <br>
   <%= link_to "Volver", :back, class: 'btn btn-secondary' %>
-  <%= f.submit 'Hacer puja', class: 'btn btn-primary' %>
+  <% if  current_user.present? && !current_user.isAdmin? && current_user.credits > 0%>
+  	<%= f.submit 'Hacer puja', class: 'btn btn-primary' %>
+  <% end %>
 <% end %>
 
 </div>

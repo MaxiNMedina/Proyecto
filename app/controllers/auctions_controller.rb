@@ -14,10 +14,14 @@ class AuctionsController < ApplicationController
       #Actualizo la tabla de disponibilidad de la residencia que ya fue reservada
       Availability.where(:id => @auction.availability.id ).update_all(:is_available => false)
       #Termina la actualizacion y elimina la subasta del sistema
-      if !@auction.user.isAdmin?
+      if !@auction.user.isAdmin? && @auction.user.credits > 0 
         @reservation = Reservation.new(residence: @auction.residence, user: @auction.user, year: @auction.availability.year, week: @auction.availability.week, price: @auction.maxbid)
         @reservation.save
+        @auction.user.update(credits: current_user.credits - 1)
       else
+        if @auction.user.credits == 0 
+          flash[:notice] = "Se creo un hotsale debido a que el usuario que gano la subasta no tiene creditos."
+        end 
         @hotsale = Hotsale.new(residence: @auction.residence, availability: @auction.availability, price: @auction.maxbid / 2)
         @hotsale.save
       end
