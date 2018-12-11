@@ -115,7 +115,7 @@
                 <% if reservation.price > 0 && current_user.present? && current_user.id == reservation.user_id %>
                   <td> <%= link_to "Pagar", pay_reservation_path(:id=> reservation.id), class: 'btn btn-warning' %> </td>
                 <% end %>
-                <td> <%= link_to "Cancelar su reserva", reservation, method: :delete,  class: 'btn btn-danger btn-sm', data: { confirm: "Realmente desea cancelar su reserva?"}%> </td>
+                <td> <%= link_to "Cancelar su reserva", reservation, method: :delete,  class: 'btn btn-danger', data: { confirm: "Realmente desea cancelar su reserva?"}%> </td>
               </tr>
             <% end %>
           <% end %>

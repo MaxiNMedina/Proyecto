@@ -40,4 +40,12 @@ class User < ApplicationRecord
     end
   end
 
+  def cvv_is_invalid
+    if self.isAdmin == false
+      if self.cvv? && self.cvv.to_s.length < 3
+        errors.add(:cvv, "El numero de la clave de seguridad de la tarjeta debe ser de al menos 3 digitos")
+      end
+    end
+  end
+
 end
