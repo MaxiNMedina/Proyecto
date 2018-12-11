@@ -38,7 +38,11 @@
     <div class="row btn-gap">
       <%= link_to "Volver", root_path , class: 'btn btn-secondary' %>
       <% if  current_user.present? && !current_user.isAdmin? %>
-        <%= link_to "Comprar", @hotsale, method: :delete, class: 'btn btn-warning' %>
+        <% if current_user.credits > 0 %>
+          <%= link_to "Comprar", @hotsale, method: :delete, class: 'btn btn-warning' %>
+        <% else %>
+          <%= link_to "No tiene creditos", @hotsale, method: :delete, class: 'btn btn-warning disabled' %>
+        <% end %>
       <% else if current_user.isAdmin? %>
         <%= link_to "Borrar", @hotsale, method: :delete, class: 'btn btn-danger' %>
       <% end %>
